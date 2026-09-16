@@ -15,6 +15,25 @@ El problema: sense un brief fort, qualsevol agent (i qualsevol developer) cau en
 - Estil visual (minimalista, editorial, bold, orgànic...)
 - **2–3 webs de referència** que el client admira — sense referència, l'agent omple amb defaults
 
+<div class="grid cards" markdown>
+
+-   :material-cards:{ .lg .middle } **[awesome-design-md](https://github.com/voltagent/awesome-design-md)**
+
+    ---
+
+    Col·lecció de fitxers `DESIGN.md` de 70+ marques (Stripe, Vercel, Apple, Figma, Spotify...) en format que els agents entenen directament.
+
+    **Com usar-lo a l'INTAKE:**
+
+    1. El client diu "m'agrada com fa Stripe" o "vull algo com Vercel"
+    2. Agafes el `DESIGN.md` de la marca del repo
+    3. L'incloues com a context de sessió a OpenCode
+    4. L'agent segueix aquelles regles de color, tipografia i components — adaptat als tokens del client
+
+    No s'instal·la. És un repo de referència puntual.
+
+</div>
+
 ---
 
 ## Gradients de background
