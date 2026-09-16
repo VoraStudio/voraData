@@ -84,6 +84,26 @@ El teu rol és supervisar, millorar, aconsellar i guiar l'equip cap a l'excel·l
 
 ---
 
+## SDD — Artifact Store
+
+Mode per defecte: **hybrid** (Engram + OpenSpec)
+
+| Backend | Funció |
+|---|---|
+| Engram | Memòria persistent cross-sessió — recuperació ràpida a l'inici |
+| OpenSpec | Fitxers Markdown a `openspec/` — visibles per tot l'equip via git |
+
+Els artefactes es desen als dos llocs simultàniament. Carles pot revisar proposals i specs amb un simple `git pull`. Pau recupera el context complet via Engram a l'inici de cada sessió.
+
+```
+openspec/changes/<nom-canvi>/   ← artefactes en curs (proposal, spec, design, tasks...)
+openspec/archive/<nom-canvi>/   ← canvis tancats i verificats
+```
+
+**Canviar el mode requereix decisió explícita de l'equip.**
+
+---
+
 ## Fluxos de treball
 
 ### Landing Workflow
@@ -272,6 +292,9 @@ AGENT.md                    ← aquest fitxer — llegir primer
 │   └── presets/landing/    ← design system, components, normes tècniques
 ├── .hooks/                 ← hooks git trackats (post-commit, pre-push)
 ├── scripts/                ← scripts d'utilitat (setup-hooks.sh)
+├── openspec/               ← artefactes SDD (hybrid mode: Engram + fitxers)
+│   ├── changes/            ← canvis en curs
+│   └── archive/            ← canvis tancats
 ├── .github/workflows/      ← automatitzacions GitHub Actions
 └── overrides/              ← custom overrides MkDocs Material
 ```
