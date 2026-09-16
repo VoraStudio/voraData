@@ -8,8 +8,38 @@ OpenCode es el IDE con IA que usa el equipo de VoraData como interfaz de trabajo
 
 ## Configuración con DGX Spark
 
-!!! info "Pendiente de documentar"
-    Añadir aquí la configuración del endpoint del DGX Spark en OpenCode.
+Variables de entorno (`.env`, no versionado):
+
+```
+AI_BASE_URL="http://voradata-ia.hopto.org:30000"
+AI_API_KEY="<clave del servidor>"
+AI_MODEL="qwen38-27b"
+```
+
+`opencode.json` en la raíz del proyecto:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "dgx-spark": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "{env:AI_BASE_URL}/v1",
+        "apiKey": "{env:AI_API_KEY}"
+      },
+      "models": {
+        "qwen38-27b": {
+          "name": "Qwen 3.8 27B (Visión & Multimodal)"
+        }
+      }
+    }
+  }
+}
+```
+
+!!! warning "Modelo disponible"
+    El servidor solo tiene cargado `qwen38-27b` (SGLang). `qwen38-flash-next` no existe en este backend — no usarlo hasta que esté desplegado.
 
 ## Flujo de trabajo
 

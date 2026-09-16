@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+DATE=$(date +"%Y-%m-%d %H:%M:%S")
+BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
+REMOTE=$1
+echo "push   | $DATE | $BRANCH | → $REMOTE" >> "$(git rev-parse --git-dir)/session-context.md"
+exit 0

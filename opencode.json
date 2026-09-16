@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "dgx-spark": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://voradata-ia.hopto.org:30000/v1",
+        "apiKey": "{env:AI_API_KEY}"
+      },
+      "models": {
+        "qwen38-27b": {
+          "name": "Qwen 3.8 27B (Visión & Multimodal)"
+        }
+      }
+    }
+  }
+}

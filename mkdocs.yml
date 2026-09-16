@@ -54,6 +54,8 @@ nav:
     - ia/index.md
     - "DGX Spark": ia/dgx-spark.md
     - OpenCode: ia/opencode.md
+    - MCP:
+      - Engram: ia/mcp/engram.md
 
 markdown_extensions:
   - pymdownx.superfences:

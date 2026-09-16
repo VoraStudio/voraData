@@ -1,1 +1,3 @@
 site/
+.env
+.atl/.skill-registry.cache.json

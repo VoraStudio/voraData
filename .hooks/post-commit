@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+DATE=$(date +"%Y-%m-%d %H:%M:%S")
+BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
+HASH=$(git log -1 --pretty=format:"%h" 2>/dev/null)
+MSG=$(git log -1 --pretty=format:"%s" 2>/dev/null)
+echo "commit | $DATE | $BRANCH | $HASH | $MSG" >> "$(git rev-parse --git-dir)/session-context.md"
