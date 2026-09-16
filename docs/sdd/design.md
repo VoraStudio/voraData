@@ -4,16 +4,22 @@
 
 ---
 
+## Evitar dissenys genèrics
+
+El problema: sense un brief fort, qualsevol agent (i qualsevol developer) cau en el genèric. Tailwind blau-500, Inter, cards amb `shadow-md`. Tots iguals.
+
+**La solució és al INTAKE** — cal extreure tokens reals i referències visuals *abans* d'escriure una línia de codi:
+
+- Color primari → secundari → neutral → accent
+- Font heading → font body (fora d'Inter+Roboto)
+- Estil visual (minimalista, editorial, bold, orgànic...)
+- **2–3 webs de referència** que el client admira — sense referència, l'agent omple amb defaults
+
+---
+
 ## Gradients de background
 
-Els gradients de VoraData segueixen un **estil editorial amb capes de llum**. L'objectiu és que els backgrounds semblin fotografiats, no generats — profunditat visual amb radial gradients superposats.
-
-### Criteri
-
-- **Mai** gradients plans lineals de dos colors sense profunditat
-- **Sempre** múltiples capes radials amb opacitats baixes
-- Efectes admesos: mesh glow, aurora, film grain, bokeh
-- Els colors segueixen la paleta del client — el patró de capes és constant
+Els gradients de VoraData segueixen un **estil editorial amb capes de llum**. Mai gradients plans de dos colors sense profunditat.
 
 ### Patró CSS base
 
@@ -34,207 +40,208 @@ background:
   var(--color-neutral-50);
 ```
 
-### Eina de generació
-
-**[Gradient Studio](https://gradientsaas.blogspot.com)** — export directe a CSS, Tailwind o SCSS. Gratuït, sense compte, ús comercial permès.
-
 !!! tip "Flux recomanat"
-    1. Tens la paleta del client
-    2. Genera el gradient a Gradient Studio (mode *Full* o *Duotone*)
-    3. Exporta com a CSS
-    4. Adapta els valors a `@theme {}` com a custom property
-    5. Aplica via classe Tailwind o CSS custom al hero
+    1. Tens la paleta del client → obre Gradient Studio
+    2. Genera (mode *Full* o *Duotone*) → exporta CSS
+    3. Adapta a `@theme {}` → aplica al hero
+
+---
+
+## Eines de disseny
+
+<div class="grid cards" markdown>
+
+-   :material-palette:{ .lg .middle } **[Realtime Colors](https://realtimecolors.com)**
+
+    ---
+
+    Visualitza la paleta del client sobre una UI real en temps real. Veus immediatament si la combinació de colors funciona abans de tocar codi.
+
+    **Quan usar-lo:** al INTAKE, en rebre els colors del client.
+
+-   :material-format-font:{ .lg .middle } **[Fontpair.co](https://fontpair.co)**
+
+    ---
+
+    Combinacions de fonts curades. Per sortir d'Inter+Roboto i donar personalitat tipogràfica al projecte.
+
+    **Quan usar-lo:** quan la dissenyadora no especifica fonts — triar parella aquí.
+
+-   :material-brush:{ .lg .middle } **[UIverse.io](https://uiverse.io)**
+
+    ---
+
+    Components CSS/HTML únics fets per la comunitat. Botons, cards, loaders i inputs que no semblen de plantilla genèrica.
+
+    **Quan usar-lo:** per a elements UI petits (botons, badges, inputs) que necessiten personalitat visual.
+
+-   :material-image:{ .lg .middle } **[Shots.so](https://shots.so)**
+
+    ---
+
+    Mockups ràpids per ensenyar al client com quedarà la web abans de construir-la. Ideal per a validar disseny sense codi.
+
+    **Quan usar-lo:** entre INTAKE i BUILD per a aprovació visual del client.
+
+-   :material-cellphone-screenshot:{ .lg .middle } **[Mobbin](https://mobbin.com)**
+
+    ---
+
+    Base de dades de UIs reals d'apps i webs de referència. Per entendre com es resolen patrons, no per copiar.
+
+    **Quan usar-lo:** quan cal resoldre un patró de navegació, onboarding o layout complex.
+
+-   :material-water:{ .lg .middle } **[Gradient Studio](https://gradientsaas.blogspot.com)**
+
+    ---
+
+    Generador de gradients editorials. Export directe a CSS, Tailwind o SCSS. Gratuït, ús comercial permès.
+
+    **Quan usar-lo:** per a backgrounds de hero i seccions. Modes *Full* o *Duotone*.
+
+</div>
 
 ---
 
 ## Components UI
 
-### Preline UI — [preline.co](https://preline.co)
+<div class="grid cards" markdown>
 
-Biblioteca open source de components Tailwind + Vanilla JS. Compatible amb **Tailwind v4.3**. MIT License, gratuït per a projectes de clients.
+-   :material-puzzle:{ .lg .middle } **[Preline UI](https://preline.co)**
 
-**Quan usar-lo:** dropdowns, modals, tabs, accordions, formularis interactius.
+    ---
 
-**Instal·lació:**
+    Biblioteca open source Tailwind + Vanilla JS. Compatible amb **Tailwind v4.3**. MIT License, gratuït per a clients. Té **MCP propi** per importar components des de l'agent.
 
-```bash
-npm install preline
-```
+    **Quan usar-lo:** dropdowns, modals, tabs, accordions, formularis interactius.
 
-```html
-<!-- Al final del <body> -->
-<script src="./node_modules/preline/dist/preline.js"></script>
-```
+    ```bash
+    npm install preline
+    ```
+    ```html
+    <script src="./node_modules/preline/dist/preline.js"></script>
+    ```
 
-**Exemple — dropdown:**
+    → Guia completa: [docs MCP Preline](../ia/mcp/preline.md)
 
-```html
-<div class="hs-dropdown relative">
-  <button type="button" data-hs-dropdown-toggle>
-    Opcions
-  </button>
-  <div class="hs-dropdown-menu hidden min-w-48 bg-white shadow-md rounded-lg">
-    <a class="block px-4 py-2 hover:bg-gray-100" href="#">Opció 1</a>
-    <a class="block px-4 py-2 hover:bg-gray-100" href="#">Opció 2</a>
-  </div>
+-   :material-puzzle-outline:{ .lg .middle } **[Flowbite](https://flowbite.com)**
+
+    ---
+
+    Alternativa a Preline. Bona cobertura de taules de dades, datepickers i inputs complexos. Gratuït en la versió base. Té **MCP oficial** open source.
+
+    **Quan usar-lo:** quan Preline no tingui el component que necessites.
+
+    ```bash
+    npx -y flowbite-mcp
+    ```
+
 </div>
-```
-
-**Exemple — modal:**
-
-```html
-<!-- Trigger -->
-<button data-hs-overlay="#modal-example">Obre modal</button>
-
-<!-- Modal -->
-<div id="modal-example" class="hs-overlay hidden fixed inset-0 z-50">
-  <div class="hs-overlay-open:opacity-100 bg-white rounded-xl p-6 max-w-lg mx-auto mt-20">
-    <h3 class="text-lg font-bold">Títol del modal</h3>
-    <p class="mt-2 text-gray-600">Contingut del modal.</p>
-    <button data-hs-overlay="#modal-example" class="mt-4">Tanca</button>
-  </div>
-</div>
-```
-
----
-
-### Flowbite — [flowbite.com](https://flowbite.com)
-
-Alternativa a Preline. Bona cobertura de taules, formularis avançats i datepickers. Gratuït en la versió base.
-
-**Quan usar-lo:** quan Preline no tingui el component que necessites, especialment per a taules de dades i inputs complexos.
 
 ---
 
 ## Animacions
 
-### AOS — Animate On Scroll
+<div class="grid cards" markdown>
 
-**[michalsnik.github.io/aos](https://michalsnik.github.io/aos/)** — animacions d'entrada en scroll. Zero dependències, una línia de JS.
+-   :material-animation:{ .lg .middle } **[GSAP](https://gsap.com)**
 
-**Quan usar-lo:** reveals de seccions, cards que apareixen en scroll. El 90% de les landings.
+    ---
 
-**Instal·lació:**
+    Estàndard de la indústria. Vanilla JS pur. **Tots els plugins gratuïts des de v3.13+** (SplitText, MorphSVG, ScrambleText...).
 
-```html
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 600, once: true });</script>
-```
+    **Quan usar-lo:** timelines encadenades, ScrollTrigger, SplitText, efectes hero elaborats, scroll horitzontal.
 
-**Exemple:**
+    ```bash
+    npm install gsap
+    ```
 
-```html
-<div data-aos="fade-up">Apareix en scroll</div>
-<div data-aos="fade-up" data-aos-delay="100">Apareix amb delay</div>
-<div data-aos="zoom-in" data-aos-duration="800">Zoom in</div>
-```
+    → Guia completa amb patrons de producció: [docs GSAP](../ia/gsap.md)
 
----
+-   :material-eye:{ .lg .middle } **[AOS](https://michalsnik.github.io/aos/)**
 
-### GSAP — GreenSock Animation Platform
+    ---
 
-**[gsap.com](https://gsap.com)** — estàndard de la indústria. Vanilla JS pur. Gratuït per a ús comercial.
+    Animate On Scroll. Zero dependències, una línia de JS. CSS-driven, lleuger.
 
-**Quan usar-lo:** animacions complexes, scroll-driven animations, timelines encadenades, efectes hero elaborats.
+    **Quan usar-lo:** reveals simples en scroll (fade, slide). El 90% de les landings no necessiten més.
 
-**Instal·lació:**
+    ```html
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 600, once: true })</script>
+    ```
+    ```html
+    <div data-aos="fade-up" data-aos-delay="100">Element</div>
+    ```
 
-```bash
-npm install gsap
-```
+-   :material-gesture-swipe-up:{ .lg .middle } **[Lenis](https://lenis.darkroom.engineering)**
 
-**Exemple — reveal amb scroll trigger:**
+    ---
 
-```js
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+    Smooth scroll ultralleuger. Millora dràsticament la sensació de qualitat d'una landing sense esforç.
 
-gsap.registerPlugin(ScrollTrigger)
+    **Quan usar-lo:** sempre. Especialment combinat amb GSAP ScrollTrigger.
 
-gsap.from('.hero-title', {
-  scrollTrigger: '.hero-title',
-  y: 60,
-  opacity: 0,
-  duration: 1,
-  ease: 'power3.out'
-})
-```
+    ```bash
+    npm install lenis
+    ```
+    ```js
+    const lenis = new Lenis({ duration: 1.2 })
+    gsap.ticker.add(time => lenis.raf(time * 1000))
+    lenis.on('scroll', ScrollTrigger.update)
+    ```
 
-**Exemple — timeline encadenada:**
-
-```js
-const tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'power2.out' } })
-
-tl.from('.hero-title',    { y: 40, opacity: 0 })
-  .from('.hero-subtitle', { y: 30, opacity: 0 }, '-=0.3')
-  .from('.hero-cta',      { y: 20, opacity: 0 }, '-=0.3')
-```
-
----
-
-### Lenis — Smooth Scroll
-
-**[lenis.darkroom.engineering](https://lenis.darkroom.engineering)** — smooth scroll ultralleuger.
-
-**Quan usar-lo:** sempre que la landing necessiti sensació de qualitat premium. Una línia de configuració.
-
-**Instal·lació:**
-
-```bash
-npm install lenis
-```
-
-**Exemple:**
-
-```js
-import Lenis from 'lenis'
-
-const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
-
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
-requestAnimationFrame(raf)
-```
+</div>
 
 ---
 
 ## Icones
 
-### Lucide — [lucide.dev](https://lucide.dev)
+<div class="grid cards" markdown>
 
-SVG icon set gratuït, consistent i lleuger. MIT License.
+-   :material-vector-square:{ .lg .middle } **[Lucide](https://lucide.dev)**
 
-**Quan usar-lo:** tots els projectes. Substitueix qualsevol altre icon set.
+    ---
 
-**Opció A — inline SVG (recomanada per a icones crítiques):**
+    El millor SVG icon set gratuït. Consistent, lleuger, 1500+ icones. MIT License. Tots els projectes.
 
-```html
-<!-- Copiar SVG directament des de lucide.dev -->
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-     viewBox="0 0 24 24" fill="none" stroke="currentColor"
-     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-</svg>
-```
+    **Opció A — inline (recomanada):**
+    ```html
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+    </svg>
+    ```
 
-**Opció B — via CDN (per a prototips):**
+    **Opció B — CDN (prototips):**
+    ```html
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons()</script>
+    <i data-lucide="arrow-right"></i>
+    ```
 
-```html
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-<script>lucide.createIcons()</script>
-
-<i data-lucide="arrow-right"></i>
-<i data-lucide="check-circle"></i>
-```
+</div>
 
 ---
 
-## Referència i verificació
+## Verificació i referència
 
-| Recurs | Ús |
-|---|---|
-| [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) | Verificar contrast text/fons (WCAG 2.1 AA mínim 4.5:1) |
-| [Name That UI](https://namethatui.com) | Nomenclatura estàndard de components UI |
+<div class="grid cards" markdown>
+
+-   :material-contrast:{ .lg .middle } **[WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)**
+
+    ---
+
+    Verificar contrast text/fons. WCAG 2.1 AA: mínim **4.5:1** text normal, **3:1** text gran.
+
+    Obligatori abans de lliurar qualsevol projecte.
+
+-   :material-tag:{ .lg .middle } **[Name That UI](https://namethatui.com)**
+
+    ---
+
+    Nomenclatura estàndard de components UI. Per quan la dissenyadora descriu un component i cal saber el nom tècnic.
+
+</div>
