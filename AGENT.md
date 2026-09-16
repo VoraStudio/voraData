@@ -96,9 +96,15 @@ Mode per defecte: **hybrid** (Engram + OpenSpec)
 Els artefactes es desen als dos llocs simultàniament. Carles pot revisar proposals i specs amb un simple `git pull`. Pau recupera el context complet via Engram a l'inici de cada sessió.
 
 ```
-openspec/changes/<nom-canvi>/   ← artefactes en curs (proposal, spec, design, tasks...)
-openspec/archive/<nom-canvi>/   ← canvis tancats i verificats
+openspec/changes/<nom-canvi>/        ← artefactes SDD en curs
+openspec/archive/<nom-canvi>/        ← canvis SDD tancats i verificats
+openspec/decisions/<stack>/<NNN>.md  ← decisions importants fora de SDD
 ```
+
+Stacks de decisions: `arquitectura`, `html`, `js`, `css`, `symfony`
+
+**Fora de Claude**: `bash scripts/new-decision.sh <stack> "<títol>"` crea el fitxer amb la plantilla.
+**Dins de sessió**: l'agent escriu la decisió proactivament quan detecta un canvi important.
 
 **Canviar el mode requereix decisió explícita de l'equip.**
 
@@ -294,7 +300,8 @@ AGENT.md                    ← aquest fitxer — llegir primer
 ├── scripts/                ← scripts d'utilitat (setup-hooks.sh)
 ├── openspec/               ← artefactes SDD (hybrid mode: Engram + fitxers)
 │   ├── changes/            ← canvis en curs
-│   └── archive/            ← canvis tancats
+│   ├── archive/            ← canvis tancats
+│   └── decisions/          ← decisions arquitectòniques fora de SDD (per stack)
 ├── .github/workflows/      ← automatitzacions GitHub Actions
 └── overrides/              ← custom overrides MkDocs Material
 ```
