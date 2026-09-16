@@ -2,19 +2,29 @@
 
 > Regles no negociables per a cada landing que surti de VoraData.
 
-## Estructura de fitxers
+## Estructura de fitxers i URLs
+
+Cada secció és una **carpeta amb el seu propi `index.html`**, no un fitxer `.html` solt.
 
 ```
-proyecto/
-├── index.html              # Única pàgina (landing)
-├── assets/
-│   ├── css/app.css         # Entrada Tailwind — NO CSS inline en HTML
-│   ├── js/app.js           # Entrada JS — mòduls separats si > 100 línies
-│   ├── js/modules/         # Un fitxer per responsabilitat
-│   └── img/                # WebP per defecte, SVG per a icones/logo
-├── tailwind.config.js
-└── package.json
+arrel-projecte/
+├── index.html                  # → example.com/
+├── serveis/
+│   └── index.html              # → example.com/serveis/
+├── sobre-nosaltres/
+│   └── index.html              # → example.com/sobre-nosaltres/
+└── assets/
+    ├── css/app.css
+    ├── js/app.js
+    ├── js/modules/
+    └── img/
 ```
+
+!!! tip "Per què carpetes i no fitxers .html?"
+    `example.com/serveis/` és una URL neta, sense extensió, fàcil de compartir i de recordar. A més, permet afegir sub-pàgines (`/serveis/web/`, `/serveis/apps/`) sense trencar la URL pare. Google tracta les dues formes equivalent en ranking, però la jerarquia de carpetes millora el CTR als resultats de cerca i facilita l'estructuració de breadcrumbs i schema markup.
+
+!!! warning "Aclariment SEO"
+    La convenció de carpetes **no és un factor de ranking directe** — Google ho confirma explícitament. El benefici és indirecte: URLs més netes → millor CTR, jerarquia clara → millor comprensió del lloc per part de Google. Els factors que realment mouen el SEO continuen sent contingut, Core Web Vitals i backlinks.
 
 **Regles de fitxers:**
 - Sense CSS en atributs `style=""` — tot va a Tailwind o `app.css`

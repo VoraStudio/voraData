@@ -9,6 +9,22 @@
 !!! danger "Prohibit"
     Mai `<style>` ni CSS inline a l'HTML. Mai `<script>` inline ni JS en atributs (`onclick`, `onload`, etc.).
 
+### Estructura d'URLs — carpetes amb `index.html`
+
+Cada pàgina és una **carpeta amb el seu propi `index.html`**, no un fitxer `.html` solt:
+
+```
+# ✅ Correcte
+serveis/index.html          → example.com/serveis/
+sobre-nosaltres/index.html  → example.com/sobre-nosaltres/
+
+# ❌ Incorrecte
+serveis.html                → example.com/serveis.html
+sobre-nosaltres.html        → example.com/sobre-nosaltres.html
+```
+
+URLs netes, sense extensió, amb jerarquia clara per a sub-pàgines futures. L'impacte en ranking SEO és indirecte (CTR, breadcrumbs, estructura), però és la convenció estàndard de VoraData.
+
 <div class="grid cards" markdown>
 
 -   :material-check:{ .lg .middle } **Semàntica**
