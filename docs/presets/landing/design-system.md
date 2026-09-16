@@ -63,3 +63,20 @@ shadow-xl   → targetes en hover
 ```css
 transition-all duration-300 ease-in-out
 ```
+
+## Gradients de background
+
+Els gradients de VoraData segueixen un **estil editorial amb capes de llum** — mesh glow, aurora, film grain, bokeh. Mai gradients plans de dos colors sense profunditat.
+
+```css
+/* Exemple: gradient hero fosc amb mesh glow */
+background:
+  radial-gradient(ellipse 80% 50% at 50% -10%, rgba(244,142,36,.25), transparent),
+  radial-gradient(ellipse 60% 40% at 80% 60%, rgba(244,142,36,.10), transparent),
+  #02040a;
+```
+
+!!! tip "Eina de generació"
+    Usa [Gradient Studio](https://gradientsaas.blogspot.com) per generar gradients editorials i exportar directament a CSS o Tailwind. Gratuït, sense compte, ús comercial permès.
+
+    Modes recomanats: **Full** o **Duotone** amb la paleta de color del client. Exporta com a CSS i enganxa a `@theme {}` o directament a la classe del hero.

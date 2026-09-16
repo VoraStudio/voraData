@@ -43,6 +43,7 @@ nav:
     - sdd/index.md
     - Fases: sdd/fases.md
     - "Landing Pages": sdd/landing/index.md
+    - Disseny: sdd/design.md
   - 🎨 Presets:
     - presets/index.md
     - "Landing Page":

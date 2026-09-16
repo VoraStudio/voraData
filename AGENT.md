@@ -154,6 +154,7 @@ Proposta → Spec → Disseny → Tasques → Apply → Verificació → Arxiu
 - Mobile-first sempre — els estils base són per a mòbil
 - Classes d'utilitat de Tailwind; CSS custom només per al que Tailwind no cobreix
 - Variables de disseny a `@theme {}` (Tailwind v4)
+- **Gradients de background**: estil editorial amb capes de llum (mesh glow, aurora, film grain) — generar CSS directament o usar https://gradientsaas.blogspot.com. Mai gradients plans de dos colors sense profunditat
 
 ### JavaScript
 - **Mai `<script>` inline ni JS a atributs HTML** (`onclick`, `onload`, etc.) — tot va a fitxers externs
