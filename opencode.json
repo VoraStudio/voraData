@@ -13,5 +13,17 @@
         }
       }
     }
+  },
+  "mcp": {
+    "flowbite": {
+      "type": "local",
+      "command": ["npx", "-y", "flowbite-mcp"],
+      "enabled": true
+    },
+    "preline": {
+      "type": "local",
+      "command": ["npx", "-y", "htmlstreamofficial/preline"],
+      "enabled": true
+    }
   }
 }
