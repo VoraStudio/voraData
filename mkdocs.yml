@@ -32,7 +32,13 @@ theme:
     - content.code.copy
 
 nav:
-  - Inicio: index.md
+  - Inici: index.md
+  - 📋 Normes Globals:
+    - normes/index.md
+    - Codi: normes/codi.md
+    - Git: normes/git.md
+    - Lliurament: normes/lliurament.md
+    - "Seguretat & LOPD": normes/seguretat.md
   - 🔄 SDD:
     - sdd/index.md
     - Fases: sdd/fases.md
@@ -41,10 +47,10 @@ nav:
     - presets/index.md
     - "Landing Page":
       - presets/landing/index.md
-      - "Design System": presets/landing/design-system.md
-      - Componentes: presets/landing/componentes.md
-      - Normas: presets/landing/normas.md
-  - 🤖 IA & Herramientas:
+      - "Sistema de disseny": presets/landing/design-system.md
+      - Components: presets/landing/componentes.md
+      - Normes: presets/landing/normas.md
+  - 🤖 IA & Eines:
     - ia/index.md
     - "DGX Spark": ia/dgx-spark.md
     - OpenCode: ia/opencode.md
