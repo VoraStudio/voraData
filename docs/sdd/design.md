@@ -69,6 +69,64 @@ Per a gradients molt elaborats o quan el client necessita una estètica específ
 
 ## Recursos externs validats
 
+### Components UI
+
+<div class="grid cards" markdown>
+
+-   **[Preline UI](https://preline.co)**
+
+    ---
+
+    Biblioteca de components Tailwind open source. Vanilla JS, compatible amb **Tailwind v4.3** (verificat v5.0 agost 2026). Dropdowns, modals, tabs, formularis via atributs `data-*`. Té MCP propi per importar components des de l'agent.
+
+    `npm install preline` + JS al final del `<body>`. MIT License, gratuït per a projectes de clients.
+
+-   **[Flowbite](https://flowbite.com)**
+
+    ---
+
+    Alternativa a Preline. Components Tailwind + Vanilla JS. Bona cobertura de components de formularis i taules. Gratuït en la versió base.
+
+</div>
+
+### Animacions
+
+<div class="grid cards" markdown>
+
+-   **[GSAP](https://gsap.com)**
+
+    ---
+
+    Estàndard de la indústria per a animacions web. Vanilla JS pur. Per a scroll animations, reveals, transicions complexes. Gratuït per a ús comercial (llicència estàndard).
+
+-   **[AOS](https://michalsnik.github.io/aos/)**
+
+    ---
+
+    Animate On Scroll. Zero dependències, una línia de JS. Ideal per a animacions d'entrada en scroll a landings. Lleuger i senzill.
+
+-   **[Lenis](https://lenis.darkroom.engineering)**
+
+    ---
+
+    Smooth scroll ultralleuger. Millora la sensació de qualitat d'una landing sense esforç. Vanilla JS, zero dependències pesades.
+
+</div>
+
+### Icones
+
+<div class="grid cards" markdown>
+
+-   **[Lucide](https://lucide.dev)**
+
+    ---
+
+    El millor SVG icon set gratuït. Consistent, lleuger. Usar inline al HTML o com a sprite. MIT License.
+
+</div>
+
+### Disseny i referència
+
 | Recurs | Tipus | Ús |
 |---|---|---|
 | [Gradient Studio](https://gradientsaas.blogspot.com) | Generador CSS | Backgrounds editorials per a heroes i seccions |
