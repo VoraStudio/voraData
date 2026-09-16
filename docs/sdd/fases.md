@@ -1,53 +1,53 @@
-# Fases del flujo SDD
+# Fases del flux SDD
 
-> Referencia rápida de cada fase: qué produce, qué consume y criterio de salida.
+> Referència ràpida de cada fase: què produeix, què consumeix i criteri de sortida.
 
-## Diagrama de dependencias
+## Diagrama de dependències
 
 ```mermaid
 graph LR
-    A[Propuesta] --> B[Spec]
-    A --> C[Diseño]
-    B --> D[Tareas]
+    A[Proposta] --> B[Spec]
+    A --> C[Disseny]
+    B --> D[Tasques]
     C --> D
     D --> E[Apply]
-    E --> F[Verificación]
-    F --> G[Archivo]
+    E --> F[Verificació]
+    F --> G[Arxiu]
 ```
 
 ## Fases
 
-### Propuesta
-- **Consume**: brief del cliente
-- **Produce**: alcance, objetivos, restricciones, no-goals
-- **Criterio de salida**: equipo alineado en QUÉ se construye
+### Proposta
+- **Consumeix**: brief del client
+- **Produeix**: abast, objectius, restriccions, no-goals
+- **Criteri de sortida**: equip alineat en QUÈ es construeix
 
 ### Spec
-- **Consume**: propuesta aprobada
-- **Produce**: requisitos funcionales y escenarios
-- **Criterio de salida**: todos los casos cubiertos
+- **Consumeix**: proposta aprovada
+- **Produeix**: requisits funcionals i escenaris
+- **Criteri de sortida**: tots els casos coberts
 
-### Diseño
-- **Consume**: propuesta aprobada
-- **Produce**: decisiones técnicas, arquitectura, componentes
-- **Criterio de salida**: ninguna pregunta técnica abierta
+### Disseny
+- **Consumeix**: proposta aprovada
+- **Produeix**: decisions tècniques, arquitectura, components
+- **Criteri de sortida**: cap pregunta tècnica oberta
 
-### Tareas
-- **Consume**: spec + diseño
-- **Produce**: checklist ordenada e implementable
-- **Criterio de salida**: cada tarea es atómica y verificable
+### Tasques
+- **Consumeix**: spec + disseny
+- **Produeix**: checklist ordenada i implementable
+- **Criteri de sortida**: cada tasca és atòmica i verificable
 
 ### Apply
-- **Consume**: tareas + spec + diseño
-- **Produce**: código implementado, tareas marcadas
-- **Criterio de salida**: todas las tareas completadas
+- **Consumeix**: tasques + spec + disseny
+- **Produeix**: codi implementat, tasques marcades
+- **Criteri de sortida**: totes les tasques completades
 
-### Verificación
-- **Consume**: spec + tareas + apply-progress
-- **Produce**: informe de verificación (CRITICAL / WARNING / SUGGESTION)
-- **Criterio de salida**: sin CRITICAL abiertos
+### Verificació
+- **Consumeix**: spec + tasques + apply-progress
+- **Produeix**: informe de verificació (CRITICAL / WARNING / SUGGESTION)
+- **Criteri de sortida**: sense CRITICAL oberts
 
-### Archivo
-- **Consume**: todos los artefactos
-- **Produce**: informe final archivado
-- **Criterio de salida**: cambio cerrado y documentado
+### Arxiu
+- **Consumeix**: tots els artefactes
+- **Produeix**: informe final arxivat
+- **Criteri de sortida**: canvi tancat i documentat

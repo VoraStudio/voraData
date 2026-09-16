@@ -1,22 +1,22 @@
 # OpenCode
 
-> IDE con IA. Herramienta principal de trabajo en VoraData.
+> IDE amb IA. Eina principal de treball a VoraData.
 
-## Qué es
+## Què és
 
-OpenCode es el IDE con IA que usa el equipo de VoraData como interfaz de trabajo principal. Se conecta al DGX Spark local como backend LLM.
+OpenCode és l'IDE amb IA que fa servir l'equip de VoraData com a interfície de treball principal. Es connecta al DGX Spark local com a backend LLM.
 
-## Configuración con DGX Spark
+## Configuració amb DGX Spark
 
-Variables de entorno (`.env`, no versionado):
+Variables d'entorn (`.env`, no versionat):
 
 ```
 AI_BASE_URL="http://voradata-ia.hopto.org:30000"
-AI_API_KEY="<clave del servidor>"
+AI_API_KEY="<clau del servidor>"
 AI_MODEL="qwen38-27b"
 ```
 
-`opencode.json` en la raíz del proyecto:
+`opencode.json` a l'arrel del projecte:
 
 ```json
 {
@@ -30,7 +30,7 @@ AI_MODEL="qwen38-27b"
       },
       "models": {
         "qwen38-27b": {
-          "name": "Qwen 3.8 27B (Visión & Multimodal)"
+          "name": "Qwen 3.8 27B (Visió & Multimodal)"
         }
       }
     }
@@ -38,16 +38,16 @@ AI_MODEL="qwen38-27b"
 }
 ```
 
-!!! warning "Modelo disponible"
-    El servidor solo tiene cargado `qwen38-27b` (SGLang). `qwen38-flash-next` no existe en este backend — no usarlo hasta que esté desplegado.
+!!! warning "Model disponible"
+    El servidor només té carregat `qwen38-27b` (SGLang). `qwen38-flash-next` no existeix en aquest backend — no usar-lo fins que estigui desplegat.
 
-## Flujo de trabajo
+## Flux de treball
 
-1. Abrir proyecto en OpenCode
-2. Verificar conexión con DGX Spark
-3. Seguir el flujo SDD: brief → propuesta → spec → diseño → tareas → apply
-4. Usar los presets de este repo como contexto para el LLM
+1. Obrir el projecte a OpenCode
+2. Verificar connexió amb DGX Spark
+3. Seguir el flux SDD: brief → proposta → spec → disseny → tasques → apply
+4. Usar els presets d'aquest repo com a context per al LLM
 
-## Skills y normas
+## Skills i normes
 
-Los skills y normas de esta documentación son el contexto que se inyecta al LLM en cada sesión de trabajo.
+Els skills i normes d'aquesta documentació són el context que s'injecta al LLM en cada sessió de treball.

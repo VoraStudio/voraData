@@ -1,18 +1,18 @@
 # 🎨 Presets
 
-> Plantillas reutilizables para construir webs y apps con consistencia profesional.
+> Plantilles reutilitzables per construir webs i apps amb consistència professional.
 
 ## Disponibles
 
-| Preset | Stack | Descripción |
+| Preset | Stack | Descripció |
 |---|---|---|
-| [Landing Page](landing/index.md) | HTML + Tailwind + JS | Design system, componentes y normas para landings |
-| Symfony SaaS | Symfony + Tailwind | Arquitectura base para aplicaciones web | 
+| [Landing Page](landing/index.md) | HTML + Tailwind + JS | Design system, components i normes per a landings |
+| Symfony SaaS | Symfony + Tailwind | Arquitectura base per a aplicacions web | 
 
-## Qué incluye cada preset
+## Què inclou cada preset
 
-Cada preset define tres capas:
+Cada preset defineix tres capes:
 
-1. **Design System** — tokens de color, tipografía, espaciado y breakpoints en Tailwind
-2. **Componentes** — catálogo de secciones estándar con variantes
-3. **Normas técnicas** — estructura de ficheros, rendimiento, SEO y accesibilidad
+1. **Design System** — tokens de color, tipografia, espaiat i breakpoints en Tailwind
+2. **Components** — catàleg de seccions estàndard amb variants
+3. **Normes tècniques** — estructura de fitxers, rendiment, SEO i accessibilitat

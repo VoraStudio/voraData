@@ -1,27 +1,27 @@
-# 🤖 IA & Herramientas
+# 🤖 IA & Eines
 
-> Stack de IA local y flujos de trabajo. Todo agnóstico a la herramienta.
+> Stack d'IA local i fluxos de treball. Tot agnòstic a l'eina.
 
-## Principio
+## Principi
 
-El LLM es la herramienta. El equipo dirige, el LLM ejecuta. Nunca al revés.
+El LLM és l'eina. L'equip dirigeix, el LLM executa. Mai al revés.
 
 ## Stack
 
-| Herramienta | Rol |
+| Eina | Rol |
 |---|---|
-| [DGX Spark](dgx-spark.md) | Servidor IA local — modelos privados sin cloud |
-| [OpenCode](opencode.md) | IDE con IA — interfaz principal de trabajo |
-| Engram | Memoria persistente cross-sesión |
-| MkDocs | Documentación del sistema |
+| [DGX Spark](dgx-spark.md) | Servidor IA local — models privats sense cloud |
+| [OpenCode](opencode.md) | IDE amb IA — interfície principal de treball |
+| Engram | Memòria persistent cross-sessió |
+| MkDocs | Documentació del sistema |
 
-## Flujo de trabajo
+## Flux de treball
 
 ```
-Brief → SDD (OpenCode + DGX) → Código → Review → Deploy
+Brief → SDD (OpenCode + DGX) → Codi → Review → Deploy
 ```
 
-1. El brief llega a OpenCode
-2. OpenCode usa el DGX Spark como backend LLM
-3. El flujo SDD guía el proceso (propuesta → spec → diseño → tareas → apply)
-4. El resultado se documenta aquí (MkDocs) y se archiva en Engram
+1. El brief arriba a OpenCode
+2. OpenCode usa el DGX Spark com a backend LLM
+3. El flux SDD guia el procés (proposta → spec → disseny → tasques → apply)
+4. El resultat es documenta aquí (MkDocs) i s'arxiva a Engram

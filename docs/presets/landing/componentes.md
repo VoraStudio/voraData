@@ -1,17 +1,17 @@
-# Componentes — Landing Page
+# Components — Landing Page
 
-> Catálogo de secciones estándar. Cada componente define estructura HTML, clases Tailwind y variantes.
+> Catàleg de seccions estàndard. Cada component defineix estructura HTML, classes Tailwind i variants.
 
-## Checklist estándar
+## Checklist estàndard
 
 ```
 [ ] Navbar
 [ ] Hero
-[ ] Features / Propuesta de valor
-[ ] Social proof (logos, testimonios)
-[ ] CTA intermedio
-[ ] Pricing (si aplica)
-[ ] FAQ (si aplica)
+[ ] Features / Proposta de valor
+[ ] Social proof (logos, testimonis)
+[ ] CTA intermedi
+[ ] Pricing (si s'escau)
+[ ] FAQ (si s'escau)
 [ ] CTA final
 [ ] Footer
 ```
@@ -20,7 +20,7 @@
 
 ## Navbar
 
-**Variantes**: sticky transparente → sólido al scroll / simple centrado
+**Variants**: sticky transparent → sòlid al scroll / simple centrat
 
 ```html
 <nav class="fixed top-0 w-full z-50 transition-all duration-300" data-navbar>
@@ -34,13 +34,13 @@
 </nav>
 ```
 
-JS: añadir clase `bg-white shadow-md` al hacer scroll > 50px.
+JS: afegir classe `bg-white shadow-md` en fer scroll > 50px.
 
 ---
 
 ## Hero
 
-**Variantes**: centrado / split (texto + imagen) / vídeo de fondo
+**Variants**: centrat / split (text + imatge) / vídeo de fons
 
 ```html
 <section class="pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -49,11 +49,11 @@ JS: añadir clase `bg-white shadow-md` al hacer scroll > 50px.
       Headline principal
     </h1>
     <p class="text-xl text-neutral-600 max-w-2xl mx-auto mb-10">
-      Subheadline — propuesta de valor en una frase.
+      Subheadline — proposta de valor en una frase.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="#contacto" class="btn-primary">CTA principal</a>
-      <a href="#features" class="btn-secondary">CTA secundario</a>
+      <a href="#features" class="btn-secondary">CTA secundari</a>
     </div>
   </div>
 </section>
@@ -63,12 +63,12 @@ JS: añadir clase `bg-white shadow-md` al hacer scroll > 50px.
 
 ## Features
 
-**Variantes**: grid 3 columnas / lista alternada / cards con icono
+**Variants**: grid 3 columnes / llista alternada / cards amb icona
 
 ```html
 <section class="py-20 lg:py-32">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-16">Título sección</h2>
+    <h2 class="text-4xl font-bold text-center mb-16">Títol secció</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <!-- feature card -->
     </div>
@@ -80,14 +80,14 @@ JS: añadir clase `bg-white shadow-md` al hacer scroll > 50px.
 
 ## CTA
 
-**Regla**: max. 1 acción por CTA. Nunca dos CTAs iguales en la misma página.
+**Regla**: màx. 1 acció per CTA. Mai dos CTAs iguals a la mateixa pàgina.
 
 ```html
 <section class="py-20 bg-brand-primary text-white text-center">
   <div class="max-w-2xl mx-auto px-6">
     <h2 class="text-4xl font-bold mb-4">Headline CTA</h2>
-    <p class="text-lg mb-8 opacity-90">Subheadline breve.</p>
-    <a href="#contacto" class="btn-white">Acción</a>
+    <p class="text-lg mb-8 opacity-90">Subheadline breu.</p>
+    <a href="#contacto" class="btn-white">Acció</a>
   </div>
 </section>
 ```
@@ -101,10 +101,10 @@ JS: añadir clase `bg-white shadow-md` al hacer scroll > 50px.
   <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-8">
     <div>
       <span class="font-bold text-xl">Logo</span>
-      <p class="text-sm text-neutral-500 mt-2">Tagline breve.</p>
+      <p class="text-sm text-neutral-500 mt-2">Tagline breu.</p>
     </div>
     <nav class="flex gap-6 text-sm text-neutral-600">
-      <!-- links legales -->
+      <!-- links legals -->
     </nav>
   </div>
 </footer>

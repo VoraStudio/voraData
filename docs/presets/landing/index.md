@@ -1,17 +1,17 @@
 # Preset — Landing Page
 
-> Plantilla base para landing pages modernas, rápidas y sostenibles.
+> Plantilla base per a landing pages modernes, ràpides i sostenibles.
 
-**Stack**: HTML semántico + Tailwind CSS v4 + Vanilla JS  
-**Backend opcional**: Symfony (formularios, CMS ligero)
+**Stack**: HTML semàntic + Tailwind CSS v4 + Vanilla JS  
+**Backend opcional**: Symfony (formularis, CMS lleuger)
 
-## Contenido del preset
+## Contingut del preset
 
-- [Design System](design-system.md) — tokens de diseño en Tailwind
-- [Componentes](componentes.md) — secciones estándar con variantes
-- [Normas técnicas](normas.md) — estructura, rendimiento, SEO, a11y
+- [Design System](design-system.md) — tokens de disseny en Tailwind
+- [Components](componentes.md) — seccions estàndard amb variants
+- [Normes tècniques](normas.md) — estructura, rendiment, SEO, a11y
 
-## Estructura de ficheros base
+## Estructura de fitxers base
 
 ```
 proyecto/

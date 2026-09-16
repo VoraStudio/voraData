@@ -1,10 +1,10 @@
 # Design System — Landing Page
 
-> Tokens de diseño en Tailwind CSS. Base para construir cualquier landing con consistencia visual.
+> Tokens de disseny en Tailwind CSS. Base per construir qualsevol landing amb consistència visual.
 
-## Colores
+## Colors
 
-Definir mediante CSS custom properties en `app.css` (Tailwind v4):
+Definir mitjançant CSS custom properties a `app.css` (Tailwind v4):
 
 ```css
 @theme {
@@ -17,48 +17,48 @@ Definir mediante CSS custom properties en `app.css` (Tailwind v4):
 }
 ```
 
-!!! note "Por proyecto"
-    Cada cliente tiene su paleta. Estos son los valores de fallback/ejemplo.
+!!! note "Per projecte"
+    Cada client té la seva paleta. Aquests són els valors de fallback/exemple.
 
-## Tipografía
+## Tipografia
 
-| Rol | Clase Tailwind | Uso |
+| Rol | Classe Tailwind | Ús |
 |---|---|---|
 | Display | `text-5xl font-bold tracking-tight` | Hero headline |
-| H1 | `text-4xl font-bold` | Títulos de sección |
-| H2 | `text-2xl font-semibold` | Subtítulos |
-| Body | `text-base font-normal leading-relaxed` | Cuerpo de texto |
-| Caption | `text-sm text-neutral-500` | Notas, etiquetas |
+| H1 | `text-4xl font-bold` | Títols de secció |
+| H2 | `text-2xl font-semibold` | Subtítols |
+| Body | `text-base font-normal leading-relaxed` | Cos de text |
+| Caption | `text-sm text-neutral-500` | Notes, etiquetes |
 
-## Espaciado
+## Espaiat
 
-Sistema basado en múltiplos de 4px (escala por defecto de Tailwind). Convenciones:
+Sistema basat en múltiples de 4px (escala per defecte de Tailwind). Convencions:
 
-- **Sección**: `py-20 lg:py-32`
-- **Contenedor**: `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8`
-- **Gap entre elementos**: `gap-8 lg:gap-12`
+- **Secció**: `py-20 lg:py-32`
+- **Contenidor**: `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8`
+- **Gap entre elements**: `gap-8 lg:gap-12`
 
 ## Breakpoints
 
-| Nombre | px | Uso |
+| Nom | px | Ús |
 |---|---|---|
-| `sm` | 640px | Móvil landscape |
-| `md` | 768px | Tablet |
+| `sm` | 640px | Mòbil landscape |
+| `md` | 768px | Tauleta |
 | `lg` | 1024px | Desktop |
-| `xl` | 1280px | Desktop ancho |
+| `xl` | 1280px | Desktop ample |
 
-Mobile-first siempre — estilos base = móvil.
+Mobile-first sempre — estils base = mòbil.
 
-## Sombras y radios
+## Ombres i radis
 
 ```
-rounded-xl  → tarjetas, modales
-rounded-lg  → botones, inputs
-shadow-md   → tarjetas en reposo
-shadow-xl   → tarjetas en hover
+rounded-xl  → targetes, modals
+rounded-lg  → botons, inputs
+shadow-md   → targetes en repòs
+shadow-xl   → targetes en hover
 ```
 
-## Transiciones
+## Transicions
 
 ```css
 transition-all duration-300 ease-in-out

@@ -1,37 +1,37 @@
 # SDD — Preset Landing Pages
 
-> Flujo SDD adaptado para landing pages: HTML + Tailwind CSS + Vanilla JS.
+> Flux SDD adaptat per a landing pages: HTML + Tailwind CSS + Vanilla JS.
 
-## Cuándo usar este preset
+## Quan usar aquest preset
 
-- Landings estáticas o con backend Symfony ligero (formularios, CMS)
-- Proyectos para clientes de VoraStudio que necesitan web profesional y rápida
-- Tiempo de entrega: días, no semanas
+- Landings estàtiques o amb backend Symfony lleuger (formularis, CMS)
+- Projectes per a clients de VoraStudio que necessiten web professional i ràpida
+- Temps de lliurament: dies, no setmanes
 
-## Contexto de cada fase
+## Context de cada fase
 
-### Propuesta
-Preguntas clave a resolver antes de empezar:
+### Proposta
+Preguntes clau a resoldre abans de començar:
 
-- ¿Objetivo principal? (captación, presentación, venta)
-- ¿Secciones mínimas requeridas?
-- ¿Tiene backend? (formularios, CMS, integración)
-- ¿Identidad visual existente? (colores, tipografía, logo)
-- ¿Dominio y hosting definidos?
+- Objectiu principal? (captació, presentació, venda)
+- Seccions mínimes requerides?
+- Té backend? (formularis, CMS, integració)
+- Identitat visual existent? (colors, tipografia, logo)
+- Domini i hosting definits?
 
 ### Spec
-Requisitos estándar para una landing:
+Requisits estàndard per a una landing:
 
 - Performance: LCP < 2.5s, CLS < 0.1
 - SEO: meta tags, OG, sitemap
-- Accesibilidad: WCAG 2.1 AA mínimo
+- Accessibilitat: WCAG 2.1 AA mínim
 - Responsive: mobile-first, breakpoints Tailwind
 
-### Diseño
-Ver [Design System](../../presets/landing/design-system.md) para tokens Tailwind y componentes.
+### Disseny
+Vegeu [Design System](../../presets/landing/design-system.md) per a tokens Tailwind i components.
 
-### Tareas
-Ver [Componentes](../../presets/landing/componentes.md) para el checklist estándar.
+### Tasques
+Vegeu [Components](../../presets/landing/componentes.md) per al checklist estàndard.
 
-### Normas técnicas
-Ver [Normas](../../presets/landing/normas.md) para estructura de ficheros, convenciones y reglas.
+### Normes tècniques
+Vegeu [Normes](../../presets/landing/normas.md) per a estructura de fitxers, convencions i regles.

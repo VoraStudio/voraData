@@ -6,20 +6,20 @@ site_url: https://vorastudio.github.io/voraData/
 theme:
   name: material
   custom_dir: overrides
-  language: es
+  language: ca
   palette:
     - scheme: slate
       primary: custom
       accent: custom
       toggle:
         icon: material/weather-sunny
-        name: Modo claro
+        name: Mode clar
     - scheme: default
       primary: custom
       accent: custom
       toggle:
         icon: material/weather-night
-        name: Modo oscuro
+        name: Mode fosc
   font:
     text: Inter
     code: Fira Code

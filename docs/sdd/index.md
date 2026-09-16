@@ -1,22 +1,22 @@
 # 🔄 SDD — Spec-Driven Development
 
-> Flujo estructurado para construir con consistencia y trazabilidad. Agnóstico a la herramienta.
+> Flux estructurat per construir amb consistència i traçabilitat. Agnòstic a l'eina.
 
-## Flujo
+## Flux
 
 ```
-brief → propuesta → spec → diseño → tareas → apply → verificación → archivo
+brief → proposta → spec → disseny → tasques → apply → verificació → arxiu
 ```
 
 ## Presets disponibles
 
-| Preset | Stack | Estado |
+| Preset | Stack | Estat |
 |---|---|---|
-| [Landing Pages](landing/index.md) | HTML + Tailwind + JS Vanilla | 🚧 En construcción |
-| Symfony SaaS | Symfony + Twig + Tailwind | 📋 Pendiente |
+| [Landing Pages](landing/index.md) | HTML + Tailwind + JS Vanilla | 🚧 En construcció |
+| Symfony SaaS | Symfony + Twig + Tailwind | 📋 Pendent |
 
-## Principios
+## Principis
 
-- Cada fase produce un artefacto concreto (fichero o entrada Engram)
-- Los artefactos son la fuente de verdad — no el chat
-- El LLM ejecuta; el equipo dirige y verifica
+- Cada fase produeix un artefacte concret (fitxer o entrada Engram)
+- Els artefactes són la font de veritat — no el xat
+- El LLM executa; l'equip dirigeix i verifica

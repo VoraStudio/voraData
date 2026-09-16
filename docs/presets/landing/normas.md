@@ -1,41 +1,41 @@
-# Normas técnicas — Landing Page
+# Normes tècniques — Landing Page
 
-> Reglas no negociables para cada landing que salga de VoraData.
+> Regles no negociables per a cada landing que surti de VoraData.
 
-## Estructura de ficheros
+## Estructura de fitxers
 
 ```
 proyecto/
-├── index.html              # Única página (landing)
+├── index.html              # Única pàgina (landing)
 ├── assets/
 │   ├── css/app.css         # Entrada Tailwind — NO CSS inline en HTML
-│   ├── js/app.js           # Entrada JS — módulos separados si > 100 líneas
-│   ├── js/modules/         # Un fichero por responsabilidad
-│   └── img/                # WebP por defecto, SVG para iconos/logo
+│   ├── js/app.js           # Entrada JS — mòduls separats si > 100 línies
+│   ├── js/modules/         # Un fitxer per responsabilitat
+│   └── img/                # WebP per defecte, SVG per a icones/logo
 ├── tailwind.config.js
 └── package.json
 ```
 
-**Reglas de ficheros:**
-- Sin CSS en atributos `style=""` — todo va a Tailwind o `app.css`
-- Sin JS inline en HTML — todo va a `app.js` o módulos
-- Imágenes: WebP, con `width` y `height` explícitos en el HTML
-- SVGs de iconos: inline en HTML o sprite, nunca `<img src="icon.svg">`
+**Regles de fitxers:**
+- Sense CSS en atributs `style=""` — tot va a Tailwind o `app.css`
+- Sense JS inline en HTML — tot va a `app.js` o mòduls
+- Imatges: WebP, amb `width` i `height` explícits en l'HTML
+- SVGs d'icones: inline en HTML o sprite, mai `<img src="icon.svg">`
 
-## Rendimiento
+## Rendiment
 
-| Métrica | Objetivo |
+| Mètrica | Objectiu |
 |---|---|
 | LCP | < 2.5s |
 | CLS | < 0.1 |
 | FID / INP | < 100ms |
-| Total JS | < 50KB (sin frameworks) |
+| Total JS | < 50KB (sense frameworks) |
 | Total CSS | < 20KB (post-purge Tailwind) |
 
-**Obligatorio:**
-- `loading="lazy"` en todas las imágenes fuera del viewport inicial
-- Fuentes: `font-display: swap`, preload del subset necesario
-- Critical CSS inline en `<head>` si LCP > 2.5s
+**Obligatori:**
+- `loading="lazy"` en totes les imatges fora del viewport inicial
+- Fonts: `font-display: swap`, preload del subset necessari
+- Critical CSS inline al `<head>` si LCP > 2.5s
 
 ## SEO
 
@@ -43,8 +43,8 @@ proyecto/
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Título página | Marca</title>
-  <meta name="description" content="150-160 caracteres">
+  <title>Títol pàgina | Marca</title>
+  <meta name="description" content="150-160 caràcters">
   
   <!-- Open Graph -->
   <meta property="og:title" content="">
@@ -57,33 +57,33 @@ proyecto/
 </head>
 ```
 
-- Un solo `<h1>` por página
-- Estructura de headings semántica (h1 → h2 → h3, sin saltar niveles)
-- Alt en todas las imágenes no decorativas
+- Un sol `<h1>` per pàgina
+- Estructura de headings semàntica (h1 → h2 → h3, sense saltar nivells)
+- Alt en totes les imatges no decoratives
 
-## Accesibilidad (WCAG 2.1 AA)
+## Accessibilitat (WCAG 2.1 AA)
 
-- Contraste mínimo 4.5:1 texto normal, 3:1 texto grande
-- Todos los elementos interactivos alcanzables con teclado (`Tab`)
-- `aria-label` en botones/links con solo icono
-- `aria-current="page"` en nav activo
+- Contrast mínim 4.5:1 text normal, 3:1 text gran
+- Tots els elements interactius accessibles amb teclat (`Tab`)
+- `aria-label` en botons/links amb només icona
+- `aria-current="page"` en nav actiu
 - `role="banner"`, `role="main"`, `role="contentinfo"` en nav/main/footer
 
-## HTML semántico
+## HTML semàntic
 
 ```
 <header>  → navbar + hero
-<main>    → contenido principal
-<section> → cada bloque de contenido (con aria-label o heading)
-<article> → contenido independiente (cards, posts)
-<footer>  → pie de página
+<main>    → contingut principal
+<section> → cada bloc de contingut (amb aria-label o heading)
+<article> → contingut independent (cards, posts)
+<footer>  → peu de pàgina
 ```
 
-- Nunca `<div>` donde existe un elemento semántico apropiado
-- Botones son `<button>`, enlaces de navegación son `<a href>`
+- Mai `<div>` on existeix un element semàntic apropiat
+- Botons són `<button>`, enllaços de navegació són `<a href>`
 
 ## Git
 
-- Commits convencionales: `feat:`, `fix:`, `style:`, `docs:`, `chore:`
-- Sin commits de "WIP" al main
-- PR con descripción: qué, por qué, cómo testear
+- Commits convencionals: `feat:`, `fix:`, `style:`, `docs:`, `chore:`
+- Sense commits de "WIP" al main
+- PR amb descripció: què, per què, com testejar
