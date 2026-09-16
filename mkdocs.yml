@@ -42,7 +42,9 @@ nav:
   - 🔄 SDD:
     - sdd/index.md
     - Fases: sdd/fases.md
-    - "Landing Pages": sdd/landing/index.md
+    - "Landing Pages":
+      - sdd/landing/index.md
+      - INTAKE: sdd/landing/intake.md
     - Disseny: sdd/design.md
   - 🎨 Presets:
     - presets/index.md
