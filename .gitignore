@@ -1,3 +1,7 @@
 site/
 .env
 .atl/.skill-registry.cache.json
+# Local AI runtime state
+.atl/
+# Skills instal·lades localment (path absolut, no portables)
+.agents/

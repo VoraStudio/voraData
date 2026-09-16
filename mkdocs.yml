@@ -48,6 +48,7 @@ nav:
     - Disseny: sdd/design.md
   - 🎨 Presets:
     - presets/index.md
+    - Skills: presets/skills.md
     - "Landing Page":
       - presets/landing/index.md
       - "Sistema de disseny": presets/landing/design-system.md
