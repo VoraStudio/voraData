@@ -55,6 +55,7 @@ nav:
     - ia/index.md
     - "DGX Spark": ia/dgx-spark.md
     - OpenCode: ia/opencode.md
+    - GSAP: ia/gsap.md
     - MCP:
       - Engram: ia/mcp/engram.md
       - OpenSpec: ia/mcp/openspec.md
