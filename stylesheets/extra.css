@@ -1,0 +1,133 @@
+/* ─── Ocultar anclas de heading ─── */
+.headerlink,
+.md-typeset .headerlink {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* ─── Nav: títulos de sección más visibles ─── */
+.md-nav__item--nested > .md-nav__link {
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+/* ─── H1: animación de entrada + línea decorativa ─── */
+h1 {
+    animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    padding-bottom: 0.4em;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+    animation: lineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 12px rgba(109, 40, 217, 0.3);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+        filter: blur(2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes lineGrow {
+    from { width: 0; opacity: 0; }
+    to   { width: 100%; opacity: 1; }
+}
+
+/* ─── Intro blockquote de sección ─── */
+h1 + blockquote {
+    font-size: 0.82rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    padding: 0.5rem 0.9rem;
+    margin: 0.4rem 0 1.25rem;
+    border: none;
+    border-left: 2px solid var(--md-default-fg-color--lighter);
+    background: none;
+    color: var(--md-default-fg-color--light);
+    max-width: 60em;
+}
+
+/* ─── Sección SDD ─── */
+.section-sdd {
+    background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section-sdd::after {
+    background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+}
+
+/* ─── Sección Presets / Landing ─── */
+.section-preset {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section-preset::after {
+    background: linear-gradient(90deg, #0d9488, #14b8a6);
+}
+
+/* ─── Sección IA ─── */
+.section-ia {
+    background: linear-gradient(135deg, #c15f3c 0%, #e8927c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section-ia::after {
+    background: linear-gradient(90deg, #c15f3c, #e8927c);
+}
+
+/* ─── Sección Normas ─── */
+.section-normas {
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.section-normas::after {
+    background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+}
+
+/* ─── Hover: invertir gradiente ─── */
+.section-sdd:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+.section-preset:hover {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+.section-ia:hover {
+    background: linear-gradient(135deg, #e8927c 0%, #c15f3c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
