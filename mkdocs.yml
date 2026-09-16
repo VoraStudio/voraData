@@ -58,6 +58,7 @@ nav:
     - MCP:
       - Engram: ia/mcp/engram.md
       - OpenSpec: ia/mcp/openspec.md
+      - Preline: ia/mcp/preline.md
 
 markdown_extensions:
   - pymdownx.superfences:
