@@ -51,7 +51,7 @@ background:
 
 <div class="grid cards" markdown>
 
--   :material-palette:{ .lg .middle } **[Realtime Colors](https://realtimecolors.com)**
+-   :material-palette-swatch:{ .lg .middle } **[Realtime Colors](https://realtimecolors.com)**
 
     ---
 
@@ -59,7 +59,7 @@ background:
 
     **Quan usar-lo:** al INTAKE, en rebre els colors del client.
 
--   :material-format-font:{ .lg .middle } **[Fontpair.co](https://fontpair.co)**
+-   :material-format-letter-case:{ .lg .middle } **[Fontpair.co](https://fontpair.co)**
 
     ---
 
@@ -67,7 +67,7 @@ background:
 
     **Quan usar-lo:** quan la dissenyadora no especifica fonts — triar parella aquí.
 
--   :material-brush:{ .lg .middle } **[UIverse.io](https://uiverse.io)**
+-   :material-creation:{ .lg .middle } **[UIverse.io](https://uiverse.io)**
 
     ---
 
@@ -75,7 +75,7 @@ background:
 
     **Quan usar-lo:** per a elements UI petits (botons, badges, inputs) que necessiten personalitat visual.
 
--   :material-image:{ .lg .middle } **[Shots.so](https://shots.so)**
+-   :material-monitor-screenshot:{ .lg .middle } **[Shots.so](https://shots.so)**
 
     ---
 
@@ -83,7 +83,7 @@ background:
 
     **Quan usar-lo:** entre INTAKE i BUILD per a aprovació visual del client.
 
--   :material-cellphone-screenshot:{ .lg .middle } **[Mobbin](https://mobbin.com)**
+-   :material-layers-outline:{ .lg .middle } **[Mobbin](https://mobbin.com)**
 
     ---
 
@@ -91,7 +91,7 @@ background:
 
     **Quan usar-lo:** quan cal resoldre un patró de navegació, onboarding o layout complex.
 
--   :material-water:{ .lg .middle } **[Gradient Studio](https://gradientsaas.blogspot.com)**
+-   :material-blur:{ .lg .middle } **[Gradient Studio](https://gradientsaas.blogspot.com)**
 
     ---
 
@@ -107,7 +107,7 @@ background:
 
 <div class="grid cards" markdown>
 
--   :material-puzzle:{ .lg .middle } **[Preline UI](https://preline.co)**
+-   :material-toy-brick:{ .lg .middle } **[Preline UI](https://preline.co)**
 
     ---
 
@@ -124,7 +124,7 @@ background:
 
     → Guia completa: [docs MCP Preline](../ia/mcp/preline.md)
 
--   :material-puzzle-outline:{ .lg .middle } **[Flowbite](https://flowbite.com)**
+-   :material-toy-brick-outline:{ .lg .middle } **[Flowbite](https://flowbite.com)**
 
     ---
 
@@ -144,7 +144,7 @@ background:
 
 <div class="grid cards" markdown>
 
--   :material-animation:{ .lg .middle } **[GSAP](https://gsap.com)**
+-   :material-play-speed:{ .lg .middle } **[GSAP](https://gsap.com)**
 
     ---
 
@@ -158,7 +158,7 @@ background:
 
     → Guia completa amb patrons de producció: [docs GSAP](../ia/gsap.md)
 
--   :material-eye:{ .lg .middle } **[AOS](https://michalsnik.github.io/aos/)**
+-   :material-eye-outline:{ .lg .middle } **[AOS](https://michalsnik.github.io/aos/)**
 
     ---
 
@@ -175,7 +175,7 @@ background:
     <div data-aos="fade-up" data-aos-delay="100">Element</div>
     ```
 
--   :material-gesture-swipe-up:{ .lg .middle } **[Lenis](https://lenis.darkroom.engineering)**
+-   :material-cursor-move:{ .lg .middle } **[Lenis](https://lenis.darkroom.engineering)**
 
     ---
 
@@ -200,7 +200,7 @@ background:
 
 <div class="grid cards" markdown>
 
--   :material-vector-square:{ .lg .middle } **[Lucide](https://lucide.dev)**
+-   :material-vector-polyline:{ .lg .middle } **[Lucide](https://lucide.dev)**
 
     ---
 
@@ -230,7 +230,7 @@ background:
 
 <div class="grid cards" markdown>
 
--   :material-contrast:{ .lg .middle } **[WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)**
+-   :material-shield-check:{ .lg .middle } **[WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)**
 
     ---
 
@@ -238,7 +238,7 @@ background:
 
     Obligatori abans de lliurar qualsevol projecte.
 
--   :material-tag:{ .lg .middle } **[Name That UI](https://namethatui.com)**
+-   :material-book-alphabet:{ .lg .middle } **[Name That UI](https://namethatui.com)**
 
     ---
 
