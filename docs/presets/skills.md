@@ -127,13 +127,92 @@ Using full-output-enforcement, generate the complete CSS for...
 
 ---
 
+---
+
+## Web Quality — `addyosmani/web-quality-skills`
+
+Skills de **Addy Osmani** (Google Chrome DevRel). Mapegen directament al checklist de DELIVER de VoraData.
+
+<div class="grid cards" markdown>
+
+-   :material-shield-check:{ .lg .middle } **accessibility**
+
+    ---
+
+    WCAG 2.1 AA: contrast, navegació per teclat, ARIA labels, focus management, rols semàntics. S'activa automàticament en qualsevol component interactiu o formulari.
+
+    **Fase:** DELIVER — verificació final abans de lliurar.
+
+    ```
+    npx skills add addyosmani/web-quality-skills@accessibility
+    ```
+
+-   :material-magnify:{ .lg .middle } **seo**
+
+    ---
+
+    Meta tags, Open Graph, canonical, estructura de headings, sitemap, schema markup. Cobreix tot el que el checklist de lliurament de VoraData requereix.
+
+    **Fase:** DELIVER — específic de landings i webs públiques.
+
+    ```
+    npx skills add addyosmani/web-quality-skills@seo
+    ```
+
+-   :material-speedometer:{ .lg .middle } **performance**
+
+    ---
+
+    LCP < 2.5s, CLS < 0.1, optimització d'imatges, lazy loading, JS < 50KB. Mètriques directament del checklist de lliurament de VoraData.
+
+    **Fase:** DELIVER — Lighthouse i Core Web Vitals.
+
+    ```
+    npx skills add addyosmani/web-quality-skills@performance
+    ```
+
+</div>
+
+---
+
+## Tailwind — `wshobson/agents`
+
+<div class="grid cards" markdown>
+
+-   :material-palette-swatch-variant:{ .lg .middle } **tailwind-design-system**
+
+    ---
+
+    Genera i manté sistemes de disseny en Tailwind v4. Migra configuració a blocs `@theme {}` amb CSS variables natives, colors OKLCH i `@custom-variant` per a dark mode.
+
+    **Verificat per a Tailwind v4** — no usar en projectes v3.
+
+    **Fase:** INTAKE → genera el `@theme {}` a partir dels tokens del client.
+
+    ```
+    npx skills add wshobson/agents@tailwind-design-system
+    ```
+
+</div>
+
+---
+
 ## Combinació recomanada per a landings
 
-Per a una sessió de BUILD d'una landing page, les skills s'activaran en ordre:
+Per a una sessió completa de landing page, les skills s'activen per fase:
 
 ```
-1. design-taste-frontend   → decisions globals de disseny
-2. high-end-visual-design  → estil premium (o minimalist-ui per a corporatiu)
-3. full-output-enforcement → codi complet sense truncaments
-4. impeccable              → revisió final a DELIVER
+INTAKE
+  └── tailwind-design-system  → genera @theme {} amb els tokens del client
+
+BUILD
+  ├── design-taste-frontend   → decisions globals de disseny
+  ├── high-end-visual-design  → estil premium (o minimalist-ui / industrial-brutalist-ui)
+  └── full-output-enforcement → codi complet sense truncaments (crític amb DGX Spark)
+
+DELIVER
+  ├── impeccable              → revisió visual final
+  ├── accessibility           → WCAG 2.1 AA
+  ├── seo                     → meta tags, OG, canonical
+  └── performance             → LCP, CLS, Lighthouse
 ```
