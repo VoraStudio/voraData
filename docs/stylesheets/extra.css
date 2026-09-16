@@ -1,3 +1,109 @@
+/* ─── Fuentes ─── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+/* ─── Tokens de marca VoraData ─── */
+:root {
+    --vd-bg:          #02040a;
+    --vd-text:        #e2e8f0;
+    --vd-muted:       #94a3b8;
+    --vd-accent:      #f48e24;
+    --vd-accent-alt:  #E98525;
+    --vd-accent-glow: rgba(244, 142, 36, 0.2);
+    --vd-card-bg:     rgba(255, 255, 255, 0.02);
+    --vd-card-border: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Esquema oscuro (default) ─── */
+[data-md-color-scheme="slate"] {
+    --md-default-bg-color:           #02040a;
+    --md-default-bg-color--light:    #0a0d14;
+    --md-default-bg-color--lighter:  #111520;
+    --md-default-bg-color--lightest: #1a1f2e;
+    --md-default-fg-color:           #e2e8f0;
+    --md-default-fg-color--light:    #94a3b8;
+    --md-default-fg-color--lighter:  rgba(255, 255, 255, 0.12);
+    --md-default-fg-color--lightest: rgba(255, 255, 255, 0.06);
+    --md-primary-fg-color:           #0a0d14;
+    --md-primary-fg-color--light:    #111520;
+    --md-primary-bg-color:           #e2e8f0;
+    --md-primary-bg-color--light:    #94a3b8;
+    --md-accent-fg-color:            #f48e24;
+    --md-accent-bg-color:            #02040a;
+    --md-typeset-a-color:            #f48e24;
+    --md-code-bg-color:              rgba(255, 255, 255, 0.04);
+    --md-code-fg-color:              #e2e8f0;
+    --md-code-hl-color:              rgba(244, 142, 36, 0.15);
+    --md-footer-bg-color:            #0a0d14;
+    --md-footer-bg-color--dark:      #02040a;
+}
+
+/* ─── Esquema claro ─── */
+[data-md-color-scheme="default"] {
+    --md-default-bg-color:           #F8FAFC;
+    --md-default-fg-color:           #0F172A;
+    --md-default-fg-color--light:    #475569;
+    --md-default-fg-color--lighter:  rgba(15, 23, 42, 0.12);
+    --md-primary-fg-color:           #F8FAFC;
+    --md-primary-bg-color:           #0F172A;
+    --md-accent-fg-color:            #f48e24;
+    --md-typeset-a-color:            #E98525;
+    --md-code-bg-color:              #F1F5F9;
+    --md-code-fg-color:              #0F172A;
+    --md-code-hl-color:              rgba(244, 142, 36, 0.1);
+    --md-footer-bg-color:            #F1F5F9;
+}
+
+/* ─── Header: dark glass con borde copper ─── */
+.md-header {
+    background-color: rgba(2, 4, 10, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(244, 142, 36, 0.2);
+    box-shadow: 0 1px 20px rgba(244, 142, 36, 0.06);
+}
+
+[data-md-color-scheme="default"] .md-header {
+    background-color: rgba(248, 250, 252, 0.88) !important;
+    border-bottom: 1px solid rgba(244, 142, 36, 0.3);
+}
+
+.md-header__title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* ─── Nav tabs ─── */
+.md-tabs {
+    background-color: rgba(2, 4, 10, 0.7) !important;
+    border-bottom: 1px solid var(--vd-card-border);
+}
+
+[data-md-color-scheme="default"] .md-tabs {
+    background-color: rgba(248, 250, 252, 0.8) !important;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+    color: var(--vd-accent) !important;
+}
+
+/* ─── Sidebar ─── */
+.md-nav__item--nested > .md-nav__link {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+.md-nav__link--active {
+    color: var(--vd-accent) !important;
+}
+
+/* ─── Footer ─── */
+.md-footer {
+    border-top: 1px solid rgba(244, 142, 36, 0.15);
+}
+
 /* ─── Ocultar anclas de heading ─── */
 .headerlink,
 .md-typeset .headerlink {
@@ -5,20 +111,19 @@
     visibility: hidden !important;
 }
 
-/* ─── Nav: títulos de sección más visibles ─── */
-.md-nav__item--nested > .md-nav__link {
-    font-weight: 650;
-    letter-spacing: 0.01em;
+/* ─── Tipografía ─── */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: -0.02em;
 }
 
-/* ─── H1: animación de entrada + línea decorativa ─── */
+/* ─── H1: animación de entrada + línea copper ─── */
 h1 {
-    animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: vd-slide-in 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     padding-bottom: 0.4em;
     font-size: 2.4rem !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.02em;
+    font-weight: 800 !important;
     display: inline-block;
 }
 
@@ -30,15 +135,17 @@ h1::after {
     width: 100%;
     height: 4px;
     border-radius: 3px;
-    background: linear-gradient(90deg, #6d28d9, #8b5cf6);
-    animation: lineGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 0 12px rgba(109, 40, 217, 0.3);
+    background: linear-gradient(90deg, #f48e24, #E98525, #ffaa55, #f48e24);
+    background-size: 300% auto;
+    animation: vd-line-grow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+               vd-shine 6s linear 0.8s infinite;
+    box-shadow: 0 0 14px rgba(244, 142, 36, 0.4);
 }
 
-@keyframes slideIn {
+@keyframes vd-slide-in {
     from {
         opacity: 0;
-        transform: translateY(24px) scale(0.97);
+        transform: translateY(20px) scale(0.97);
         filter: blur(2px);
     }
     to {
@@ -48,86 +155,118 @@ h1::after {
     }
 }
 
-@keyframes lineGrow {
+@keyframes vd-line-grow {
     from { width: 0; opacity: 0; }
     to   { width: 100%; opacity: 1; }
 }
 
-/* ─── Intro blockquote de sección ─── */
+@keyframes vd-shine {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ─── Intro blockquote ─── */
 h1 + blockquote {
     font-size: 0.82rem;
-    font-weight: 400;
     font-style: italic;
     line-height: 1.5;
     padding: 0.5rem 0.9rem;
-    margin: 0.4rem 0 1.25rem;
+    margin: 0.4rem 0 1.5rem;
     border: none;
-    border-left: 2px solid var(--md-default-fg-color--lighter);
+    border-left: 2px solid rgba(244, 142, 36, 0.4);
     background: none;
     color: var(--md-default-fg-color--light);
     max-width: 60em;
 }
 
-/* ─── Sección SDD ─── */
+/* ─── Admonitions con acento copper ─── */
+.md-typeset .admonition,
+.md-typeset details {
+    border-left-color: var(--vd-accent);
+}
+
+/* ─── Code blocks ─── */
+.md-typeset code {
+    color: var(--vd-accent);
+    background: var(--md-code-bg-color);
+}
+
+/* ─── Tablas ─── */
+.md-typeset table:not([class]) th {
+    background-color: rgba(244, 142, 36, 0.1);
+    color: var(--vd-accent);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+/* ─── Links ─── */
+.md-typeset a {
+    color: var(--vd-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.md-typeset a:hover {
+    border-bottom-color: var(--vd-accent);
+}
+
+/* ═══════════════════════════════════════════════
+   SECCIONES — clases aplicadas en los H1 de cada
+   página para gradiente de texto + línea decorativa
+   ═══════════════════════════════════════════════ */
+
+/* SDD — copper (brand primary) */
 .section-sdd {
-    background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #f48e24 0%, #E98525 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 .section-sdd::after {
-    background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+    background: linear-gradient(90deg, #f48e24, #E98525);
+    box-shadow: 0 0 14px rgba(244, 142, 36, 0.4);
 }
 
-/* ─── Sección Presets / Landing ─── */
+/* Presets — amber/gold */
 .section-preset {
-    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 .section-preset::after {
-    background: linear-gradient(90deg, #0d9488, #14b8a6);
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
 }
 
-/* ─── Sección IA ─── */
+/* IA — deep orange */
 .section-ia {
-    background: linear-gradient(135deg, #c15f3c 0%, #e8927c 100%);
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 .section-ia::after {
-    background: linear-gradient(90deg, #c15f3c, #e8927c);
+    background: linear-gradient(90deg, #ea580c, #f97316);
+    box-shadow: 0 0 14px rgba(234, 88, 12, 0.4);
 }
 
-/* ─── Sección Normas ─── */
+/* Normas — blue (contraste técnico) */
 .section-normas {
-    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 .section-normas::after {
-    background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    box-shadow: 0 0 14px rgba(37, 99, 235, 0.4);
 }
 
-/* ─── Hover: invertir gradiente ─── */
-.section-sdd:hover {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-}
-.section-preset:hover {
-    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-}
-.section-ia:hover {
-    background: linear-gradient(135deg, #e8927c 0%, #c15f3c 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-}
+/* Hover: invierte gradiente */
+.section-sdd:hover    { background: linear-gradient(135deg, #E98525 0%, #f48e24 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
+.section-preset:hover { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
+.section-ia:hover     { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
+.section-normas:hover { background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }

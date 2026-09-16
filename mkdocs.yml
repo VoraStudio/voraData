@@ -8,18 +8,21 @@ theme:
   custom_dir: overrides
   language: es
   palette:
-    - scheme: default
-      primary: deep purple
-      accent: deep purple
-      toggle:
-        icon: material/weather-night
-        name: Modo oscuro
     - scheme: slate
-      primary: deep purple
-      accent: deep purple
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Modo claro
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+  font:
+    text: Inter
+    code: Fira Code
   features:
     - navigation.tabs
     - navigation.indexes
