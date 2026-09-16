@@ -1,0 +1,89 @@
+site_name: VoraData — Docs
+site_author: Pau Crosas Batista
+site_description: Arquitectura, flujos SDD, presets y normas técnicas de VoraData
+site_url: https://vorastudio.github.io/voraData/
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: es
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Inicio: index.md
+  - 🔄 SDD:
+    - sdd/index.md
+    - Fases: sdd/fases.md
+    - "Landing Pages": sdd/landing/index.md
+  - 🎨 Presets:
+    - presets/index.md
+    - "Landing Page":
+      - presets/landing/index.md
+      - "Design System": presets/landing/design-system.md
+      - Componentes: presets/landing/componentes.md
+      - Normas: presets/landing/normas.md
+  - 🤖 IA & Herramientas:
+    - ia/index.md
+    - "DGX Spark": ia/dgx-spark.md
+    - OpenCode: ia/opencode.md
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - def_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - admonition
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/nav-toggle.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/VoraStudio
+
+copyright: Copyright &copy; 2026 VoraData
