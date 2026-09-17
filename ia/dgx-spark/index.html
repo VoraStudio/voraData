@@ -2000,17 +2000,17 @@
 <tr>
 <td>Assistència de codi (OpenCode)</td>
 <td>✅ Ideal</td>
-<td><code>qwen38-27b</code> és un model de codi potent</td>
+<td>Requereix <code>enable_thinking: false</code> — sense això, mesurat 0% de contingut útil per truncament. Vegeu <a href="../opencode/#optimitzacio-enable_thinking-false">OpenCode</a></td>
 </tr>
 <tr>
 <td>Generació de text per a clients</td>
-<td>✅ Viable</td>
-<td>Resposta &lt;3s per prompts normals</td>
+<td>⚠️ Viable amb matisos</td>
+<td>~7,5 tps mesurat (no &lt;3s). Un paràgraf de ~150 tokens triga ~20s, no és instantani</td>
 </tr>
 <tr>
 <td>Revisió de codi i refactorització</td>
 <td>✅ Viable</td>
-<td>Context llarg ben suportat</td>
+<td>Context de 65.536 tokens (verificat), compartit entre entrada i sortida — no assumir-lo com dos pressupostos separats</td>
 </tr>
 <tr>
 <td>RAG sobre documentació interna</td>
@@ -2019,8 +2019,8 @@
 </tr>
 <tr>
 <td>Inferència en batch per a automatitzacions</td>
-<td>✅ Molt bo</td>
-<td>El batching escala molt bé</td>
+<td>✅ Molt bo (no verificat)</td>
+<td>El batching escala bé segons benchmarks públics de SGLang — no provat encara amb <code>qwen38-27b</code> en aquest Spark</td>
 </tr>
 <tr>
 <td>Models &gt;70B en producció</td>
