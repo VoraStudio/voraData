@@ -1062,6 +1062,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#botons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Botons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tipografia" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1121,6 +1132,17 @@
     <span class="md-ellipsis">
       
         Gradients de background
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generacio-a-partir-duna-imatge-de-referencia-canvapdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generació a partir d'una imatge de referència (Canva/PDF)
       
     </span>
   </a>
@@ -1559,6 +1581,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#botons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Botons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tipografia" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1624,6 +1657,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#generacio-a-partir-duna-imatge-de-referencia-canvapdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generació a partir d'una imatge de referència (Canva/PDF)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1650,16 +1694,43 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">@</span><span class="k">theme</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">--color-brand-primary</span><span class="o">:</span><span class="w"> </span><span class="p">#</span><span class="nn">5c35b8</span><span class="o">;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">--color-brand-accent</span><span class="o">:</span><span class="w">  </span><span class="p">#</span><span class="nn">8b5cf6</span><span class="o">;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">--color-neutral-900</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">0f0f0f</span><span class="o">;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">--color-neutral-800</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">1a1a1a</span><span class="o">;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">--color-neutral-100</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">f5f5f5</span><span class="o">;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">--color-neutral-50</span><span class="o">:</span><span class="w">    </span><span class="p">#</span><span class="nn">fafafa</span><span class="o">;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">--color-neutral-900</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">0f0f0f</span><span class="o">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">--color-neutral-800</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">1a1a1a</span><span class="o">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">--color-neutral-700</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">2e2e2e</span><span class="o">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">--color-neutral-600</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">525252</span><span class="o">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">--color-neutral-500</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">737373</span><span class="o">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">--color-neutral-400</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">a3a3a3</span><span class="o">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">--color-neutral-300</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">d4d4d4</span><span class="o">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">--color-neutral-200</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">e5e5e5</span><span class="o">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">--color-neutral-100</span><span class="o">:</span><span class="w">   </span><span class="p">#</span><span class="nn">f5f5f5</span><span class="o">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nt">--color-neutral-50</span><span class="o">:</span><span class="w">    </span><span class="p">#</span><span class="nn">fafafa</span><span class="o">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">--font-heading</span><span class="o">:</span><span class="w"> </span><span class="s2">"Space Grotesk"</span><span class="o">,</span><span class="w"> </span><span class="nt">system-ui</span><span class="o">,</span><span class="w"> </span><span class="nt">sans-serif</span><span class="o">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nt">--font-body</span><span class="o">:</span><span class="w">    </span><span class="s2">"Inter"</span><span class="o">,</span><span class="w"> </span><span class="nt">system-ui</span><span class="o">,</span><span class="w"> </span><span class="nt">sans-serif</span><span class="o">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Per projecte</p>
-<p>Cada client té la seva paleta. Aquests són els valors de fallback/exemple.</p>
+<p>Cada client té la seva paleta. Aquests són els valors de fallback/exemple. <code>--font-heading</code>/<code>--font-body</code> també es sobreescriuen per projecte — un canvi de client només toca aquestes dues línies, mai les classes <code>font-*</code> escampades per l'HTML.</p>
 </div>
+<h2 id="botons">Botons<a class="headerlink" href="#botons" title="Permanent link">&para;</a></h2>
+<p>Definits com a components compostos a <code>app.css</code>, mai repetint la cadena d'utilitats a cada HTML:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">components</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">.</span><span class="nc">btn-primary</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">inline-flex</span><span class="w"> </span><span class="err">items-center</span><span class="w"> </span><span class="err">justify-center</span><span class="w"> </span><span class="err">rounded-lg</span><span class="w"> </span><span class="err">bg-brand-primary</span><span class="w"> </span><span class="err">px-6</span><span class="w"> </span><span class="err">py-3</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">           </span><span class="err">font-semibold</span><span class="w"> </span><span class="err">text-white</span><span class="w"> </span><span class="err">transition-all</span><span class="w"> </span><span class="err">duration-300</span><span class="w"> </span><span class="n">hover</span><span class="p">:</span><span class="k">opacity</span><span class="mi">-90</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">.</span><span class="nc">btn-secondary</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">inline-flex</span><span class="w"> </span><span class="err">items-center</span><span class="w"> </span><span class="err">justify-center</span><span class="w"> </span><span class="err">rounded-lg</span><span class="w"> </span><span class="err">border</span><span class="w"> </span><span class="err">border-neutral-300</span><span class="w"> </span><span class="err">px-6</span><span class="w"> </span><span class="err">py-3</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">           </span><span class="err">font-semibold</span><span class="w"> </span><span class="err">text-neutral-900</span><span class="w"> </span><span class="err">transition-all</span><span class="w"> </span><span class="err">duration-300</span><span class="w"> </span><span class="n">hover</span><span class="p">:</span><span class="n">bg-neutral-100</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">.</span><span class="nc">btn-white</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">inline-flex</span><span class="w"> </span><span class="err">items-center</span><span class="w"> </span><span class="err">justify-center</span><span class="w"> </span><span class="err">rounded-lg</span><span class="w"> </span><span class="err">bg-white</span><span class="w"> </span><span class="err">px-6</span><span class="w"> </span><span class="err">py-3</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">           </span><span class="err">font-semibold</span><span class="w"> </span><span class="err">text-brand-primary</span><span class="w"> </span><span class="err">transition-all</span><span class="w"> </span><span class="err">duration-300</span><span class="w"> </span><span class="n">hover</span><span class="p">:</span><span class="k">opacity</span><span class="mi">-90</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="tipografia">Tipografia<a class="headerlink" href="#tipografia" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1672,27 +1743,27 @@
 <tbody>
 <tr>
 <td>Display</td>
-<td><code>text-5xl font-bold tracking-tight</code></td>
+<td><code>font-heading text-5xl font-bold tracking-tight</code></td>
 <td>Hero headline</td>
 </tr>
 <tr>
 <td>H1</td>
-<td><code>text-4xl font-bold</code></td>
+<td><code>font-heading text-4xl font-bold</code></td>
 <td>Títols de secció</td>
 </tr>
 <tr>
 <td>H2</td>
-<td><code>text-2xl font-semibold</code></td>
+<td><code>font-heading text-2xl font-semibold</code></td>
 <td>Subtítols</td>
 </tr>
 <tr>
 <td>Body</td>
-<td><code>text-base font-normal leading-relaxed</code></td>
+<td><code>font-body text-base font-normal leading-relaxed</code></td>
 <td>Cos de text</td>
 </tr>
 <tr>
 <td>Caption</td>
-<td><code>text-sm text-neutral-500</code></td>
+<td><code>font-body text-sm text-neutral-500</code></td>
 <td>Notes, etiquetes</td>
 </tr>
 </tbody>
@@ -1738,27 +1809,34 @@
 </table>
 <p>Mobile-first sempre — estils base = mòbil.</p>
 <h2 id="ombres-i-radis">Ombres i radis<a class="headerlink" href="#ombres-i-radis" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>rounded-xl  → targetes, modals
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>rounded-lg  → botons, inputs
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>shadow-md   → targetes en repòs
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>shadow-xl   → targetes en hover
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rounded-xl  → targetes, modals
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>rounded-lg  → botons, inputs
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>shadow-md   → targetes en repòs
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>shadow-xl   → targetes en hover
 </code></pre></div>
 <h2 id="transicions">Transicions<a class="headerlink" href="#transicions" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">transition-all</span><span class="w"> </span><span class="nt">duration-300</span><span class="w"> </span><span class="nt">ease-in-out</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">transition-all</span><span class="w"> </span><span class="nt">duration-300</span><span class="w"> </span><span class="nt">ease-in-out</span>
 </code></pre></div>
 <h2 id="gradients-de-background">Gradients de background<a class="headerlink" href="#gradients-de-background" title="Permanent link">&para;</a></h2>
 <p>Els gradients de VoraData segueixen un <strong>estil editorial amb capes de llum</strong> — mesh glow, aurora, film grain, bokeh. Mai gradients plans de dos colors sense profunditat.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c">/* Exemple: gradient hero fosc amb mesh glow */</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">background</span><span class="o">:</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">radial-gradient</span><span class="o">(</span><span class="nt">ellipse</span><span class="w"> </span><span class="nt">80</span><span class="o">%</span><span class="w"> </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="nt">-10</span><span class="o">%,</span><span class="w"> </span><span class="nt">rgba</span><span class="o">(</span><span class="nt">244</span><span class="o">,</span><span class="nt">142</span><span class="o">,</span><span class="nt">36</span><span class="o">,</span><span class="p">.</span><span class="nc">25</span><span class="o">),</span><span class="w"> </span><span class="nt">transparent</span><span class="o">),</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">radial-gradient</span><span class="o">(</span><span class="nt">ellipse</span><span class="w"> </span><span class="nt">60</span><span class="o">%</span><span class="w"> </span><span class="nt">40</span><span class="o">%</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nt">80</span><span class="o">%</span><span class="w"> </span><span class="nt">60</span><span class="o">%,</span><span class="w"> </span><span class="nt">rgba</span><span class="o">(</span><span class="nt">244</span><span class="o">,</span><span class="nt">142</span><span class="o">,</span><span class="nt">36</span><span class="o">,</span><span class="p">.</span><span class="nc">10</span><span class="o">),</span><span class="w"> </span><span class="nt">transparent</span><span class="o">),</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p">#</span><span class="nn">02040a</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">/* Exemple: gradient hero fosc amb mesh glow */</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">background</span><span class="o">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">radial-gradient</span><span class="o">(</span><span class="nt">ellipse</span><span class="w"> </span><span class="nt">80</span><span class="o">%</span><span class="w"> </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="nt">-10</span><span class="o">%,</span><span class="w"> </span><span class="nt">rgba</span><span class="o">(</span><span class="nt">244</span><span class="o">,</span><span class="nt">142</span><span class="o">,</span><span class="nt">36</span><span class="o">,</span><span class="p">.</span><span class="nc">25</span><span class="o">),</span><span class="w"> </span><span class="nt">transparent</span><span class="o">),</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">radial-gradient</span><span class="o">(</span><span class="nt">ellipse</span><span class="w"> </span><span class="nt">60</span><span class="o">%</span><span class="w"> </span><span class="nt">40</span><span class="o">%</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nt">80</span><span class="o">%</span><span class="w"> </span><span class="nt">60</span><span class="o">%,</span><span class="w"> </span><span class="nt">rgba</span><span class="o">(</span><span class="nt">244</span><span class="o">,</span><span class="nt">142</span><span class="o">,</span><span class="nt">36</span><span class="o">,</span><span class="p">.</span><span class="nc">10</span><span class="o">),</span><span class="w"> </span><span class="nt">transparent</span><span class="o">),</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p">#</span><span class="nn">02040a</span><span class="o">;</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Eina de generació</p>
 <p>Usa <a href="https://gradientsaas.blogspot.com">Gradient Studio</a> per generar gradients editorials i exportar directament a CSS o Tailwind. Gratuït, sense compte, ús comercial permès.</p>
 <p>Modes recomanats: <strong>Full</strong> o <strong>Duotone</strong> amb la paleta de color del client. Exporta com a CSS i enganxa a <code>@theme {}</code> o directament a la classe del hero.</p>
 </div>
+<h2 id="generacio-a-partir-duna-imatge-de-referencia-canvapdf">Generació a partir d'una imatge de referència (Canva/PDF)<a class="headerlink" href="#generacio-a-partir-duna-imatge-de-referencia-canvapdf" title="Permanent link">&para;</a></h2>
+<p>Quan es genera markup a partir d'una captura de disseny, l'agent ha de rebre <strong>sempre</strong> la imatge juntament amb aquest <code>design-system.md</code> i <code>componentes.md</code> en el mateix prompt, i se li ha de demanar explícitament que:</p>
+<ol>
+<li>Identifiqui a quin component estàndard correspon cada secció de la imatge.</li>
+<li>Reutilitzi els tokens i classes ja definits (<code>--color-*</code>, <code>--font-*</code>, <code>btn-*</code>) en comptes d'inventar valors nous a partir dels píxels.</li>
+</ol>
+<p>Sense aquestes dues instruccions, el model tendeix a extreure colors/mides directament de la imatge (<code>bg-[#2563eb]</code>, <code>min-height: 250px</code> inline) encara que el token equivalent ja existeixi — no és fiable per pixel-perfect a la primera passada. Revisa manualment espaiat i jerarquia abans de donar per bona cada secció.</p>
 
 
 
