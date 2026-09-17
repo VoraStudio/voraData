@@ -54,9 +54,12 @@ nav:
       - "Sistema de disseny": presets/landing/design-system.md
       - Components: presets/landing/componentes.md
       - Normes: presets/landing/normas.md
+      - Recursos: presets/landing/recursos.md
   - 🤖 IA & Eines:
     - ia/index.md
-    - "DGX Spark": ia/dgx-spark.md
+    - "DGX Spark":
+      - ia/dgx-spark.md
+      - Benchmarks: ia/dgx-spark-benchmarks.md
     - OpenCode: ia/opencode.md
     - GSAP: ia/gsap.md
     - MCP:

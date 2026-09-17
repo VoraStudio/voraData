@@ -10,6 +10,7 @@
 - [Design System](design-system.md) — tokens de disseny en Tailwind
 - [Components](componentes.md) — seccions estàndard amb variants
 - [Normes tècniques](normas.md) — estructura, rendiment, SEO, a11y
+- [Recursos](recursos.md) — eines per a la fase de disseny en Figma (components, icones, color, tipografia)
 
 ## Estructura de fitxers base
 
