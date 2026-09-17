@@ -8,6 +8,7 @@
 
 | Data | Secció | Què va canviar |
 |---|---|---|
+| 2026-09-17 | [Presets → Landing → Recursos](presets/landing/recursos.md) i [Disseny](sdd/design.md#eines-de-disseny) | Afegits recursos d'imatges/il·lustracions (Unsplash, Pexels, unDraw) i galeries d'inspiració de landings (Land-book, Lapa Ninja) |
 | 2026-09-17 | [IA & Eines → DGX Spark → Benchmarks](ia/dgx-spark-benchmarks.md) | Nova subpàgina amb el protocol de benchmark per model/fase (paràmetres exactes de la petició i mètriques a capturar) |
 | 2026-09-17 | [Presets → Landing → Recursos](presets/landing/recursos.md) | Nova subpàgina de recursos per a la fase de disseny en Figma (components, icones, color, tipografia) |
 | 2026-09-17 | [IA & Eines → DGX Spark](ia/dgx-spark.md#casos-dus-recomanats) | Corregida taula de "Casos d'ús recomanats" — l'estimació de "<3s per prompts normals" no es sostenia amb els ~7,5 tps mesurats |

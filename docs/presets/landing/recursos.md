@@ -33,6 +33,15 @@
     !!! tip "Quan usar-lo"
         Entre el disseny a Figma i l'aprovació del client — evita ensenyar un frame de Figma nu en una reunió.
 
+-   :material-image-multiple-outline:{ .lg .middle } **[Land-book](https://land-book.com) / [Lapa Ninja](https://lapa.ninja)**
+
+    ---
+
+    Galeries d'inspiració **específiques de landing pages** (a diferència de Mobbin, que és d'apps en general) — filtrable per sector i estil visual.
+
+    !!! tip "Quan usar-lo"
+        Al començar el disseny, abans de la Fase A — per decidir l'estructura general de la pàgina segons el sector del client.
+
 </div>
 
 ## Icones
@@ -58,6 +67,27 @@
 
 </div>
 
+## Imatges i il·lustracions
+
+<div class="grid cards" markdown>
+
+-   :material-image-outline:{ .lg .middle } **[Unsplash](https://unsplash.com) / [Pexels](https://pexels.com)**
+
+    ---
+
+    Banc de fotos gratuït, ús comercial permès. Per al INTAKE quan el client marca "no" o "usar placeholders" a la casella d'imatges.
+
+    !!! warning "No és substitut de fotos reals del client"
+        Fes-les servir com a placeholder d'entrega ràpida, però marca-ho clarament en la revisió — el client hauria d'acabar aportant les seves pròpies fotos (producte, equip, local) per a la versió final.
+
+-   :material-vector-square:{ .lg .middle } **[unDraw](https://undraw.co)**
+
+    ---
+
+    Il·lustracions SVG gratuïtes i **personalitzables al color de marca** (un sol camp de color a triar abans de descarregar). Ideal per a seccions Features o empty-states quan no hi ha fotografia.
+
+</div>
+
 ## Color i tipografia
 
 <div class="grid cards" markdown>
@@ -76,5 +106,5 @@
 
 </div>
 
-!!! note "Aquests dos ja estan documentats a `sdd/design.md`"
-    Es repeteixen aquí perquè són d'ús diari en la fase de disseny, no només de construcció. La font de veritat és [Disseny — normes visuals i recursos](../../sdd/design.md#eines-de-disseny) — si canvien, actualitzar allà primer.
+!!! note "Aquesta pàgina duplica entrades de `sdd/design.md`"
+    Land-book/Lapa Ninja, Unsplash/Pexels, unDraw, Realtime Colors i Fontpair.co ja estan documentats a [Disseny — normes visuals i recursos](../../sdd/design.md#eines-de-disseny) — es repeteixen aquí perquè són d'ús diari en la fase de disseny, no només de construcció. Aquella pàgina és la font de veritat: si canvien, actualitzar allà primer.

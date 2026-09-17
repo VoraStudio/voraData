@@ -110,6 +110,30 @@ background:
 
     **Quan usar-lo:** quan cal resoldre un patró de navegació, onboarding o layout complex.
 
+-   :material-image-multiple-outline:{ .lg .middle } **[Land-book](https://land-book.com) / [Lapa Ninja](https://lapa.ninja)**
+
+    ---
+
+    Galeries d'inspiració específiques de **landing pages** (a diferència de Mobbin, que és d'apps en general), filtrables per sector i estil visual.
+
+    **Quan usar-lo:** al començar el disseny d'una landing, abans de l'skeleton (Fase A).
+
+-   :material-image-outline:{ .lg .middle } **[Unsplash](https://unsplash.com) / [Pexels](https://pexels.com)**
+
+    ---
+
+    Banc de fotos gratuït, ús comercial permès. Per al INTAKE quan el client marca "no" o "usar placeholders" a la casella d'imatges.
+
+    **Quan usar-lo:** com a placeholder d'entrega ràpida — marcar-ho a la revisió perquè el client acabi aportant fotos pròpies (producte, equip, local) per a la versió final.
+
+-   :material-vector-square:{ .lg .middle } **[unDraw](https://undraw.co)**
+
+    ---
+
+    Il·lustracions SVG gratuïtes i personalitzables al color de marca (un sol camp de color abans de descarregar). Per a seccions Features o empty-states sense fotografia.
+
+    **Quan usar-lo:** quan una secció necessita suport visual però no té fotos ni sentit tenir-ne.
+
 -   :material-blur:{ .lg .middle } **[Gradient Studio](https://gradientsaas.blogspot.com)**
 
     ---
