@@ -44,6 +44,9 @@ Mesures via **SGLang** (el mateix runtime que usem):
 
 **`qwen38-27b` estimat**: entre 8B i 70B → ~10–15 tps decode en batch 1, ~100–150 tps en batch 32.
 
+!!! success "Verificat contra el servidor real (2026-09-17)"
+    Mesura directa amb `qwen38-27b`, batch 1, `enable_thinking: false`: **~7,5 tps decode** (397 tokens de resposta en 52,7s). Amb el raonament actiu per defecte, el mateix tipus de petició pot arribar a gastar tot el pressupost de tokens pensant i no arribar mai a escriure la resposta (`finish_reason: "length"`, 0 tokens de contingut). Vegeu [OpenCode — enable_thinking](opencode.md#optimitzacio-enable_thinking-false) per al fix aplicat.
+
 !!! tip "Actualització CES 2026"
     NVIDIA va publicar al gener 2026 una actualització de TensorRT-LLM amb speculative decoding que millora fins a **2,5× el rendiment**. Si el DGX Spark no ha rebut aquesta actualització, aplicar-la és prioritari.
 
@@ -125,6 +128,43 @@ AI_BASE_URL="http://voradata-ia.hopto.org:30000/v1"
 AI_API_KEY="la-clau-aqui"
 AI_MODEL="qwen38-27b"
 ```
+
+---
+
+## Proposta futura — Multi-Model Routing per fase
+
+!!! warning "No verificat en el nostre maquinari"
+    Basat en benchmarks públics (2026-09-16), no en proves pròpies contra el Spark de VoraData. Portar-ho a qui gestioni la infra del DGX com a proposta a testejar, no com un canvi a adoptar directament.
+
+En un equip limitat per ample de banda de memòria com el Spark (273 GB/s), **el nombre de paràmetres actius decideix la velocitat de decode, no el total de paràmetres**. Un model MoE (Mixture of Experts) dispers amb pocs paràmetres actius per token supera consistentment un model dens de mida similar en aquest maquinari.
+
+<div class="grid cards" markdown>
+
+-   :material-star:{ .lg .middle } **Recomanació #1 — Nemotron 3 Nano Omni**
+
+    ---
+
+    30B total, **3B actiu** (MoE), NVFP4 ~21GB. Model de referència de NVIDIA per a DGX Spark, nativament multimodal (text/imatge) — cobreix la lectura de captures de Figma sense una crida de visió separada.
+
+    Benchmarks públics: **~74-108 tps** vs els ~7,5 tps mesurats avui amb `qwen38-27b` — potencialment 10-14× més ràpid per al cas d'ús principal (imatge → HTML).
+
+-   :material-code-braces:{ .lg .middle } **Recomanació #2 — Qwen3-Coder-Next**
+
+    ---
+
+    80B total, 3B actiu (MoE), 256K de context, ~70% SWE-Bench. Purpose-built per a agents de codi. Per a fases sense visió (navbar/footer, animació GSAP) on la tasca és mecànica i seguir instruccions importa més que interpretar una imatge.
+
+-   :material-magnify-scan:{ .lg .middle } **Recomanació #3 — Nemotron 3 Super**
+
+    ---
+
+    120B total, 12B actiu (MoE). Més lent que els anteriors (~19,5 tps) però més paràmetres actius = més capacitat de detectar errors. Reservat per a una auditoria final (un sol pas per pàgina, no iteratiu), on la latència extra és assumible a canvi de més precisió.
+
+</div>
+
+**Com enrutar-ho**: no és SDD (això planifica canvis de codi al repo, no generació de contingut per fase). El mecanisme correcte és l'assignació de model per agent que ja existeix a OpenCode — un agent per rol (`landing-vision`, `landing-coder`, `landing-auditor`), cada un amb el seu `model` apuntant al model DGX corresponent.
+
+**Ordre de prioritat per provar**: Nemotron 3 Nano Omni primer (cobreix el cas d'ús més freqüent, imatge+codi), Qwen3-Coder-Next després (fases sense imatge). Abans d'adoptar-ho a producció, repetir el mateix tipus de test fet avui amb `qwen38-27b` (imatge real + `design-system.md` al prompt, mesurar temps i qualitat de l'HTML resultant).
 
 ---
 
