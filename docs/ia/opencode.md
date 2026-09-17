@@ -30,7 +30,16 @@ AI_MODEL="qwen38-27b"
       },
       "models": {
         "qwen38-27b": {
-          "name": "Qwen 3.8 27B (Visió & Multimodal)"
+          "name": "Qwen 3.8 27B (Visió & Multimodal)",
+          "limit": {
+            "context": 65536,
+            "output": 2000
+          },
+          "options": {
+            "extraBody": {
+              "chat_template_kwargs": { "enable_thinking": false }
+            }
+          }
         }
       }
     }
@@ -40,6 +49,57 @@ AI_MODEL="qwen38-27b"
 
 !!! warning "Model disponible"
     El servidor només té carregat `qwen38-27b` (SGLang). `qwen38-flash-next` no existeix en aquest backend — no usar-lo fins que estigui desplegat.
+
+## Optimització: `enable_thinking: false`
+
+`qwen38-27b` és un model de raonament — abans d'escriure la resposta final, genera un "esborrany" intern (`reasoning_content`) que consumeix el mateix pressupost de tokens (`max_tokens`) que la resposta real. Sense control, l'esborrany es pot menjar tot el pressupost i tallar la resposta a mitges.
+
+<div class="grid cards" markdown>
+
+-   :material-bug:{ .lg .middle } **Problema detectat**
+
+    ---
+
+    Petició de generació HTML amb `max_tokens: 1500`, configuració per defecte (sense `enable_thinking: false`):
+
+    - **196 segons** de resposta
+    - `finish_reason: "length"` (tallada)
+    - 1500/1500 tokens gastats en raonament
+    - **0 caràcters** de contingut útil
+
+-   :material-wrench:{ .lg .middle } **Solució aplicada**
+
+    ---
+
+    Afegir a `opencode.json`, dins del model:
+
+    ```json
+    "options": {
+      "extraBody": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      }
+    }
+    ```
+
+    Això li diu al model que salti l'esborrany intern i escrigui la resposta directament.
+
+-   :material-chart-line:{ .lg .middle } **Guany mesurat**
+
+    ---
+
+    Mateixa petició, amb `enable_thinking: false`:
+
+    - **52 segons** (~3.7x més ràpid)
+    - `finish_reason: "stop"` (completa)
+    - 0 tokens gastats en raonament
+    - HTML vàlid i complet
+
+</div>
+
+!!! tip "No és gratis"
+    Sense raonament, el model també defalteja més fàcilment a colors/classes de Tailwind per defecte si no se li donen els tokens del `design-system/` al prompt. La revisió humana per fase segueix sent obligatòria — vegeu [Generació a partir d'una imatge de referència](../presets/landing/design-system.md#generacio-a-partir-duna-imatge-de-referencia-figmapdf).
 
 ## Flux de treball
 

@@ -10,7 +10,7 @@ Llegeix aquest fitxer a l'inici de cada sessió abans de fer res.
 **VoraData** és una consultora de transformació digital especialitzada en IA local i privada, desenvolupament a mida i estratègia digital.
 
 - **Equip tècnic**: Carles + Pau
-- **Branca creativa**: VoraStudio (disseny, Canvas/Figma, brand)
+- **Branca creativa**: VoraStudio (disseny, Figma, brand)
 - **Branca tècnica**: VoraData (desenvolupament, IA, arquitectura)
 - **Web**: https://www.voradata.cat
 
@@ -18,7 +18,7 @@ Llegeix aquest fitxer a l'inici de cada sessió abans de fer res.
 
 ```
 VoraStudio (dissenyadora)
-  → Canvas/Figma + brand PDF (colors, fonts, identitat)
+  → Figma (versió gratuïta) + brand PDF (colors, fonts, identitat)
     → Reunió d'alineació amb Pau/Carles
       → VoraData construeix
 ```

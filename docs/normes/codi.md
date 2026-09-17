@@ -23,7 +23,10 @@ serveis.html                → example.com/serveis.html
 sobre-nosaltres.html        → example.com/sobre-nosaltres.html
 ```
 
-URLs netes, sense extensió, amb jerarquia clara per a sub-pàgines futures. L'impacte en ranking SEO és indirecte (CTR, breadcrumbs, estructura), però és la convenció estàndard de VoraData.
+URLs netes, sense extensió, amb jerarquia clara per a sub-pàgines futures. L'impacte en ranking SEO és indirecte (CTR, breadcrumbs, estructura), però és la convenció estàndard de VoraData per a **aplicacions multi-pàgina** (preset Symfony SaaS).
+
+!!! warning "Excepció: Landing pages"
+    Una landing és **una sola pàgina amb seccions ancorades** (`<section id="...">` + `href="#id"`), no aquesta estructura de carpetes. Vegeu [Normes del preset Landing](../presets/landing/normas.md).
 
 <div class="grid cards" markdown>
 

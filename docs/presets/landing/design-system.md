@@ -112,7 +112,7 @@ background:
 
     Modes recomanats: **Full** o **Duotone** amb la paleta de color del client. Exporta com a CSS i enganxa a `@theme {}` o directament a la classe del hero.
 
-## Generació a partir d'una imatge de referència (Canva/PDF)
+## Generació a partir d'una imatge de referència (Figma/PDF)
 
 Quan es genera markup a partir d'una captura de disseny, l'agent ha de rebre **sempre** la imatge juntament amb aquest `design-system.md` i `componentes.md` en el mateix prompt, i se li ha de demanar explícitament que:
 

@@ -29,7 +29,7 @@ Cap landing surt de VoraData sense passar per aquesta llista. No és opcional.
 
     | Recurs | Màxim |
     |---|---|
-    | JavaScript total | < 50KB |
+    | JavaScript total | < 50KB (exclou GSAP — vegeu nota) |
     | CSS total (post-purge) | < 20KB |
     | Imatge hero | < 200KB (WebP) |
 
@@ -43,6 +43,9 @@ Cap landing surt de VoraData sense passar per aquesta llista. No és opcional.
     - Font del hero: `preload` al `<head>`
 
 </div>
+
+!!! warning "GSAP i el pressupost de JS"
+    El límit de 50KB és per a JS propi del projecte. Si la landing usa GSAP, documenta un pressupost separat (core + plugins necessaris, res que no s'usi) — el core sol ja supera els 50KB. Sense animació complexa, usa CSS transitions abans de carregar GSAP.
 
 ---
 
@@ -105,6 +108,16 @@ Cap landing surt de VoraData sense passar per aquesta llista. No és opcional.
     - `aria-current="page"` al nav actiu
     - `role="banner"`, `role="main"`, `role="contentinfo"` al nav/main/footer
 
+-   :material-motion-outline:{ .lg .middle } **Reduced motion**
+
+    ---
+
+    Tota animació (GSAP, CSS) darrere de:
+
+    ```js
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ```
+
 </div>
 
 ---
@@ -132,7 +145,7 @@ Copia i enganxa a la PR o al missatge a VoraStudio:
 ### Rendiment
 - [ ] LCP < 2.5s (Lighthouse mòbil)
 - [ ] CLS < 0.1
-- [ ] JS < 50KB, CSS < 20KB
+- [ ] JS < 50KB (exclou GSAP), CSS < 20KB
 - [ ] Imatges WebP amb lazy loading
 
 ### SEO
@@ -145,6 +158,7 @@ Copia i enganxa a la PR o al missatge a VoraStudio:
 - [ ] Contrast 4.5:1 mínim
 - [ ] Navegació per teclat
 - [ ] aria-labels presents
+- [ ] Animacions darrere de prefers-reduced-motion
 
 ### Cross-browser
 - [ ] Chrome ✓

@@ -9,7 +9,16 @@
       },
       "models": {
         "qwen38-27b": {
-          "name": "Qwen 3.8 27B (Visión & Multimodal)"
+          "name": "Qwen 3.8 27B (Visión & Multimodal)",
+          "limit": {
+            "context": 65536,
+            "output": 2000
+          },
+          "options": {
+            "extraBody": {
+              "chat_template_kwargs": { "enable_thinking": false }
+            }
+          }
         }
       }
     }

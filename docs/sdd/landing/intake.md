@@ -102,13 +102,14 @@ Rol agent en aquesta sessió: [BUILD complet / només UI / components específic
 
 ---
 
-## Extracció de colors des de Canva
+## Extracció de tokens des de Figma (versió gratuïta)
 
-Canva no exporta tokens directament. Per obtenir els colors exactes:
+Figma no exporta un `@theme {}` directament, però el pla gratuït sí exposa els valors exactes sense eines de tercers:
 
-1. **Canva** → disseny → clic a qualsevol element de color → copia el hex
-2. Alternativament: exporta a PNG i usa [Realtime Colors](https://realtimecolors.com) per visualitzar la paleta
-3. Fonts: a Canva → selecciona text → veure nom de font al panel lateral
+1. **Colors**: selecciona qualsevol element → panell dret "Fill" → copia el hex directament (icona de pipeta o clic al valor)
+2. **Fonts**: selecciona un element de text → panell dret "Text" → nom de la font i pes hi apareixen
+3. **Espaiat/mides**: amb l'element seleccionat, el panell "Design" mostra amplada/alçada i el gap en Auto Layout — útil per calibrar les proporcions dels tokens d'espaiat
+4. Exporta captures (PNG) per seccions amb l'eina d'Export del panell dret quan calgui passar la imatge de referència a l'agent
 
 !!! tip "Si el client no té colors definitius"
     Passa els hex aproximats igualment. L'agent generarà el `@theme {}` amb ells i podràs ajustar. Millor tokens aproximats que cap token.
