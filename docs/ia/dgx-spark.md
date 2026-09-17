@@ -102,11 +102,11 @@ Mesures via **SGLang** (el mateix runtime que usem):
 
 | Cas d'ús | Viable? | Notes |
 |---|---|---|
-| Assistència de codi (OpenCode) | ✅ Ideal | `qwen38-27b` és un model de codi potent |
-| Generació de text per a clients | ✅ Viable | Resposta <3s per prompts normals |
-| Revisió de codi i refactorització | ✅ Viable | Context llarg ben suportat |
+| Assistència de codi (OpenCode) | ✅ Ideal | Requereix `enable_thinking: false` — sense això, mesurat 0% de contingut útil per truncament. Vegeu [OpenCode](opencode.md#optimitzacio-enable_thinking-false) |
+| Generació de text per a clients | ⚠️ Viable amb matisos | ~7,5 tps mesurat (no <3s). Un paràgraf de ~150 tokens triga ~20s, no és instantani |
+| Revisió de codi i refactorització | ✅ Viable | Context de 65.536 tokens (verificat), compartit entre entrada i sortida — no assumir-lo com dos pressupostos separats |
 | RAG sobre documentació interna | ✅ Viable | Amb embedding local |
-| Inferència en batch per a automatitzacions | ✅ Molt bo | El batching escala molt bé |
+| Inferència en batch per a automatitzacions | ✅ Molt bo (no verificat) | El batching escala bé segons benchmarks públics de SGLang — no provat encara amb `qwen38-27b` en aquest Spark |
 | Models >70B en producció | ❌ No recomanat | <3 tps és massa lent |
 | Substitució d'una GPU discreta pro | ❌ No | Per a càrregues de treball molt intenses |
 
