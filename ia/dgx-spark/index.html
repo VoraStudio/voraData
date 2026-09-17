@@ -18,7 +18,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../opencode/">
+        <link rel="next" href="../dgx-spark-benchmarks/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>DGX Spark - VoraData — Docs</title>
+        <title>DGX Spark — Servidor IA Local - VoraData — Docs</title>
       
     
     
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DGX Spark
+              DGX Spark — Servidor IA Local
             
           </span>
         </div>
@@ -925,6 +925,8 @@
       
         
       
+        
+      
     
     
     
@@ -1061,6 +1063,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presets/landing/recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recursos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1162,6 +1192,64 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DGX Spark
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DGX Spark
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1177,7 +1265,7 @@
   <span class="md-ellipsis">
     
   
-    DGX Spark
+    DGX Spark — Servidor IA Local
   
 
     
@@ -1195,7 +1283,7 @@
   <span class="md-ellipsis">
     
   
-    DGX Spark
+    DGX Spark — Servidor IA Local
   
 
     
@@ -1309,17 +1397,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#benchmarks-protocol-de-prova-per-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarks — protocol de prova per model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#quan-usar-un-llm-extern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1333,6 +1410,42 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dgx-spark-benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1667,17 +1780,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#benchmarks-protocol-de-prova-per-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarks — protocol de prova per model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#quan-usar-un-llm-extern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1994,62 +2096,7 @@
 </div>
 <p><strong>Com enrutar-ho</strong>: no és SDD (això planifica canvis de codi al repo, no generació de contingut per fase). El mecanisme correcte és l'assignació de model per agent que ja existeix a OpenCode — un agent per rol (<code>landing-vision</code>, <code>landing-coder</code>, <code>landing-auditor</code>), cada un amb el seu <code>model</code> apuntant al model DGX corresponent.</p>
 <p><strong>Ordre de prioritat per provar</strong>: Nemotron 3 Nano Omni primer (cobreix el cas d'ús més freqüent, imatge+codi), Qwen3-Coder-Next després (fases sense imatge). Abans d'adoptar-ho a producció, repetir el mateix tipus de test fet avui amb <code>qwen38-27b</code> (imatge real + <code>design-system.md</code> al prompt, mesurar temps i qualitat de l'HTML resultant).</p>
-<hr />
-<h2 id="benchmarks-protocol-de-prova-per-model">Benchmarks — protocol de prova per model<a class="headerlink" href="#benchmarks-protocol-de-prova-per-model" title="Permanent link">&para;</a></h2>
-<p>Mateixa metodologia que la usada per verificar <code>qwen38-27b</code> avui (curl directe a <code>/v1/chat/completions</code>, sense passar per OpenCode, per aïllar el rendiment del model del client). Repetir per a cada model abans de donar-lo per bo.</p>
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th>Fase a provar</th>
-<th>Tipus de petició</th>
-<th><code>max_tokens</code></th>
-<th><code>chat_template_kwargs</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nemotron 3 Nano Omni</td>
-<td>A + C</td>
-<td>Imatge (captura Figma real) + text amb <code>design-system.md</code>/<code>componentes.md</code> al prompt</td>
-<td>2000</td>
-<td><code>{"enable_thinking": false}</code> si el template ho suporta</td>
-</tr>
-<tr>
-<td>Qwen3-Coder-Next</td>
-<td>B + D</td>
-<td>Text només (navbar/footer/GSAP), sense imatge</td>
-<td>2000</td>
-<td><code>{"enable_thinking": false}</code></td>
-</tr>
-<tr>
-<td>Nemotron 3 Super</td>
-<td>E</td>
-<td>Text, prompt amb l'HTML complet de la pàgina a auditar</td>
-<td>3000-4000 (revisió, no generació de zero)</td>
-<td>Deixar thinking actiu — aquí la precisió importa més que la velocitat</td>
-</tr>
-<tr>
-<td>Gemma 4 26B-A4B-it</td>
-<td>A + C (alternativa)</td>
-<td>Igual que Nano Omni, per comparar costat a costat</td>
-<td>2000</td>
-<td>Verificar el nom exacte del paràmetre — Gemma pot no fer servir <code>chat_template_kwargs</code> de Qwen</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Mètriques a capturar per cada crida</strong> (les mateixes que vam mesurar amb <code>qwen38-27b</code>):</p>
-<ul>
-<li><code>finish_reason</code> — ha de ser <code>"stop"</code>, mai <code>"length"</code></li>
-<li><code>usage.reasoning_tokens</code> — 0 si <code>enable_thinking: false</code> ha funcionat</li>
-<li>Temps total de la petició (<code>time curl</code> o <code>%{time_total}</code>)</li>
-<li>Tokens/segon decode: <code>completion_tokens ÷ temps</code></li>
-<li><strong>Qualitat</strong>: el HTML reutilitza <code>--color-*</code>/<code>btn-*</code> del <code>design-system/</code>, o inventa hex nous des dels píxels de la imatge? (mateix risc que ja vam confirmar amb <code>qwen38-27b</code>)</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Base de comparació</p>
-<p><code>qwen38-27b</code> amb <code>enable_thinking: false</code>: <strong>52,7s / ~7,5 tps / 0 reasoning_tokens</strong> per una secció Hero (397 tokens de sortida). Qualsevol candidat hauria de batre clarament aquest número en tps per justificar el canvi de model.</p>
-</div>
+<p>→ Protocol exacte de prova (paràmetres per petició i mètriques a capturar): <a href="../dgx-spark-benchmarks/">Benchmarks</a></p>
 <hr />
 <h2 id="quan-usar-un-llm-extern">Quan usar un LLM extern<a class="headerlink" href="#quan-usar-un-llm-extern" title="Permanent link">&para;</a></h2>
 <div class="admonition danger">
