@@ -50,6 +50,7 @@
 
 | Data | Secció | Què va canviar |
 |---|---|---|
+| 2026-09-17 | [IA & Eines → DGX Spark](ia/dgx-spark.md#benchmarks-protocol-de-prova-per-model) | Protocol de benchmark per model/fase (paràmetres exactes de la petició i mètriques a capturar) |
 | 2026-09-17 | [IA & Eines → DGX Spark](ia/dgx-spark.md#proposta-futura-multi-model-routing-per-fase) | Proposta de multi-model routing per fase (Nemotron 3 Nano Omni, Qwen3-Coder-Next) + benchmark real de `qwen38-27b` verificat |
 | 2026-09-17 | [IA & Eines → OpenCode](ia/opencode.md#optimitzacio-enable_thinking-false) | Fix `enable_thinking: false` documentat i verificat contra el servidor (196s→52s) |
 | 2026-09-17 | [Presets → Landing](presets/landing/index.md) | Fixes de tokens, botons, arquitectura single-page, pressupost GSAP i `prefers-reduced-motion` |

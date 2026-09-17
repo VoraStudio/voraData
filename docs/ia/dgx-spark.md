@@ -168,6 +168,30 @@ En un equip limitat per ample de banda de memòria com el Spark (273 GB/s), **el
 
 ---
 
+## Benchmarks — protocol de prova per model
+
+Mateixa metodologia que la usada per verificar `qwen38-27b` avui (curl directe a `/v1/chat/completions`, sense passar per OpenCode, per aïllar el rendiment del model del client). Repetir per a cada model abans de donar-lo per bo.
+
+| Model | Fase a provar | Tipus de petició | `max_tokens` | `chat_template_kwargs` |
+|---|---|---|---|---|
+| Nemotron 3 Nano Omni | A + C | Imatge (captura Figma real) + text amb `design-system.md`/`componentes.md` al prompt | 2000 | `{"enable_thinking": false}` si el template ho suporta |
+| Qwen3-Coder-Next | B + D | Text només (navbar/footer/GSAP), sense imatge | 2000 | `{"enable_thinking": false}` |
+| Nemotron 3 Super | E | Text, prompt amb l'HTML complet de la pàgina a auditar | 3000-4000 (revisió, no generació de zero) | Deixar thinking actiu — aquí la precisió importa més que la velocitat |
+| Gemma 4 26B-A4B-it | A + C (alternativa) | Igual que Nano Omni, per comparar costat a costat | 2000 | Verificar el nom exacte del paràmetre — Gemma pot no fer servir `chat_template_kwargs` de Qwen |
+
+**Mètriques a capturar per cada crida** (les mateixes que vam mesurar amb `qwen38-27b`):
+
+- `finish_reason` — ha de ser `"stop"`, mai `"length"`
+- `usage.reasoning_tokens` — 0 si `enable_thinking: false` ha funcionat
+- Temps total de la petició (`time curl` o `%{time_total}`)
+- Tokens/segon decode: `completion_tokens ÷ temps`
+- **Qualitat**: el HTML reutilitza `--color-*`/`btn-*` del `design-system/`, o inventa hex nous des dels píxels de la imatge? (mateix risc que ja vam confirmar amb `qwen38-27b`)
+
+!!! tip "Base de comparació"
+    `qwen38-27b` amb `enable_thinking: false`: **52,7s / ~7,5 tps / 0 reasoning_tokens** per una secció Hero (397 tokens de sortida). Qualsevol candidat hauria de batre clarament aquest número en tps per justificar el canvi de model.
+
+---
+
 ## Quan usar un LLM extern
 
 !!! danger "Regla LOPD"
