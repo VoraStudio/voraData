@@ -10,25 +10,56 @@ Definir mitjançant CSS custom properties a `app.css` (Tailwind v4):
 @theme {
   --color-brand-primary: #5c35b8;
   --color-brand-accent:  #8b5cf6;
+
   --color-neutral-900:   #0f0f0f;
   --color-neutral-800:   #1a1a1a;
+  --color-neutral-700:   #2e2e2e;
+  --color-neutral-600:   #525252;
+  --color-neutral-500:   #737373;
+  --color-neutral-400:   #a3a3a3;
+  --color-neutral-300:   #d4d4d4;
+  --color-neutral-200:   #e5e5e5;
   --color-neutral-100:   #f5f5f5;
   --color-neutral-50:    #fafafa;
+
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
 }
 ```
 
 !!! note "Per projecte"
-    Cada client té la seva paleta. Aquests són els valors de fallback/exemple.
+    Cada client té la seva paleta. Aquests són els valors de fallback/exemple. `--font-heading`/`--font-body` també es sobreescriuen per projecte — un canvi de client només toca aquestes dues línies, mai les classes `font-*` escampades per l'HTML.
+
+## Botons
+
+Definits com a components compostos a `app.css`, mai repetint la cadena d'utilitats a cada HTML:
+
+```css
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-brand-primary px-6 py-3
+           font-semibold text-white transition-all duration-300 hover:opacity-90;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-neutral-300 px-6 py-3
+           font-semibold text-neutral-900 transition-all duration-300 hover:bg-neutral-100;
+  }
+  .btn-white {
+    @apply inline-flex items-center justify-center rounded-lg bg-white px-6 py-3
+           font-semibold text-brand-primary transition-all duration-300 hover:opacity-90;
+  }
+}
+```
 
 ## Tipografia
 
 | Rol | Classe Tailwind | Ús |
 |---|---|---|
-| Display | `text-5xl font-bold tracking-tight` | Hero headline |
-| H1 | `text-4xl font-bold` | Títols de secció |
-| H2 | `text-2xl font-semibold` | Subtítols |
-| Body | `text-base font-normal leading-relaxed` | Cos de text |
-| Caption | `text-sm text-neutral-500` | Notes, etiquetes |
+| Display | `font-heading text-5xl font-bold tracking-tight` | Hero headline |
+| H1 | `font-heading text-4xl font-bold` | Títols de secció |
+| H2 | `font-heading text-2xl font-semibold` | Subtítols |
+| Body | `font-body text-base font-normal leading-relaxed` | Cos de text |
+| Caption | `font-body text-sm text-neutral-500` | Notes, etiquetes |
 
 ## Espaiat
 
@@ -80,3 +111,12 @@ background:
     Usa [Gradient Studio](https://gradientsaas.blogspot.com) per generar gradients editorials i exportar directament a CSS o Tailwind. Gratuït, sense compte, ús comercial permès.
 
     Modes recomanats: **Full** o **Duotone** amb la paleta de color del client. Exporta com a CSS i enganxa a `@theme {}` o directament a la classe del hero.
+
+## Generació a partir d'una imatge de referència (Canva/PDF)
+
+Quan es genera markup a partir d'una captura de disseny, l'agent ha de rebre **sempre** la imatge juntament amb aquest `design-system.md` i `componentes.md` en el mateix prompt, i se li ha de demanar explícitament que:
+
+1. Identifiqui a quin component estàndard correspon cada secció de la imatge.
+2. Reutilitzi els tokens i classes ja definits (`--color-*`, `--font-*`, `btn-*`) en comptes d'inventar valors nous a partir dels píxels.
+
+Sense aquestes dues instruccions, el model tendeix a extreure colors/mides directament de la imatge (`bg-[#2563eb]`, `min-height: 250px` inline) encara que el token equivalent ja existeixi — no és fiable per pixel-perfect a la primera passada. Revisa manualment espaiat i jerarquia abans de donar per bona cada secció.

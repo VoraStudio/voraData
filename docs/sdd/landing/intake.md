@@ -48,6 +48,9 @@ Seccions (en ordre):
 Animacions: [cap / AOS reveals / GSAP hero / scroll horitzontal]
 Idioma del contingut: [català / castellà / anglès]
 
+Objectiu de conversió principal: [reservar demo / comprar / deixar email / trucar]
+Tracking: [GA4 / Meta Pixel / cap]
+
 — CONTINGUT —
 Copy proporcionat pel client: [sí / no / parcial]
 Imatges: [sí (WebP) / no (usar placeholders) / generades amb IA]

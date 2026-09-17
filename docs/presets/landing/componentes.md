@@ -78,6 +78,72 @@ JS: afegir classe `bg-white shadow-md` en fer scroll > 50px.
 
 ---
 
+## Social proof
+
+**Variants**: tira de logos / testimonis en cards
+
+```html
+<section class="py-16 border-y border-neutral-200">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="text-center text-sm text-neutral-500 mb-8">Empreses que confien en nosaltres</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 grayscale opacity-70">
+      <!-- <img src="..." alt="Nom client" class="h-8" /> repetit per client -->
+    </div>
+  </div>
+</section>
+```
+
+---
+
+## Pricing
+
+**Variants**: cards comparatives / taula
+
+```html
+<section class="py-20 lg:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="font-heading text-4xl font-bold text-center mb-16">Plans i preus</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="rounded-xl border border-neutral-200 p-8 shadow-md">
+        <h3 class="font-heading text-xl font-semibold mb-2">Pla</h3>
+        <p class="text-3xl font-bold mb-4">€__<span class="text-base font-normal text-neutral-500">/mes</span></p>
+        <ul class="text-sm text-neutral-600 space-y-2 mb-8">
+          <!-- <li>Característica</li> -->
+        </ul>
+        <a href="#contacto" class="btn-secondary w-full">Triar pla</a>
+      </div>
+      <!-- repetir card per pla, destacar el recomanat amb border-brand-primary + shadow-xl -->
+    </div>
+  </div>
+</section>
+```
+
+---
+
+## FAQ
+
+**Patró accessible**: `<details>`/`<summary>` natiu — no cal JS ni `aria-expanded` manual.
+
+```html
+<section class="py-20 lg:py-32">
+  <div class="max-w-2xl mx-auto px-6">
+    <h2 class="font-heading text-4xl font-bold text-center mb-16">Preguntes freqüents</h2>
+    <div class="divide-y divide-neutral-200">
+      <details class="group py-6">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold list-none">
+          Pregunta?
+          <span class="transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-4 text-neutral-600">Resposta.</p>
+      </details>
+      <!-- repetir <details> per pregunta -->
+    </div>
+  </div>
+</section>
+```
+
+---
+
 ## CTA
 
 **Regla**: màx. 1 acció per CTA. Mai dos CTAs iguals a la mateixa pàgina.

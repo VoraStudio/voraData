@@ -22,6 +22,7 @@ proyecto/
 │   ├── js/
 │   │   └── app.js           # Entrada JS
 │   └── img/
-├── tailwind.config.js       # o config en app.css si v4
 └── package.json
 ```
+
+Tailwind v4 pur — sense `tailwind.config.js`, tota la configuració (tokens, tema) viu al bloc `@theme` dins `app.css` (vegeu [Design System](design-system.md)).

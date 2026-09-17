@@ -4,15 +4,11 @@
 
 ## Estructura de fitxers i URLs
 
-Cada secció és una **carpeta amb el seu propi `index.html`**, no un fitxer `.html` solt.
+Una landing és **una sola pàgina amb seccions ancorades** (`<section id="...">` + `href="#id"`), no un site multi-pàgina — és el que "landing" vol dir i el que encaixa amb una entrega de 48h.
 
 ```
 arrel-projecte/
-├── index.html                  # → example.com/
-├── serveis/
-│   └── index.html              # → example.com/serveis/
-├── sobre-nosaltres/
-│   └── index.html              # → example.com/sobre-nosaltres/
+├── index.html                  # → example.com/ (totes les seccions, id per secció)
 └── assets/
     ├── css/app.css
     ├── js/app.js
@@ -20,11 +16,8 @@ arrel-projecte/
     └── img/
 ```
 
-!!! tip "Per què carpetes i no fitxers .html?"
-    `example.com/serveis/` és una URL neta, sense extensió, fàcil de compartir i de recordar. A més, permet afegir sub-pàgines (`/serveis/web/`, `/serveis/apps/`) sense trencar la URL pare. Google tracta les dues formes equivalent en ranking, però la jerarquia de carpetes millora el CTR als resultats de cerca i facilita l'estructuració de breadcrumbs i schema markup.
-
-!!! warning "Aclariment SEO"
-    La convenció de carpetes **no és un factor de ranking directe** — Google ho confirma explícitament. El benefici és indirecte: URLs més netes → millor CTR, jerarquia clara → millor comprensió del lloc per part de Google. Els factors que realment mouen el SEO continuen sent contingut, Core Web Vitals i backlinks.
+!!! note "Estructura multi-pàgina (`serveis/index.html`, carpeta per secció)"
+    Aquesta convenció existeix i és vàlida, però pertany al **preset Symfony SaaS** (aplicacions amb pàgines/rutes reals), no al de landing. No la barregis amb l'estructura d'una landing d'una sola pàgina.
 
 **Regles de fitxers:**
 - Sense CSS en atributs `style=""` — tot va a Tailwind o `app.css`
@@ -41,6 +34,9 @@ arrel-projecte/
 | FID / INP | < 100ms |
 | Total JS | < 50KB (sense frameworks) |
 | Total CSS | < 20KB (post-purge Tailwind) |
+
+!!! warning "Pressupost JS i GSAP"
+    El límit de 50KB és per a JS propi del projecte i **exclou GSAP** — el core més un parell de plugins ja el supera per si sol. Si el projecte usa GSAP, documenta un pressupost separat (GSAP core + plugins necessaris, sense carregar-ne cap que no s'usi) i restringeix-lo a projectes que ho justifiquin; per landings estàndard sense animació complexa, usa CSS transitions o la Web Animations API abans de carregar GSAP.
 
 **Obligatori:**
 - `loading="lazy"` en totes les imatges fora del viewport inicial
@@ -70,6 +66,7 @@ arrel-projecte/
 - Un sol `<h1>` per pàgina
 - Estructura de headings semàntica (h1 → h2 → h3, sense saltar nivells)
 - Alt en totes les imatges no decoratives
+- Dades estructurades JSON-LD (`Organization` o `LocalBusiness`) quan el client és un negoci local o de servei
 
 ## Accessibilitat (WCAG 2.1 AA)
 
@@ -78,6 +75,14 @@ arrel-projecte/
 - `aria-label` en botons/links amb només icona
 - `aria-current="page"` en nav actiu
 - `role="banner"`, `role="main"`, `role="contentinfo"` en nav/main/footer
+- Tota animació (GSAP, CSS) ha de respectar `prefers-reduced-motion`:
+
+```js
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduceMotion) {
+  gsap.globalTimeline.timeScale(0); // o ometre la creació dels ScrollTrigger
+}
+```
 
 ## HTML semàntic
 
