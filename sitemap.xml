@@ -2,106 +2,110 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vorastudio.github.io/voraData/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/dgx-spark-benchmarks/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vorastudio.github.io/voraData/ia/dgx-spark-config-d2/</loc>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/dgx-spark/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/gsap/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/opencode/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/mcp/engram/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/mcp/openspec/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/ia/mcp/preline/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/normes/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/normes/codi/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/normes/git/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/normes/lliurament/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/normes/seguretat/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/skills/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/landing/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/landing/componentes/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/landing/design-system/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/landing/normas/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/presets/landing/recursos/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/sdd/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/sdd/design/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/sdd/fases/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/sdd/landing/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://vorastudio.github.io/voraData/sdd/landing/intake/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
 </urlset>
