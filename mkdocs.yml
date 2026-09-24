@@ -60,6 +60,7 @@ nav:
     - "DGX Spark":
       - ia/dgx-spark.md
       - Benchmarks: ia/dgx-spark-benchmarks.md
+      - "Configuració D2": ia/dgx-spark-config-d2.md
     - OpenCode: ia/opencode.md
     - GSAP: ia/gsap.md
     - MCP:
