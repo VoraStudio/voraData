@@ -42,7 +42,7 @@ nav:
   - 🔄 SDD:
     - sdd/index.md
     - Fases: sdd/fases.md
-    - "Workflow i normes":
+    - "Normes Workflow":
       - sdd/workflow/index.md
       - "Com estructurem AGENTS.md": sdd/workflow/agents-md.md
     - "Landing Pages":
