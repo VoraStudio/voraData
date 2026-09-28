@@ -2656,17 +2656,22 @@
 <tbody>
 <tr>
 <td>Tallar</td>
-<td>L'<strong>script</strong> crea <code>S1.png</code>, <code>S2.png</code>... i en treu les dades de cada secció</td>
+<td>L'<strong>script</strong> crea <code>S1.png</code>, <code>S2.png</code>... i l'arbre de disposició de cada secció</td>
 <td>On comença i acaba una secció es calcula, no s'endevina</td>
 </tr>
 <tr>
 <td>Llegir</td>
-<td>El model mira les seccions <strong>una a una</strong> i en fa una fitxa: nom, fons, disposició i elements en ordre</td>
+<td>El model mira les seccions <strong>una a una</strong> i en fa una fitxa: nom i el que només es veu a la imatge (icones, un menú)</td>
 <td>Amb totes alhora barreja elements entre seccions</td>
 </tr>
 <tr>
+<td>Disposició</td>
+<td>El model <strong>copia</strong> l'arbre: <code>pt</code>/<code>pb</code>, <code>mt</code> entre elements, columnes en dotzens, <code>gap-x</code></td>
+<td>A ull, un model centra blocs, inventa marges i desplaça elements desenes de píxels</td>
+</tr>
+<tr>
 <td>Construir</td>
-<td><code>SDD-VD/sdd-local/skeleton/index.html</code>, una <code>&lt;section id="sN"&gt;</code> per fitxa amb <code>min-h-dvh</code></td>
+<td><code>SDD-VD/sdd-local/skeleton/index.html</code>, una <code>&lt;section id="sN"&gt;</code> per secció amb <code>min-h-dvh</code></td>
 <td><code>min-h-dvh</code> i no <code>h-screen</code>: si el contingut no hi cap (mòbil), creix en lloc de desbordar; <code>dvh</code> descompta la barra del navegador a iOS</td>
 </tr>
 <tr>
@@ -2698,6 +2703,7 @@
 </table>
 <p><strong>Què presenta.</strong> Les fitxes, els avisos (colors sense token i el token usat, components estimats, fonts que no són al <code>@theme</code>) i la ruta de l'HTML. <strong>Para: Pau revisa l'esquelet al navegador.</strong> Aquesta part no té parada intermèdia: la comprovació és sobre l'HTML.</p>
 <h4 id="script-split_sectionspy">Script <code>split_sections.py</code><a class="headerlink" href="#script-split_sectionspy" title="Permanent link">&para;</a></h4>
+<p>Ha de servir per a <strong>qualsevol disseny</strong>, no només per al format d'una eina. Per això busca les seccions per capes, de la més fiable a la més bàsica, i mesura sobre el que <strong>es veu</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -2707,32 +2713,56 @@
 </thead>
 <tbody>
 <tr>
-<td>Com troba les seccions</td>
-<td>Cada fons és un rectangle de l'amplada de la pàgina; encadenats han de cobrir la pàgina de dalt a baix sense forats. Les bandes decoratives que trepitgen dues seccions s'ignoren</td>
+<td>Talls</td>
+<td>1) <code>--cuts</code> donats per Pau · 2) una secció per pàgina · 3) fons vectorials de l'amplada de la pàgina que la cobreixen sense forats · 4) píxels: on canvia el color dels marges (dues seccions seguides del mateix color surten juntes)</td>
 </tr>
 <tr>
-<td>Per secció</td>
-<td>Mida, fons (token), imatges amb posició i proporció (<code>aspect-[w/h]</code>, "de fons" si la cobreix), textos amb font, classe de mida i color</td>
+<td>Elements</td>
+<td>De la capa de text i els dibuixos del PDF si en té; si no, dels píxels (XY-cut sobre el que no és fons)</td>
 </tr>
 <tr>
-<td>Color del text</td>
-<td><strong>Mesurat als píxels</strong>, no llegit del PDF: el programa de disseny pot exportar un títol com a imatge amb una capa de text invisible d'un altre color</td>
+<td>Disposició</td>
+<td>XY-cut: files de dalt a baix, columnes dins de cada fila, i el que hi ha dins de cada caixa o imatge</td>
+</tr>
+<tr>
+<td>Distàncies</td>
+<td><code>pt</code>, <code>pb</code>, <code>mt</code>, <code>gap-x</code> i <code>pl</code> a l'escala de Tailwind; si cau entre dues classes, dona les dues</td>
+</tr>
+<tr>
+<td>Horitzontal</td>
+<td><code>centrat</code>, o la <code>x</code> d'inici i l'amplada en dotzens</td>
+</tr>
+<tr>
+<td>Textos</td>
+<td>Línies del mateix estil unides en blocs; classe de mida i interlineat (<code>leading-*</code>)</td>
+</tr>
+<tr>
+<td>Colors</td>
+<td><strong>Mesurats als píxels</strong>: el fons (marges de la secció), les caixes i el text. Un programa de disseny pot deixar capes invisibles o màscares amb un altre color</td>
+</tr>
+<tr>
+<td>Radis</td>
+<td>Mesurats a la cantonada dels píxels: cada eina arrodoneix d'una manera (corbes, retalls)</td>
+</tr>
+<tr>
+<td>Màscares</td>
+<td>Una "caixa" amb l'interior no uniforme és una màscara: si és dins d'una imatge, en marca l'àrea visible</td>
+</tr>
+<tr>
+<td>Imatges</td>
+<td>Proporció per al placeholder; "de fons" si cobreix la secció; "tallada pel marge" (carrusel); "travessa el tall" (una sola imatge entre dues seccions)</td>
 </tr>
 <tr>
 <td>Text sobre una foto</td>
-<td>"sobre imatge": el fons no és uniforme i la mesura no seria fiable; el model el llegeix de la imatge</td>
+<td>"sobre imatge": la mesura no és fiable; el model el llegeix de la imatge</td>
 </tr>
 <tr>
-<td>Imatges que són text</td>
-<td>Si una imatge queda tapada per línies de text, és un títol exportat com a imatge i no es llista com a placeholder</td>
-</tr>
-<tr>
-<td>Al final</td>
-<td>Llista de colors del disseny que no són cap token, amb on surten</td>
+<td>Llindars</td>
+<td>Proporcionals a l'amplada del disseny, no ajustats a un PDF concret</td>
 </tr>
 <tr>
 <td>Codis</td>
-<td>0 correcte · 1 <code>ERROR_LECTURA</code> · 2 <code>SENSE_SECCIONS</code> (l'agent para)</td>
+<td>0 correcte · 1 <code>ERROR_LECTURA</code> · 2 <code>SENSE_SECCIONS</code> (l'agent demana els talls a Pau)</td>
 </tr>
 </tbody>
 </table>
