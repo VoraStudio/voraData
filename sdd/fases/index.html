@@ -834,10 +834,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#visio-general" class="md-nav__link">
+  <a href="#la-idea-clau-el-que-es-pot-mesurar-ho-mesura-un-script" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Visió general
+        La idea clau: el que es pot mesurar, ho mesura un script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entrades
       
     </span>
   </a>
@@ -855,6 +866,17 @@
   
     <nav class="md-nav" aria-label="Part 1 — Colors, fonts i escala tipogràfica">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-brand_cardspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script brand_cards.py
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#script-extract_pdfpy" class="md-nav__link">
@@ -885,6 +907,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#script-ui_metricspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script ui_metrics.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#script-render_pdfpy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -896,10 +929,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#script-color_regionspy" class="md-nav__link">
+  <a href="#tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Script color_regions.py
+        Tests
       
     </span>
   </a>
@@ -984,7 +1017,7 @@
   <span class="md-ellipsis">
     
   
-    Workflow i normes
+    Normes Workflow
   
 
     
@@ -1006,7 +1039,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Workflow i normes
+    Normes Workflow
   
 
           </label>
@@ -2065,10 +2098,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#visio-general" class="md-nav__link">
+  <a href="#la-idea-clau-el-que-es-pot-mesurar-ho-mesura-un-script" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Visió general
+        La idea clau: el que es pot mesurar, ho mesura un script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entrades
       
     </span>
   </a>
@@ -2086,6 +2130,17 @@
   
     <nav class="md-nav" aria-label="Part 1 — Colors, fonts i escala tipogràfica">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-brand_cardspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script brand_cards.py
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#script-extract_pdfpy" class="md-nav__link">
@@ -2116,6 +2171,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#script-ui_metricspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script ui_metrics.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#script-render_pdfpy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2127,10 +2193,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#script-color_regionspy" class="md-nav__link">
+  <a href="#tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Script color_regions.py
+        Tests
       
     </span>
   </a>
@@ -2246,242 +2312,315 @@
 <h2 id="intake-landing">INTAKE (landing)<a class="headerlink" href="#intake-landing" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">En validació</p>
-<p>Aquest INTAKE és la <strong>proposta</strong> (<code>SDD-VD/intake.proposta.md</code>) i encara es valida. La Part 1 no s'ha executat encara amb Qwen. La Part 2 és la v1: en la millor execució, 11 de 13 components han sortit correctes, però els resultats són inestables entre execucions. La Part 3 està definida a la proposta; aquesta pàgina no en recull resultats de prova.</p>
+<p>Aquest INTAKE és la <strong>proposta</strong> (<code>SDD-VD/intake.proposta.md</code>). Les Parts 1 i 2 s'han provat amb el model local (Qwen3.8 27B al DGX Spark) en execucions repetides; la Part 3 encara no. Els resultats d'aquesta pàgina són d'un sol manual de marca de prova.</p>
 </div>
 <p>INTAKE és la primera fase del flux de landings: converteix el disseny i la marca de VoraStudio en <strong>dades estructurades i confirmades</strong> abans d'escriure una línia d'HTML. Es fa en tres parts, i després de cada una l'agent <strong>para i espera que Pau confirmi</strong>.</p>
-<p>Per al formulari de sessió actual, vegeu <a href="../landing/intake/">INTAKE — Template de sessió</a>. Les normes que envolten la fase són a <a href="../workflow/">Normes del workflow</a>.</p>
-<h3 id="visio-general">Visió general<a class="headerlink" href="#visio-general" title="Permanent link">&para;</a></h3>
+<p><strong>Per què existeix.</strong> Si el model construeix directament a partir d'imatges, "interpreta" el disseny: arrodoneix colors, inventa mides i omple buits amb valors per defecte. INTAKE separa <strong>llegir</strong> el disseny de <strong>construir-lo</strong>, i fa que cada valor que arriba a BUILD hagi passat per la confirmació de Pau.</p>
+<p>Les normes que envolten la fase són a <a href="../workflow/">Normes del workflow</a> i <a href="../workflow/agents-md/">Com estructurem AGENTS.md</a>.</p>
+<h3 id="la-idea-clau-el-que-es-pot-mesurar-ho-mesura-un-script">La idea clau: el que es pot mesurar, ho mesura un script<a class="headerlink" href="#la-idea-clau-el-que-es-pot-mesurar-ho-mesura-un-script" title="Permanent link">&para;</a></h3>
+<p>A les primeres proves, el model <strong>llegia</strong> bé els valors però fallava en tot el que és <strong>comparar o mesurar</strong>: aparellava colors pel nom, veia contradiccions que no existien, estimava mides a ull i confonia vores fines. A més, cada execució fallava en una cosa diferent.</p>
+<p>La solució que ha funcionat és repartir la feina:</p>
 <table>
 <thead>
 <tr>
-<th>Part</th>
-<th>Entrada</th>
-<th>Què extreu</th>
-<th>Eina</th>
+<th>Qui</th>
+<th>Què fa</th>
+<th>Per què</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>1. Marca</strong></td>
-<td>PDF de marca (amb text)</td>
-<td>Colors, fonts i escala tipogràfica → <code>@theme</code></td>
-<td><code>extract_pdf.py</code></td>
+<td><strong>Scripts</strong> (amb tests)</td>
+<td>Llegir el PDF, mesurar colors i components, calcular discrepàncies</td>
+<td>És determinista: dona el mateix resultat cada vegada</td>
 </tr>
 <tr>
-<td><strong>2. Components UI</strong></td>
-<td>PDF de components (només imatge)</td>
-<td>Forma i colors de botons, formularis, etiquetes...</td>
-<td><code>render_pdf.py</code> (i <code>color_regions.py</code>)</td>
+<td><strong>Model</strong></td>
+<td>Copiar el que diuen els scripts, llegir el que no es pot mesurar (color i pes del text), presentar-ho i parar</td>
+<td>És el que fa bé: redactar i explicar</td>
 </tr>
 <tr>
-<td><strong>3. Seccions i actius</strong></td>
-<td>Imatges de cada secció</td>
-<td>Estructura de cada secció i checklist d'actius</td>
-<td>Cap script</td>
+<td><strong>Pau</strong></td>
+<td>Decidir quan el manual es contradiu i confirmar cada part</td>
+<td>La decisió no és del model</td>
 </tr>
 </tbody>
 </table>
-<p>Requisits: <code>pip install pypdf pymupdf</code>. Si falta una entrada, l'agent la demana i para.</p>
 <pre class="mermaid"><code>graph LR
     P1[Part 1: marca i tokens] --&gt;|Pau confirma| P2[Part 2: components UI]
     P2 --&gt;|Pau confirma| P3[Part 3: seccions i actius]
-    P3 --&gt;|Pau confirma| R[Resultat desat]</code></pre>
+    P3 --&gt;|Pau confirma| R[intake-result.md]</code></pre>
+<h3 id="entrades">Entrades<a class="headerlink" href="#entrades" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Entrada</th>
+<th>Què conté</th>
+<th>Com es llegeix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>brand.pdf</code></td>
+<td>Colors, fonts i escala tipogràfica</td>
+<td>Com a <strong>text</strong> (el PDF té capa de text)</td>
+</tr>
+<tr>
+<td><code>ui.pdf</code></td>
+<td>Components: botons, formularis, etiquetes, estats</td>
+<td>Com a <strong>imatge</strong> (no té capa de text)</td>
+</tr>
+<tr>
+<td>Imatges de cada secció</td>
+<td>El disseny de la landing</td>
+<td>Com a imatge</td>
+</tr>
+</tbody>
+</table>
+<p>Si falta una entrada, l'agent la demana i para. Totes viuen a <code>SDD-VD/sdd-local/</code>, que és fora de git: són dades de client. Requisits: <code>pip install pypdf pymupdf</code>.</p>
+<hr />
 <h3 id="part-1-colors-fonts-i-escala-tipografica">Part 1 — Colors, fonts i escala tipogràfica<a class="headerlink" href="#part-1-colors-fonts-i-escala-tipografica" title="Permanent link">&para;</a></h3>
-<p><strong>Què fa.</strong> Transcriu els valors de marca escrits al PDF i els converteix en un bloc <code>@theme</code> de Tailwind v4.</p>
-<p><strong>Per què.</strong> Un model que "mira" un color a la imatge n'estima l'hex, i l'estimació pot fallar. Si el PDF té el valor escrit, es <strong>llegeix</strong>, no es calcula.</p>
-<p><strong>Com funciona.</strong></p>
-<ol>
-<li>
-<p>Extracció del text amb l'script, no amb cap altra eina:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>SDD-VD/scripts/extract_pdf.py<span class="w"> </span>&lt;marca&gt;.pdf
+<p><strong>Què fa.</strong> Converteix el manual de marca en un bloc <code>@theme</code> de Tailwind v4, amb la tipografia i les discrepàncies del manual.</p>
+<p><strong>Com funciona.</strong> L'agent executa dues ordres, i cap altra eina per llegir el PDF:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>SDD-VD/scripts/brand_cards.py<span class="w"> </span>SDD-VD/sdd-local/brand/brand.pdf<span class="w">   </span><span class="c1"># colors</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python<span class="w"> </span>SDD-VD/scripts/extract_pdf.py<span class="w"> </span>SDD-VD/sdd-local/brand/brand.pdf<span class="w">   </span><span class="c1"># fonts i escala</span>
 </code></pre></div>
-</li>
-<li>
-<p>L'agent aplica sis regles:</p>
 <table>
 <thead>
 <tr>
-<th>Regla</th>
-<th>Motiu</th>
+<th>Pas</th>
+<th>Què fa l'agent</th>
+<th>Per què</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Transcriure els valors escrits; mai estimar un color o una font a partir de la imatge</td>
-<td>Evitar valors inventats</td>
+<td>Colors</td>
+<td>Copia la taula, els tokens i els avisos de <code>brand_cards.py</code>; no recalcula ni compara</td>
+<td>El model comparant colors fallava cada vegada d'una manera diferent</td>
 </tr>
 <tr>
-<td>Creuar fonts d'informació (llista de tokens &gt; fitxa del color) i comprovar que hex i RGB coincideixen</td>
-<td>Detectar errors del propi PDF</td>
+<td><code>@theme</code></td>
+<td>Un token per cada variable del manual, amb l'etiqueta del PDF com a comentari (<code>/* MORAT VIU */</code>)</td>
+<td>L'etiqueta permet traduir després notes com "focus en morat viu"</td>
 </tr>
 <tr>
-<td>Si dos valors del mateix color o dues mides del mateix estil no coincideixen, llistar-los tots; no triar-ne cap en silenci</td>
-<td>La decisió és de Pau</td>
+<td>Colors sense token</td>
+<td>No entren al <code>@theme</code>; es llisten a part</td>
+<td>No es pot inventar un nom de token</td>
 </tr>
 <tr>
-<td>Ignorar el contingut que no sigui de la marca del projecte</td>
-<td>Evitar barrejar textos d'exemple</td>
+<td>Fonts</td>
+<td>Família i pesos <strong>tal com estan escrits</strong>, errates incloses; sense pesos → "no especificat"</td>
+<td>El model tendia a "corregir" errates i a afegir un Regular per defecte</td>
 </tr>
 <tr>
-<td>Fonts: família i pesos tal com consten; pesos absents → "no especificat"</td>
-<td>No inventar pesos</td>
+<td>Rols i escala</td>
+<td>Només si el PDF els escriu; si no, "no consta"</td>
+<td>En una prova, el model va inventar rols (títol, cos) que el PDF no deia</td>
 </tr>
 <tr>
-<td>Escala tipogràfica: per a cada rol, font i mida amb l'escala de Tailwind (aproximada); mai píxels ni valors arbitraris com <code>text-[22px]</code></td>
-<td>Mantenir el sistema de tokens</td>
+<td>Discrepàncies</td>
+<td>Es llisten totes; no se'n tria cap</td>
+<td>Decideix Pau</td>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>Els tokens s'escriuen amb el prefix de Tailwind v4 (<code>--color-*</code>, <code>--font-*</code>), mantenint el nom del PDF darrere del prefix.</p>
-</li>
-</ol>
-<p><strong>Què presenta.</strong> El <code>@theme</code> proposat (en línia, dins <code>&lt;style type="text/tailwindcss"&gt;</code>), l'escala tipogràfica (rol → font i mida Tailwind) i les discrepàncies.</p>
-<p><strong>Criteri de sortida.</strong> Pau confirma els tokens.</p>
+<p><strong>Què presenta.</strong> El <code>@theme</code> en línia, fonts i pesos, l'escala o "no consta", els avisos de color copiats i les discrepàncies de tipografia. <strong>Para.</strong></p>
+<p><strong>Resultat de les proves.</strong> Amb aquest flux, 3 de 3 execucions han donat els colors idèntics i correctes: els tokens, els colors sense token a part i els avisos copiats literalment. A la tipografia, 1 de 3 va corregir una errata sense avisar.</p>
+<h4 id="script-brand_cardspy">Script <code>brand_cards.py</code><a class="headerlink" href="#script-brand_cardspy" title="Permanent link">&para;</a></h4>
+<p>Llegeix les <strong>targetes de color</strong> del manual (rectangles de color amb el nom i els valors a dins) i les compara de manera determinista.</p>
+<p><strong>Per què agrupa per targeta i no llegeix el text en ordre.</strong> En un manual real, una targeta alta tenia el nom a dalt i els valors 470 px més avall. Llegit en ordre, els valors quedaven sense nom i el model n'endevinava el propietari. L'script assigna cada línia de text al rectangle que la conté.</p>
+<table>
+<thead>
+<tr>
+<th>Aspecte</th>
+<th>Detall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per targeta</td>
+<td>Nom, HEX, RGB, CMYK i <strong>color real</strong> del rectangle</td>
+</tr>
+<tr>
+<td>Tokens</td>
+<td>Llegeix les variables (<code>--nom #HEX</code>) i la seva etiqueta</td>
+</tr>
+<tr>
+<td>Avisos que calcula</td>
+<td>HEX ≠ RGB · HEX o RGB ≠ color real · valor malmès · mateix HEX a dues targetes · mateix nom amb HEX diferents · mateix HEX amb noms diferents · color sense token · token sense targeta</td>
+</tr>
+<tr>
+<td>Regla de creuament</td>
+<td>Sempre pel HEX, mai pel nom: el manual de prova feia servir el mateix nom per a colors diferents en pàgines diferents</td>
+</tr>
+<tr>
+<td>Sense targetes</td>
+<td><code>SENSE_TARGETES</code> i codi 2: l'agent para, no treu els colors a mà</td>
+</tr>
+<tr>
+<td>Codis</td>
+<td>0 correcte · 1 <code>ERROR_LECTURA</code> · 2 <code>SENSE_TARGETES</code></td>
+</tr>
+</tbody>
+</table>
 <h4 id="script-extract_pdfpy">Script <code>extract_pdf.py</code><a class="headerlink" href="#script-extract_pdfpy" title="Permanent link">&para;</a></h4>
-<p>Extreu el text del PDF pàgina per pàgina. Requereix <code>pypdf</code>.</p>
+<p>Extreu el text del PDF pàgina per pàgina (<code>pypdf</code>). A la Part 1 només s'usa per a fonts i escala.</p>
 <table>
 <thead>
 <tr>
-<th>Aspecte</th>
-<th>Detall</th>
+<th>Codi</th>
+<th>Significat</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Sortida</td>
-<td>Text UTF-8 amb una capçalera <code>--- pN ---</code> per pàgina; les pàgines buides surten com <code>(sense text)</code></td>
+<td>0</td>
+<td>Correcte (una capçalera <code>--- pN ---</code> per pàgina)</td>
 </tr>
 <tr>
-<td>Codi 0</td>
-<td>Correcte</td>
+<td>1</td>
+<td>Fitxer no vàlid → <code>ERROR_LECTURA</code></td>
 </tr>
 <tr>
-<td>Codi 1</td>
-<td>Fitxer no vàlid → missatge <code>ERROR_LECTURA</code></td>
-</tr>
-<tr>
-<td>Codi 2</td>
-<td>El PDF no té capa de text → missatge <code>SENSE_TEXT</code></td>
+<td>2</td>
+<td>El PDF no té capa de text → <code>SENSE_TEXT</code> (l'agent para)</td>
 </tr>
 </tbody>
 </table>
-<p>Si l'ordre falla o retorna <code>SENSE_TEXT</code> o <code>ERROR_LECTURA</code>, l'agent ho diu a Pau i para. <strong>No endevina els valors.</strong></p>
+<hr />
 <h3 id="part-2-components-ui">Part 2 — Components UI<a class="headerlink" href="#part-2-components-ui" title="Permanent link">&para;</a></h3>
-<p><strong>Què fa.</strong> Descriu la forma (mida, padding, radi) i els colors dels components d'interfície: botons, formularis, etiquetes, estats.</p>
-<p><strong>Per què.</strong> El PDF de components no té capa de text, així que només es pot <strong>veure</strong>. Els colors d'una imatge no es poden llegir amb fiabilitat a ull, així que l'script els mesura per píxels i escriu el nom del token damunt de cada regió: l'agent llegeix una etiqueta en lloc d'estimar un hex.</p>
+<p><strong>Què fa.</strong> Descriu cada component (botons, formularis, targetes, etiquetes, pestanyes) de manera que BUILD el pugui reproduir <strong>fidel a l'original</strong>: forma, farciment, vora, text i mida.</p>
+<p><strong>Per què necessita scripts.</strong> El PDF de components és una imatge. En una prova sense mesures, el model va encertar els colors grans i els radis, però va fer els botons de 48 px quan fan 42, les etiquetes de 32 quan fan 42, i va confondre una vora grisa amb un farciment. Construït així, el resultat es veuria diferent del disseny.</p>
 <p><strong>Com funciona.</strong></p>
-<ol>
-<li>
-<p>Es renderitzen les pàgines a imatge amb els colors confirmats a la Part 1, en format <code>nom=#HEX</code> sense el prefix <code>--color-</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>SDD-VD/scripts/render_pdf.py<span class="w"> </span>&lt;components&gt;.pdf<span class="w"> </span>&lt;carpeta_sortida&gt;<span class="w"> </span>--tokens<span class="w"> </span>purple-700<span class="o">=</span><span class="c1">#5E35B1 ...</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>SDD-VD/scripts/render_pdf.py<span class="w"> </span>SDD-VD/sdd-local/brand/ui.pdf<span class="w"> </span>SDD-VD/sdd-local/brand/ui-pages<span class="w"> </span>--tokens<span class="w"> </span><span class="nv">nom</span><span class="o">=</span><span class="c1">#HEX ...</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>SDD-VD/scripts/ui_metrics.py<span class="w"> </span>SDD-VD/sdd-local/brand/ui.pdf<span class="w"> </span>--tokens<span class="w"> </span><span class="nv">nom</span><span class="o">=</span><span class="c1">#HEX ...</span>
 </code></pre></div>
-<p>L'agent mira cada imatge. Si no les pot veure, ho diu a Pau i para.</p>
-</li>
-<li>
-<p>Per a cada component, en descriu la forma amb l'escala de Tailwind (mai píxels en text ni valors arbitraris: una cantonada de 30 px és <code>rounded-3xl</code>, no <code>rounded-[30px]</code>).</p>
-</li>
-<li>Els colors es descriuen <strong>amb el nom del token de l'etiqueta</strong>; no s'estima l'hex. Els <code>SENSE_TOKEN</code> s'avisen. Si una superfície no té etiqueta (per exemple una vora molt fina), es diu en lloc d'endevinar-la.</li>
-<li>Les notes escrites a la imatge (vores, focus, cantonada...) porten valors exactes: es llegeixen tal com hi consten i s'assignen al component on apareixen. Si no es llegeixen bé o no és clar a quin component pertanyen, es marca i es pregunta.</li>
-<li>S'ignoren els textos de plantilla o d'exemple que no siguin del projecte.</li>
-<li>Els estats (hover, active, focus, disabled) que no consten ni al text ni a la imatge es marquen <strong>"no especificat"</strong>; no s'inventen.</li>
-</ol>
-<p><strong>Què presenta.</strong> Regles de components, amb els estats no especificats marcats.</p>
-<p><strong>Criteri de sortida.</strong> Pau confirma les regles de components.</p>
-<div class="admonition note">
-<p class="admonition-title">Limitació coneguda</p>
-<p>Les etiquetes poden tapar una part del text de la imatge. Si una nota escrita no es llegeix bé, l'agent pregunta.</p>
-</div>
-<h4 id="script-render_pdfpy">Script <code>render_pdf.py</code><a class="headerlink" href="#script-render_pdfpy" title="Permanent link">&para;</a></h4>
-<p>Renderitza cada pàgina del PDF a <code>pN.png</code> (a 144 dpi) dins de la carpeta indicada i n'imprimeix les rutes. Requereix <code>pymupdf</code>.</p>
+<p>Els tokens són els que Pau ha confirmat a la Part 1.</p>
 <table>
 <thead>
 <tr>
-<th>Aspecte</th>
-<th>Detall</th>
+<th>Pas</th>
+<th>Què fa l'agent</th>
+<th>Per què</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Arguments</td>
-<td>PDF, carpeta de sortida i, opcional, <code>--tokens nom=#HEX ...</code></td>
+<td>Mirar les imatges</td>
+<td>Cada component porta una etiqueta amb un ID (<code>C3</code>) i el seu token</td>
+<td>Per saber quin component és cada línia de mesures</td>
 </tr>
 <tr>
-<td>Sense <code>--tokens</code></td>
-<td>Només renderitza les pàgines</td>
-</tr>
-<tr>
-<td>Amb <code>--tokens</code></td>
-<td>Escriu damunt de cada regió de color el token més proper, mesurat pels píxels</td>
-</tr>
-<tr>
-<td>Colors que no s'assemblen a cap token</td>
-<td>Etiqueta <code>SENSE_TOKEN #HEX</code></td>
-</tr>
-<tr>
-<td>Temps</td>
-<td>Amb <code>--tokens</code> triga unes desenes de segons per pàgina</td>
-</tr>
-<tr>
-<td>Codi 0 / 1</td>
-<td>Correcte / fitxer, carpeta o tokens no vàlids (<code>ERROR_RENDER</code>)</td>
-</tr>
-</tbody>
-</table>
-<p>L'etiqueta es col·loca a l'interior de les superfícies plenes i a sobre de les vores; si dues etiquetes se solapen, la segona es desplaça a la dreta.</p>
-<h4 id="script-color_regionspy">Script <code>color_regions.py</code><a class="headerlink" href="#script-color_regionspy" title="Permanent link">&para;</a></h4>
-<p>És el mòdul que <code>render_pdf.py</code> fa servir per detectar i assignar colors. També es pot executar sol, per depurar:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>SDD-VD/scripts/color_regions.py<span class="w"> </span>&lt;components&gt;.pdf<span class="w"> </span>--tokens<span class="w"> </span><span class="nv">nom</span><span class="o">=</span><span class="c1">#HEX [nom=#HEX ...]</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Aspecte</th>
-<th>Detall</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Què detecta</td>
-<td>Regions contigües de color (superfícies i vores); ignora el blanc</td>
-</tr>
-<tr>
-<td>Com assigna el token</td>
-<td>El més proper, si cap canal RGB difereix en més de 6; si no, <code>SENSE_TOKEN</code></td>
-</tr>
-<tr>
-<td>Regions petites</td>
-<td>Es descarten les de menys de 300 px² a 72 dpi</td>
+<td>Forma, farciment, vora i mida</td>
+<td>Les <strong>copia</strong> de la línia de <code>ui_metrics.py</code> amb el mateix ID; si hi ha dues classes (<code>h-10/h-11</code>), les dues</td>
+<td>A ull, el model s'equivocava de manera sistemàtica</td>
 </tr>
 <tr>
 <td>Text</td>
-<td>Queda fora: els glifs són massa petits</td>
+<td>Color, pes i majúscules, llegits de la imatge</td>
+<td>És l'únic que no es mesura</td>
 </tr>
 <tr>
-<td>Sortida</td>
-<td>Per pàgina, una línia per token amb el nombre de regions i fins a 8 caixes <code>[x0,y0,x1,y1]</code> en px a 72 dpi (<code>+N</code> si n'hi ha més)</td>
+<td>Hex</td>
+<td>Només els de <code>ui_metrics.py</code>, mai els de les etiquetes de la imatge</td>
+<td>En una prova, el model va llegir malament una etiqueta petita i va inventar una discrepància</td>
 </tr>
 <tr>
-<td>Opció</td>
-<td><code>--dpi</code> (per defecte 72)</td>
+<td>Notes escrites</td>
+<td>S'assignen al component on apareixen; els colors pel nom es tradueixen amb l'etiqueta del <code>@theme</code></td>
+<td>"Morat viu" ha de ser el token amb aquesta etiqueta</td>
 </tr>
 <tr>
-<td>Codi 1</td>
-<td>Tokens o PDF no vàlids (<code>ERROR_COLORS</code>)</td>
+<td>Nota vs mesura</td>
+<td>Si no coincideixen, es llisten tots dos</td>
+<td>El manual de prova es contradiu: una nota diu 30 px de radi i el dibuix en fa 23</td>
+</tr>
+<tr>
+<td>Estats</td>
+<td>Hover, active, focus o disabled que no consten → "no especificat"</td>
+<td>No s'inventen</td>
+</tr>
+<tr>
+<td>Textos</td>
+<td>Els textos d'exemple dels components no cal transcriure'ls; s'ignoren només els aliens a la marca</td>
+<td>El model va aturar-se una vegada perquè la regla antiga era ambigua</td>
 </tr>
 </tbody>
 </table>
+<p>No es retallen ni es desen altres imatges: només les que genera <code>render_pdf.py</code>.</p>
+<p><strong>Què presenta.</strong> Una fitxa per component amb el seu ID, els avisos de color sense token, les discrepàncies i els estats no especificats. <strong>Para.</strong></p>
+<p><strong>Resultat de les proves.</strong> 3 de 3 execucions han copiat els <strong>23 components</strong> amb forma, farciment, vora i mida idèntics a les mesures, i totes han llistat les discrepàncies entre notes i dibuix. Hi ha errors de <strong>lectura d'imatge</strong> que canvien a cada execució:</p>
+<ul>
+<li>el color o el pes del text d'alguns components;</li>
+<li>errors de transcripció en textos petits;</li>
+<li>traduir el focus "morat viu" al seu token: ho ha fet en 2 de 3 execucions.</li>
+</ul>
+<h4 id="script-ui_metricspy">Script <code>ui_metrics.py</code><a class="headerlink" href="#script-ui_metricspy" title="Permanent link">&para;</a></h4>
+<p>Mesura cada component de les pàgines renderitzades i en dona una línia de text:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>C4 · x 315 y 344 · 194×43 (w-48/w-49 · h-11) · farciment cap · vora 1.5 purple-700 (border/border-2) · radi full (rounded-full)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Aspecte</th>
+<th>Detall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unitats</td>
+<td>Píxels del disseny (el PDF es renderitza a 144 dpi, el doble)</td>
+</tr>
+<tr>
+<td>Farciment i vora</td>
+<td>Token més proper o <code>SENSE_TOKEN #HEX</code>; una vora grisa es reporta com a vora, no com a farciment</td>
+</tr>
+<tr>
+<td>Gruix de vora</td>
+<td>Mesurat amb la cobertura parcial dels píxels, per no perdre les vores de 0,5-1 px</td>
+</tr>
+<tr>
+<td>Radi</td>
+<td>Ajustat a la corba de la cantonada; <code>full</code> si és una píndola</td>
+</tr>
+<tr>
+<td>Classes</td>
+<td>Escala de Tailwind v4, mai valors arbitraris; si la mida cau entre dues classes, dona les dues</td>
+</tr>
+<tr>
+<td>Niuament</td>
+<td><code>dins C2</code> si el component és dins d'un altre (per exemple, els camps dins del formulari)</td>
+</tr>
+<tr>
+<td>IDs</td>
+<td>Globals entre pàgines (C1…Cn), els mateixos que surten a la imatge</td>
+</tr>
+<tr>
+<td>Codis</td>
+<td>0 correcte · 1 <code>ERROR_METRIQUES</code> · 2 <code>SENSE_COMPONENTS</code></td>
+</tr>
+<tr>
+<td>Temps</td>
+<td>Uns 17 s per a dues pàgines</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Limitació coneguda.</strong> Si la imatge mateixa és ambigua, la mesura també ho és. En el manual de prova, les vores dels camps tenen un gris diferent a cada costat, i el script dona un gris sense token amb <code>border</code>. Això és correcte per construir, però no dona un hex exacte.</p>
+<h4 id="script-render_pdfpy">Script <code>render_pdf.py</code><a class="headerlink" href="#script-render_pdfpy" title="Permanent link">&para;</a></h4>
+<p>Renderitza cada pàgina a <code>pN.png</code> (144 dpi). Amb <code>--tokens</code>, escriu damunt de cada regió de color el seu token i, si forma part d'un component, l'ID de <code>ui_metrics.py</code> (<code>C3 purple-700</code>). Les etiquetes poden tapar una part del text: si una nota no es llegeix bé, l'agent pregunta. Codis: 0 correcte · 1 <code>ERROR_RENDER</code>.</p>
+<p><code>color_regions.py</code> és el mòdul de base que detecta regions de color i les assigna al token més proper (cap canal RGB a més de 6 de diferència). També es pot executar sol per depurar.</p>
+<h4 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h4>
+<p>Els scripts <code>brand_cards.py</code> i <code>ui_metrics.py</code> tenen tests (<code>unittest</code>) amb PDF sintètics, sense dades de client. Cada error trobat amb el PDF real té un test que el reprodueix.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>SDD-VD/scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>unittest
+</code></pre></div>
+<hr />
 <h3 id="part-3-seccions-i-actius">Part 3 — Seccions i actius<a class="headerlink" href="#part-3-seccions-i-actius" title="Permanent link">&para;</a></h3>
-<p><strong>Què fa.</strong> Fa l'inventari del que cal construir i del que ja tenim.</p>
-<p><strong>Per què.</strong> Detectar abans de BUILD què falta (imatges, logo, fonts, textos) evita parar a mig bloc.</p>
-<p><strong>Com funciona.</strong></p>
-<ol>
-<li>Numera les seccions de les imatges en ordre i descriu l'estructura de cadascuna.</li>
-<li>Per a cada imatge, logo, font i text necessari, indica si <strong>hi és</strong> o si <strong>falta</strong>.</li>
-</ol>
-<p><strong>Què presenta.</strong> Inventari de seccions i checklist d'actius (hi és / falta).</p>
-<p><strong>Criteri de sortida.</strong> Pau confirma l'inventari.</p>
+<p><strong>Què fa.</strong> L'inventari del que cal construir i del que ja tenim: numera les seccions de les imatges, en descriu l'estructura i, per a cada imatge, logo, font i text necessari, indica si <strong>hi és</strong> o <strong>falta</strong>.</p>
+<p><strong>Per què.</strong> Detectar abans de BUILD què falta evita parar a mig bloc.</p>
+<p><strong>Estat.</strong> Definida, però encara no s'ha provat.</p>
+<hr />
 <h3 id="criteris-de-verificacio-dintake">Criteris de verificació d'INTAKE<a class="headerlink" href="#criteris-de-verificacio-dintake" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2493,15 +2632,15 @@
 <tbody>
 <tr>
 <td>Entrades</td>
-<td>Les tres entrades existeixen; si no, l'agent para</td>
+<td>Existeixen totes; si no, l'agent para</td>
 </tr>
 <tr>
-<td>Extracció de text</td>
-<td>L'script torna codi 0; amb <code>SENSE_TEXT</code> o <code>ERROR_LECTURA</code> no s'avança</td>
+<td>Eines</td>
+<td>Només les ordres del flux; cap lectura alternativa del PDF ni fitxers propis</td>
 </tr>
 <tr>
 <td>Valors</td>
-<td>Tots vénen del PDF; cap color, font o mida estimats</td>
+<td>Venen dels scripts o del PDF; cap color, font o mida estimats a ull</td>
 </tr>
 <tr>
 <td>Discrepàncies</td>
@@ -2513,25 +2652,30 @@
 </tr>
 <tr>
 <td>Estats absents</td>
-<td>Marcats "no especificat", no inventats</td>
+<td>"no especificat", no inventats</td>
 </tr>
 <tr>
 <td>Aprovació</td>
-<td>Pau ha confirmat cada part abans de passar a la següent</td>
+<td>Pau confirma cada part abans de la següent</td>
 </tr>
 <tr>
 <td>Resultat</td>
-<td>Desat en un fitxer curt i estructurat, sense explicacions; BUILD el llegeix</td>
+<td><code>intake-result.md</code>, curt i estructurat; BUILD el llegeix</td>
 </tr>
 <tr>
 <td>Ordre</td>
-<td>Cap <code>index.html</code> abans de la confirmació de les tres parts</td>
+<td>Cap <code>index.html</code> abans de les tres confirmacions</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Pendent</p>
-<p>Falta executar la Part 1 amb Qwen i estabilitzar la Part 2 (11 de 13 components correctes en la millor execució, resultats inestables entre execucions).</p>
+<ul>
+<li>Provar la Part 3.</li>
+<li>Millorar la lectura del text dels components (color i pes).</li>
+<li>Provar el flux amb un manual de marca diferent: els scripts s'han validat amb un sol format de manual.</li>
+<li>Definir què es desa exactament a <code>intake-result.md</code>.</li>
+</ul>
 </div>
 
 
