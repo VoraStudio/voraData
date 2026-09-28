@@ -3,7 +3,7 @@
 > Les regles amb què l'agent treballa una landing, fase a fase: què llegeix, quan para i qui aprova.
 
 !!! warning "En validació"
-    Aquest workflow és una **proposta** i encara es valida. La Part 1 d'INTAKE (marca i tokens) no s'ha executat encara amb Qwen; la Part 2 (components UI) és la v1 i, en la millor execució, 11 de 13 components han sortit correctes, amb resultats inestables entre execucions. Res d'això és definitiu.
+    Aquest workflow és una **proposta** i encara es valida. Res d'això és definitiu.
 
 ## Idea principal
 

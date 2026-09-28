@@ -57,7 +57,7 @@ graph LR
 ## INTAKE (landing)
 
 !!! warning "En validació"
-    Aquest INTAKE és la **proposta** (`SDD-VD/intake.proposta.md`). Les Parts 1 i 2 s'han provat amb el model local (Qwen3.8 27B al DGX Spark) en execucions repetides; la Part 3 encara no. Els resultats d'aquesta pàgina són d'un sol manual de marca de prova.
+    Aquest INTAKE és la **proposta** (`SDD-VD/intake.proposta.md`) i encara es valida. Res d'aquesta pàgina és definitiu.
 
 INTAKE és la primera fase del flux de landings: converteix el disseny i la marca de VoraStudio en **dades estructurades i confirmades** abans d'escriure una línia d'HTML. Es fa en tres parts, i després de cada una l'agent **para i espera que Pau confirmi**.
 
@@ -67,9 +67,9 @@ Les normes que envolten la fase són a [Normes del workflow](workflow/index.md) 
 
 ### La idea clau: el que es pot mesurar, ho mesura un script
 
-A les primeres proves, el model **llegia** bé els valors però fallava en tot el que és **comparar o mesurar**: aparellava colors pel nom, veia contradiccions que no existien, estimava mides a ull i confonia vores fines. A més, cada execució fallava en una cosa diferent.
+Un model de llenguatge **llegeix** bé els valors, però no és fiable quan ha de **comparar o mesurar**: pot aparellar colors pel nom, veure contradiccions que no existeixen, estimar mides a ull o confondre una vora fina amb un farciment. I no s'equivoca sempre igual, cosa que fa impossible corregir-ho amb més instruccions.
 
-La solució que ha funcionat és repartir la feina:
+Per això la feina es reparteix:
 
 | Qui | Què fa | Per què |
 |---|---|---|
@@ -109,29 +109,27 @@ python SDD-VD/scripts/extract_pdf.py SDD-VD/sdd-local/brand/brand.pdf   # fonts 
 
 | Pas | Què fa l'agent | Per què |
 |---|---|---|
-| Colors | Copia la taula, els tokens i els avisos de `brand_cards.py`; no recalcula ni compara | El model comparant colors fallava cada vegada d'una manera diferent |
+| Colors | Copia la taula, els tokens i els avisos de `brand_cards.py`; no recalcula ni compara | La comparació la fa l'script, que dona sempre el mateix resultat |
 | `@theme` | Un token per cada variable del manual, amb l'etiqueta del PDF com a comentari (`/* MORAT VIU */`) | L'etiqueta permet traduir després notes com "focus en morat viu" |
 | Colors sense token | No entren al `@theme`; es llisten a part | No es pot inventar un nom de token |
-| Fonts | Família i pesos **tal com estan escrits**, errates incloses; sense pesos → "no especificat" | El model tendia a "corregir" errates i a afegir un Regular per defecte |
-| Rols i escala | Només si el PDF els escriu; si no, "no consta" | En una prova, el model va inventar rols (títol, cos) que el PDF no deia |
+| Fonts | Família i pesos **tal com estan escrits**, errates incloses; sense pesos → "no especificat" | Corregir una errata o afegir un Regular per defecte és canviar el que diu el client sense que ho sàpiga |
+| Rols i escala | Només si el PDF els escriu; si no, "no consta" | Si el PDF no diu quina font és per a títols, afirmar-ho seria inventar |
 | Discrepàncies | Es llisten totes; no se'n tria cap | Decideix Pau |
 
 **Què presenta.** El `@theme` en línia, fonts i pesos, l'escala o "no consta", els avisos de color copiats i les discrepàncies de tipografia. **Para.**
-
-**Resultat de les proves.** Amb aquest flux, 3 de 3 execucions han donat els colors idèntics i correctes: els tokens, els colors sense token a part i els avisos copiats literalment. A la tipografia, 1 de 3 va corregir una errata sense avisar.
 
 #### Script `brand_cards.py`
 
 Llegeix les **targetes de color** del manual (rectangles de color amb el nom i els valors a dins) i les compara de manera determinista.
 
-**Per què agrupa per targeta i no llegeix el text en ordre.** En un manual real, una targeta alta tenia el nom a dalt i els valors 470 px més avall. Llegit en ordre, els valors quedaven sense nom i el model n'endevinava el propietari. L'script assigna cada línia de text al rectangle que la conté.
+**Per què agrupa per targeta i no llegeix el text en ordre.** Quan una targeta és alta, el nom queda a dalt i els valors molt més avall. Llegit en ordre, els valors poden quedar sense nom i el model n'hauria d'endevinar el propietari. L'script assigna cada línia de text al rectangle que la conté.
 
 | Aspecte | Detall |
 |---|---|
 | Per targeta | Nom, HEX, RGB, CMYK i **color real** del rectangle |
 | Tokens | Llegeix les variables (`--nom #HEX`) i la seva etiqueta |
 | Avisos que calcula | HEX ≠ RGB · HEX o RGB ≠ color real · valor malmès · mateix HEX a dues targetes · mateix nom amb HEX diferents · mateix HEX amb noms diferents · color sense token · token sense targeta |
-| Regla de creuament | Sempre pel HEX, mai pel nom: el manual de prova feia servir el mateix nom per a colors diferents en pàgines diferents |
+| Regla de creuament | Sempre pel HEX, mai pel nom: un manual pot fer servir el mateix nom per a colors diferents en pàgines diferents |
 | Sense targetes | `SENSE_TARGETES` i codi 2: l'agent para, no treu els colors a mà |
 | Codis | 0 correcte · 1 `ERROR_LECTURA` · 2 `SENSE_TARGETES` |
 
@@ -151,7 +149,7 @@ Extreu el text del PDF pàgina per pàgina (`pypdf`). A la Part 1 només s'usa p
 
 **Què fa.** Descriu cada component (botons, formularis, targetes, etiquetes, pestanyes) de manera que BUILD el pugui reproduir **fidel a l'original**: forma, farciment, vora, text i mida.
 
-**Per què necessita scripts.** El PDF de components és una imatge. En una prova sense mesures, el model va encertar els colors grans i els radis, però va fer els botons de 48 px quan fan 42, les etiquetes de 32 quan fan 42, i va confondre una vora grisa amb un farciment. Construït així, el resultat es veuria diferent del disseny.
+**Per què necessita scripts.** El PDF de components és una imatge. Mirant-la, un model pot encertar colors grans i radis, però no mesura: una diferència de pocs píxels en l'alçada d'un botó o una vora de mig píxel es perden a ull. Construït així, el resultat es veuria diferent del disseny.
 
 **Com funciona.**
 
@@ -165,23 +163,17 @@ Els tokens són els que Pau ha confirmat a la Part 1.
 | Pas | Què fa l'agent | Per què |
 |---|---|---|
 | Mirar les imatges | Cada component porta una etiqueta amb un ID (`C3`) i el seu token | Per saber quin component és cada línia de mesures |
-| Forma, farciment, vora i mida | Les **copia** de la línia de `ui_metrics.py` amb el mateix ID; si hi ha dues classes (`h-10/h-11`), les dues | A ull, el model s'equivocava de manera sistemàtica |
+| Forma, farciment, vora i mida | Les **copia** de la línia de `ui_metrics.py` amb el mateix ID; si hi ha dues classes (`h-10/h-11`), les dues | Són mesures, no s'estimen a ull |
 | Text | Color, pes i majúscules, llegits de la imatge | És l'únic que no es mesura |
-| Hex | Només els de `ui_metrics.py`, mai els de les etiquetes de la imatge | En una prova, el model va llegir malament una etiqueta petita i va inventar una discrepància |
+| Hex | Només els de `ui_metrics.py`, mai els de les etiquetes de la imatge | Les etiquetes de la imatge són petites i es poden llegir malament; la sortida de text no |
 | Notes escrites | S'assignen al component on apareixen; els colors pel nom es tradueixen amb l'etiqueta del `@theme` | "Morat viu" ha de ser el token amb aquesta etiqueta |
-| Nota vs mesura | Si no coincideixen, es llisten tots dos | El manual de prova es contradiu: una nota diu 30 px de radi i el dibuix en fa 23 |
+| Nota vs mesura | Si no coincideixen, es llisten tots dos | Un manual es pot contradir (una nota diu un radi i el dibuix en fa un altre); decideix Pau |
 | Estats | Hover, active, focus o disabled que no consten → "no especificat" | No s'inventen |
-| Textos | Els textos d'exemple dels components no cal transcriure'ls; s'ignoren només els aliens a la marca | El model va aturar-se una vegada perquè la regla antiga era ambigua |
+| Textos | Els textos d'exemple dels components no cal transcriure'ls; s'ignoren només els aliens a la marca | El nom de la marca és el del client, no el de VoraData: no és motiu per ignorar res |
 
 No es retallen ni es desen altres imatges: només les que genera `render_pdf.py`.
 
 **Què presenta.** Una fitxa per component amb el seu ID, els avisos de color sense token, les discrepàncies i els estats no especificats. **Para.**
-
-**Resultat de les proves.** 3 de 3 execucions han copiat els **23 components** amb forma, farciment, vora i mida idèntics a les mesures, i totes han llistat les discrepàncies entre notes i dibuix. Hi ha errors de **lectura d'imatge** que canvien a cada execució:
-
-- el color o el pes del text d'alguns components;
-- errors de transcripció en textos petits;
-- traduir el focus "morat viu" al seu token: ho ha fet en 2 de 3 execucions.
 
 #### Script `ui_metrics.py`
 
@@ -201,9 +193,8 @@ C4 · x 315 y 344 · 194×43 (w-48/w-49 · h-11) · farciment cap · vora 1.5 pu
 | Niuament | `dins C2` si el component és dins d'un altre (per exemple, els camps dins del formulari) |
 | IDs | Globals entre pàgines (C1…Cn), els mateixos que surten a la imatge |
 | Codis | 0 correcte · 1 `ERROR_METRIQUES` · 2 `SENSE_COMPONENTS` |
-| Temps | Uns 17 s per a dues pàgines |
 
-**Limitació coneguda.** Si la imatge mateixa és ambigua, la mesura també ho és. En el manual de prova, les vores dels camps tenen un gris diferent a cada costat, i el script dona un gris sense token amb `border`. Això és correcte per construir, però no dona un hex exacte.
+**Limitació.** Si la imatge mateixa és ambigua (per exemple, una vora amb un gris diferent a cada costat), la mesura també ho és: l'script dona el gris sense token i la classe (`border`), però no un hex exacte.
 
 #### Script `render_pdf.py`
 
@@ -213,7 +204,7 @@ Renderitza cada pàgina a `pN.png` (144 dpi). Amb `--tokens`, escriu damunt de c
 
 #### Tests
 
-Els scripts `brand_cards.py` i `ui_metrics.py` tenen tests (`unittest`) amb PDF sintètics, sense dades de client. Cada error trobat amb el PDF real té un test que el reprodueix.
+Els scripts `brand_cards.py` i `ui_metrics.py` tenen tests (`unittest`) amb PDF sintètics, sense dades de client.
 
 ```bash
 cd SDD-VD/scripts && python -m unittest
@@ -226,8 +217,6 @@ cd SDD-VD/scripts && python -m unittest
 **Què fa.** L'inventari del que cal construir i del que ja tenim: numera les seccions de les imatges, en descriu l'estructura i, per a cada imatge, logo, font i text necessari, indica si **hi és** o **falta**.
 
 **Per què.** Detectar abans de BUILD què falta evita parar a mig bloc.
-
-**Estat.** Definida, però encara no s'ha provat.
 
 ---
 
@@ -246,7 +235,5 @@ cd SDD-VD/scripts && python -m unittest
 | Ordre | Cap `index.html` abans de les tres confirmacions |
 
 !!! note "Pendent"
-    - Provar la Part 3.
-    - Millorar la lectura del text dels components (color i pes).
-    - Provar el flux amb un manual de marca diferent: els scripts s'han validat amb un sol format de manual.
+    - Els scripts llegeixen manuals amb targetes de color i components dibuixats; un format diferent pot necessitar ampliar-los.
     - Definir què es desa exactament a `intake-result.md`.

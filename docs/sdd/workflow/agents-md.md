@@ -3,13 +3,13 @@
 > `AGENTS.md` deixa de ser un manual llarg i passa a ser un **router**: poques regles dures a dins i, per a cada fase, quins fitxers cal llegir abans d'actuar.
 
 !!! warning "En validació"
-    Aquesta pàgina documenta la **proposta** (`SDD-VD/AGENTS.proposta.md`) secció per secció, amb el que s'ha comprovat amb el model local (Qwen3.8 27B al DGX Spark). Les seccions 7, 8 i 9 encara no estan tancades.
+    Aquesta pàgina documenta la **proposta** (`SDD-VD/AGENTS.proposta.md`) secció per secció. Les seccions 7, 8 i 9 encara no estan tancades.
 
 ## Per què un router
 
 L'`AGENTS.md` antic és un sol fitxer llarg: identitat, stack, normes de codi, hooks, automatitzacions, lliurament, LOPD i mapa del repositori. L'eina el carrega **a l'inici de cada sessió**, tant si la tasca el necessita com si no.
 
-Ho hem vist a les proves: el model sabia que treballava per a VoraData sense que ningú li ho digués al prompt, perquè OpenCode li injecta l'`AGENTS.md` de l'arrel. Tot el que hi posem, el model ho llegeix sempre.
+OpenCode injecta l'`AGENTS.md` de l'arrel al model a cada sessió: tot el que hi posem, el model ho llegeix sempre.
 
 | Fitxer llarg | Router curt |
 |---|---|
@@ -71,8 +71,8 @@ Ho hem vist a les proves: el model sabia que treballava per a VoraData sense que
 
 **Per què inline:** una regla es queda aquí si oblidar-la costa car i no es pot desfer fàcilment (un push, una dada de client al repo públic). Si fos només un enllaç, el model podria no anar-lo a buscar.
 
-!!! note "Què hem après a les proves"
-    Escriure una regla no garanteix que el model la compleixi. A les primeres proves d'INTAKE, Qwen va llegir el PDF amb eines que el flux prohibia i va desar imatges que no se li havien demanat. Va deixar de fer-ho quan la regla va passar a ser **concreta** (quines eines no pot fer servir, quins fitxers no pot escriure). Una regla genèrica ("no ho llegeixis amb cap altra eina") no va ser prou.
+!!! note "Regles concretes"
+    Escriure una regla no garanteix que el model la compleixi. Una regla genèrica ("no ho llegeixis amb cap altra eina") deixa marge; una de concreta (quines eines no pot fer servir, quins fitxers no pot escriure) no.
 
 ## 4. Idiomes
 
@@ -101,26 +101,26 @@ Cada fase té la mateixa forma, perquè el model la reconegui sense reinterpreta
 
 ### Fase 1 · INTAKE
 
-| Camp | A la proposta | Com ha de quedar (segons les proves) |
+| Camp | A la proposta | Com ha de quedar |
 |---|---|---|
 | Quan | Projecte nou amb disseny i marca, sense tokens confirmats | Igual |
 | Llegeix | `docs/sdd/landing/intake.md` + `design-system.md` | **`SDD-VD/intake.proposta.md`** (el flux nou) |
 | Fes | Extreure tokens (colors, fonts, espaiat) i inventari d'actius | Les 3 parts d'INTAKE, cadascuna amb parada |
 | Acaba quan | Pau confirma tokens i inventari | Pau confirma les 3 parts i el resultat és a `intake-result.md` |
 
-**Què hem aconseguit a INTAKE i per què:**
+**Com treballa INTAKE i per què:**
 
-| Part | Problema detectat | Solució | Resultat amb Qwen |
-|---|---|---|---|
-| 1 · Colors | El model llegia bé els valors però els **comparava** malament: aparellava colors pel nom, inventava discrepàncies i cada execució fallava en una cosa diferent | Script `brand_cards.py`: agrupa el text per targeta de color, calcula totes les discrepàncies i el model només les copia | 3 de 3 execucions idèntiques i correctes |
-| 1 · Tipografia | Inventava rols (títol, cos) i pesos que el PDF no deia | Regles concretes: pesos tal com estan escrits, "no consta" si no hi ha rols ni escala | 3 de 3 sense inventar; 1 de 3 va corregir una errata en silenci |
-| 2 · Components | L'ull del model no mesura: botons, camps i etiquetes amb mides errònies, vores fines mal llegides | Script `ui_metrics.py`: mesura cada component (mida, farciment, vora, radi) i dona la classe de Tailwind; el model la copia | 23 de 23 components amb l'estil fidel |
-| 2 · Notes vs dibuix | El manual es contradiu (una nota diu 30px i el dibuix fa 23) | Regla: llistar els dos valors; decideix Pau | El model ho llista i no tria |
+| Part | Risc | Com es resol |
+|---|---|---|
+| 1 · Colors | Un model compara malament: aparella colors pel nom o veu contradiccions que no hi són | Script `brand_cards.py`: agrupa el text per targeta de color i calcula les discrepàncies; el model només les copia |
+| 1 · Tipografia | Inventar rols (títol, cos) o pesos que el PDF no diu | Pesos tal com estan escrits; "no consta" si no hi ha rols ni escala |
+| 2 · Components | L'ull no mesura: mides i vores fines s'estimen malament | Script `ui_metrics.py`: mesura cada component i dona la classe de Tailwind; el model la copia |
+| 2 · Notes vs dibuix | El manual es pot contradir | Es llisten els dos valors; decideix Pau |
+
+Detall complet a [Fases → INTAKE](../fases.md#intake-landing).
 
 !!! tip "El patró que ha funcionat"
-    El que es pot **mesurar** (colors, mides, vores) ho fa un script, amb tests; el model només copia i presenta. El que és **judici** (què vol dir una nota, com es presenta a Pau) ho fa el model. Cada vegada que hem deixat una comparació a mans del model, ha fallat de manera diferent a cada execució.
-
-**Encara falla (lectura d'imatge):** textos petits transcrits amb errors i una nota amb un color pel nom ("morat viu") que el model no tradueix al token. La Part 3 (seccions i actius) no s'ha provat.
+    El que es pot **mesurar** (colors, mides, vores) ho fa un script, amb tests; el model només copia i presenta. El que és **judici** (què vol dir una nota, com es presenta a Pau) ho fa el model.
 
 ### Fase 2 · BUILD
 
@@ -131,7 +131,7 @@ Cada fase té la mateixa forma, perquè el model la reconegui sense reinterpreta
 | Fes | Construir per blocs seguint el protocol HITL (secció 7); recursos a `docs/presets/landing/recursos.md` si cal |
 | Acaba quan | Pau aprova el BUILD |
 
-**Per què:** construir per blocs amb aturades evita arribar al final amb una pàgina sencera que no s'assembla al disseny. Encara no s'ha provat amb el flux nou.
+**Per què:** construir per blocs amb aturades evita arribar al final amb una pàgina sencera que no s'assembla al disseny.
 
 ### Fase 3 · DELIVER
 
@@ -153,13 +153,13 @@ Cada fase té la mateixa forma, perquè el model la reconegui sense reinterpreta
 
 **Per què inline:** és la regla que més es trenca en construcció. Si el model no para, l'humà perd el control del que s'està fent.
 
-**Què sabem:** a INTAKE, les aturades han funcionat en totes les execucions vàlides. En benchmarks anteriors de BUILD, el model es va saltar aturades entre blocs. Per això cal definir un format de parada concret.
+Per això cal definir un format de parada concret, que el model no pugui interpretar.
 
 ## 8. Memòria i persistència
 
 **Contingut (esbós):** mode hybrid (Engram entre sessions + OpenSpec en fitxers de git). A l'inici: llegir aquest fitxer, identificar el tipus de projecte, confirmar l'abast.
 
-**Què hem après:** durant les proves la memòria **contamina**. En una prova, el model va consultar Engram pel seu compte i la prova es va haver de descartar. Les proves fiables s'han fet amb Engram, context7 i codegraph desactivats.
+**Per què importa:** la memòria entre sessions pot portar context d'altres projectes. Quan es valida el flux, s'executa amb la memòria desactivada.
 
 ## 9. Fora d'aquest fitxer
 
