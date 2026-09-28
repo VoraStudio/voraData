@@ -226,9 +226,10 @@ python SDD-VD/scripts/split_sections.py SDD-VD/sdd-local/brand/design.pdf SDD-VD
 
 | Pas | Què fa | Per què |
 |---|---|---|
-| Tallar | L'**script** crea `S1.png`, `S2.png`... i en treu les dades de cada secció | On comença i acaba una secció es calcula, no s'endevina |
-| Llegir | El model mira les seccions **una a una** i en fa una fitxa: nom, fons, disposició i elements en ordre | Amb totes alhora barreja elements entre seccions |
-| Construir | `SDD-VD/sdd-local/skeleton/index.html`, una `<section id="sN">` per fitxa amb `min-h-dvh` | `min-h-dvh` i no `h-screen`: si el contingut no hi cap (mòbil), creix en lloc de desbordar; `dvh` descompta la barra del navegador a iOS |
+| Tallar | L'**script** crea `S1.png`, `S2.png`... i l'arbre de disposició de cada secció | On comença i acaba una secció es calcula, no s'endevina |
+| Llegir | El model mira les seccions **una a una** i en fa una fitxa: nom i el que només es veu a la imatge (icones, un menú) | Amb totes alhora barreja elements entre seccions |
+| Disposició | El model **copia** l'arbre: `pt`/`pb`, `mt` entre elements, columnes en dotzens, `gap-x` | A ull, un model centra blocs, inventa marges i desplaça elements desenes de píxels |
+| Construir | `SDD-VD/sdd-local/skeleton/index.html`, una `<section id="sN">` per secció amb `min-h-dvh` | `min-h-dvh` i no `h-screen`: si el contingut no hi cap (mòbil), creix en lloc de desbordar; `dvh` descompta la barra del navegador a iOS |
 | Textos | Literals de la sortida de l'script, errates incloses; mida, la classe que dona l'script | El text és del client |
 | Colors | Només tokens del `@theme`; un color `SENSE_TOKEN` fa servir el token més proper i s'avisa | Cap hex nou entra a l'HTML sense que Pau ho sàpiga |
 | Imatges | `<div class="bg-[#d9d9d9] aspect-[w/h]">` amb la proporció de l'script | Són els **únics** valors arbitraris permesos: el placeholder ha d'ocupar el mateix espai que la imatge |
@@ -239,15 +240,23 @@ python SDD-VD/scripts/split_sections.py SDD-VD/sdd-local/brand/design.pdf SDD-VD
 
 #### Script `split_sections.py`
 
+Ha de servir per a **qualsevol disseny**, no només per al format d'una eina. Per això busca les seccions per capes, de la més fiable a la més bàsica, i mesura sobre el que **es veu**:
+
 | Aspecte | Detall |
 |---|---|
-| Com troba les seccions | Cada fons és un rectangle de l'amplada de la pàgina; encadenats han de cobrir la pàgina de dalt a baix sense forats. Les bandes decoratives que trepitgen dues seccions s'ignoren |
-| Per secció | Mida, fons (token), imatges amb posició i proporció (`aspect-[w/h]`, "de fons" si la cobreix), textos amb font, classe de mida i color |
-| Color del text | **Mesurat als píxels**, no llegit del PDF: el programa de disseny pot exportar un títol com a imatge amb una capa de text invisible d'un altre color |
-| Text sobre una foto | "sobre imatge": el fons no és uniforme i la mesura no seria fiable; el model el llegeix de la imatge |
-| Imatges que són text | Si una imatge queda tapada per línies de text, és un títol exportat com a imatge i no es llista com a placeholder |
-| Al final | Llista de colors del disseny que no són cap token, amb on surten |
-| Codis | 0 correcte · 1 `ERROR_LECTURA` · 2 `SENSE_SECCIONS` (l'agent para) |
+| Talls | 1) `--cuts` donats per Pau · 2) una secció per pàgina · 3) fons vectorials de l'amplada de la pàgina que la cobreixen sense forats · 4) píxels: on canvia el color dels marges (dues seccions seguides del mateix color surten juntes) |
+| Elements | De la capa de text i els dibuixos del PDF si en té; si no, dels píxels (XY-cut sobre el que no és fons) |
+| Disposició | XY-cut: files de dalt a baix, columnes dins de cada fila, i el que hi ha dins de cada caixa o imatge |
+| Distàncies | `pt`, `pb`, `mt`, `gap-x` i `pl` a l'escala de Tailwind; si cau entre dues classes, dona les dues |
+| Horitzontal | `centrat`, o la `x` d'inici i l'amplada en dotzens |
+| Textos | Línies del mateix estil unides en blocs; classe de mida i interlineat (`leading-*`) |
+| Colors | **Mesurats als píxels**: el fons (marges de la secció), les caixes i el text. Un programa de disseny pot deixar capes invisibles o màscares amb un altre color |
+| Radis | Mesurats a la cantonada dels píxels: cada eina arrodoneix d'una manera (corbes, retalls) |
+| Màscares | Una "caixa" amb l'interior no uniforme és una màscara: si és dins d'una imatge, en marca l'àrea visible |
+| Imatges | Proporció per al placeholder; "de fons" si cobreix la secció; "tallada pel marge" (carrusel); "travessa el tall" (una sola imatge entre dues seccions) |
+| Text sobre una foto | "sobre imatge": la mesura no és fiable; el model el llegeix de la imatge |
+| Llindars | Proporcionals a l'amplada del disseny, no ajustats a un PDF concret |
+| Codis | 0 correcte · 1 `ERROR_LECTURA` · 2 `SENSE_SECCIONS` (l'agent demana els talls a Pau) |
 
 ---
 

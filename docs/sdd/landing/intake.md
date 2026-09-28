@@ -1,127 +1,90 @@
-# INTAKE — Template de sessió
+# INTAKE — Com es prepara i s'executa
 
-> Omple aquest formulari en 5 minuts abans d'obrir OpenCode. Copia el bloc i enganxa'l com a primer prompt de sessió.
+> INTAKE converteix els fitxers que envia VoraStudio en dades confirmades i en un esquelet HTML, abans de construir res. Ja no s'omple cap formulari a mà: els valors surten dels PDF, mesurats per scripts.
 
----
-
-## Com usar-lo
-
-1. Copia el template de sota
-2. Omple els camps — deixa `?` als que no saps
-3. Enganxa'l com a **primer missatge** a OpenCode
-4. L'agent llegirà `AGENT.md` + el teu INTAKE i estarà llest per construir
+!!! warning "En validació"
+    Aquest és el flux de la **proposta** (`SDD-VD/intake.proposta.md`). El detall de cada part, amb el per què de cada pas, és a [Fases → INTAKE](../fases.md#intake-landing).
 
 ---
 
-## Template — Landing Page
+## 1. Què ha d'arribar
 
-```
-INTAKE: Landing Page
-Client: [nom client]
-Projecte: [nom web / domini]
+Els fitxers del client van a `SDD-VD/sdd-local/brand/`, que és **fora de git**: són dades de client i el repositori és públic.
 
-— IDENTITAT VISUAL —
-Color primari:   #______
-Color secundari: #______
-Color neutre:    #______ (fons clar) / #______ (fons fosc)
-Color accent:    #______
+| Fitxer | Què és | Part que el fa servir |
+|---|---|---|
+| `brand.pdf` | Manual de marca: colors, fonts, escala tipogràfica | Part 1 |
+| `ui.pdf` | Components: botons, formularis, etiquetes, estats | Part 2 |
+| `design.pdf` | La landing sencera, en una pàgina llarga o una pàgina per secció | Part 3 |
 
-Font heading:  [nom font] — ex: Playfair Display, Syne, Space Grotesk
-Font body:     [nom font] — ex: DM Sans, Nunito, Lato
-(Si no especificades, triar parella a fontpair.co)
+Si en falta un, l'agent el demana i para.
 
-Estil visual: [minimalista / editorial / bold / orgànic / corporatiu / tècnic]
+Els projectes de VoraStudio també porten `fonts/`, `logos/` i vídeos. Encara no entren al flux (vegeu *Pendent*).
 
-Webs de referència (2–3 que el client admira):
-- [url1]
-- [url2]
-- [url3]
+## 2. Com s'arrenca
 
-— ESTRUCTURA —
-Seccions (en ordre):
-- Hero: [descripció breu — ex: titular + subtítol + CTA]
-- [secció 2]
-- [secció 3]
-- [secció 4]
-- Footer
+Obre OpenCode a l'arrel del repositori i demana la fase:
 
-Animacions: [cap / AOS reveals / GSAP hero / scroll horitzontal]
-Idioma del contingut: [català / castellà / anglès]
-
-Objectiu de conversió principal: [reservar demo / comprar / deixar email / trucar]
-Tracking: [GA4 / Meta Pixel / cap]
-
-— CONTINGUT —
-Copy proporcionat pel client: [sí / no / parcial]
-Imatges: [sí (WebP) / no (usar placeholders) / generades amb IA]
-Logo: [sí / no]
-
-— NOTES —
-[Qualsevol restricció, preferència o context addicional]
+```text
+Fase INTAKE de la landing. Llegeix SDD-VD/intake.proposta.md i executa la Part 1.
 ```
 
----
+L'agent fa **una part cada vegada** i para. Quan confirmes, li demanes la següent.
 
-## Template — SaaS UI
+## 3. Les tres parts
 
-```
-INTAKE: SaaS Application
-Client: [nom client]
-Projecte: [nom app]
-Descripció: [1–2 frases de què fa l'app]
-
-— IDENTITAT VISUAL —
-Color primari:   #______
-Color secundari: #______
-Color neutre bg: #______
-Color accent:    #______
-
-Font heading:  [nom font]
-Font body:     [nom font]
-
-Estil visual: [dashboard tècnic / SaaS modern / minimalista / bold]
-
-Webs de referència:
-- [url1]
-- [url2]
-
-— ARQUITECTURA —
-Tipus d'usuaris: [ex: admin + client final]
-Pàgines principals:
-- [pàgina 1: descripció]
-- [pàgina 2: descripció]
-- [pàgina 3: descripció]
-
-Backend: [Symfony / cap / ja existent]
-Auth: [sí / no / ja existent]
-Rol agent en aquesta sessió: [BUILD complet / només UI / components específics]
-
-— NOTES —
-[Restriccions tècniques, integracions, context addicional]
+```mermaid
+graph LR
+    P1[Part 1: marca i tokens] -->|Pau confirma| P2[Part 2: components UI]
+    P2 -->|Pau confirma| P3[Part 3: esquelet de seccions]
+    P3 -->|Pau revisa l'HTML| R[intake-result.md + esquelet]
 ```
 
----
+| Part | Script | Què surt | Què fas tu |
+|---|---|---|---|
+| 1 · Marca | `brand_cards.py` + `extract_pdf.py` | El `@theme` (colors i fonts), els pesos tal com estan escrits i els avisos del manual | Decidir cada contradicció del manual i confirmar el `@theme` |
+| 2 · Components | `render_pdf.py` + `ui_metrics.py` | Una fitxa per component (mida, farciment, vora, radi) amb classes de Tailwind | Decidir quan una nota diu una mida i el dibuix una altra |
+| 3 · Esquelet | `split_sections.py` | `sdd-local/skeleton/index.html`: una `<section>` per secció amb textos reals, tokens i placeholders | Revisar-lo al navegador |
 
-## Extracció de tokens des de Figma (versió gratuïta)
+**La regla de fons:** el que es pot mesurar (colors, mides, distàncies) ho mesura un script amb tests. El model només copia la sortida i la presenta; no estima res a ull.
 
-Figma no exporta un `@theme {}` directament, però el pla gratuït sí exposa els valors exactes sense eines de tercers:
+## 4. Part 3: com es talla i es mesura el disseny
 
-1. **Colors**: selecciona qualsevol element → panell dret "Fill" → copia el hex directament (icona de pipeta o clic al valor)
-2. **Fonts**: selecciona un element de text → panell dret "Text" → nom de la font i pes hi apareixen
-3. **Espaiat/mides**: amb l'element seleccionat, el panell "Design" mostra amplada/alçada i el gap en Auto Layout — útil per calibrar les proporcions dels tokens d'espaiat
-4. Exporta captures (PNG) per seccions amb l'eina d'Export del panell dret quan calgui passar la imatge de referència a l'agent
+`split_sections.py` serveix per a qualsevol origen (Canva, Figma, un PDF aplanat):
 
-!!! tip "Si el client no té colors definitius"
-    Passa els hex aproximats igualment. L'agent generarà el `@theme {}` amb ells i podràs ajustar. Millor tokens aproximats que cap token.
+| Com arriba el disseny | Com es talla |
+|---|---|
+| Diverses pàgines | Cada pàgina és una secció |
+| Una pàgina llarga amb vectors | Pels fons de l'amplada de la pàgina |
+| Una pàgina aplanada (imatge) | Pels píxels: on canvia el color dels marges |
+| Res de l'anterior funciona | `SENSE_SECCIONS`: Pau dona les altures dels talls amb `--cuts` |
 
----
+De cada secció en treu l'**arbre de disposició**, i el model el copia a l'HTML:
 
-## Primer prompt recomanat
-
-Després del template INTAKE, afegeix:
-
+```text
+S1 · 1440×800 · fons imatge de fons · placeholder bg-[#d9d9d9]
+  pt-12 (48) · pb-24 (96)
+  caixa · 220×40 (w-55 · h-10) · #FFFFFF paper · rounded-full · centrat
+  ↓ mt-40 (160)
+  text · Serif-Regular 44.0 (text-5xl) · 2 línies · leading-none · "Títol de l'hero" / "en dues línies" · centrat
 ```
-Llegeix AGENT.md. Inicia fase INTAKE amb la informació anterior.
-Extreu els design tokens → genera el @theme {} de Tailwind v4.
-Confirma la paleta i fonts abans de construir res.
-```
+
+- **Distàncies:** `pt`, `pb`, `mt` i `gap-x` com a classes de Tailwind.
+- **Columnes:** amplades en dotzens (`md:col-span-N`).
+- **Textos:** literals, amb la classe de mida i l'interlineat.
+- **Colors i radis:** els que **es veuen**, mesurats als píxels. Si un color no és cap token, surt `SENSE_TOKEN` amb el més proper.
+- **Imatges:** proporció per al placeholder; avís si és un carrusel (tallada pel marge) o si travessa dues seccions.
+
+Cada secció fa com a mínim una pantalla (`min-h-dvh`).
+
+## 5. Què queda al final
+
+- `SDD-VD/sdd-local/intake-result.md`: el `@theme`, les regles de components i les decisions de Pau.
+- `SDD-VD/sdd-local/skeleton/index.html`: l'esquelet del qual parteix BUILD.
+
+Cap `index.html` definitiu abans que Pau confirmi les tres parts.
+
+!!! note "Pendent"
+    - Fonts i logos com a entrades: comprovar que hi ha els fitxers que demana el disseny.
+    - El contingut exacte d'`intake-result.md`.
+    - Flux SaaS: sense definir.
