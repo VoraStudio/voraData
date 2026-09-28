@@ -2312,14 +2312,14 @@
 <h2 id="intake-landing">INTAKE (landing)<a class="headerlink" href="#intake-landing" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">En validació</p>
-<p>Aquest INTAKE és la <strong>proposta</strong> (<code>SDD-VD/intake.proposta.md</code>). Les Parts 1 i 2 s'han provat amb el model local (Qwen3.8 27B al DGX Spark) en execucions repetides; la Part 3 encara no. Els resultats d'aquesta pàgina són d'un sol manual de marca de prova.</p>
+<p>Aquest INTAKE és la <strong>proposta</strong> (<code>SDD-VD/intake.proposta.md</code>) i encara es valida. Res d'aquesta pàgina és definitiu.</p>
 </div>
 <p>INTAKE és la primera fase del flux de landings: converteix el disseny i la marca de VoraStudio en <strong>dades estructurades i confirmades</strong> abans d'escriure una línia d'HTML. Es fa en tres parts, i després de cada una l'agent <strong>para i espera que Pau confirmi</strong>.</p>
 <p><strong>Per què existeix.</strong> Si el model construeix directament a partir d'imatges, "interpreta" el disseny: arrodoneix colors, inventa mides i omple buits amb valors per defecte. INTAKE separa <strong>llegir</strong> el disseny de <strong>construir-lo</strong>, i fa que cada valor que arriba a BUILD hagi passat per la confirmació de Pau.</p>
 <p>Les normes que envolten la fase són a <a href="../workflow/">Normes del workflow</a> i <a href="../workflow/agents-md/">Com estructurem AGENTS.md</a>.</p>
 <h3 id="la-idea-clau-el-que-es-pot-mesurar-ho-mesura-un-script">La idea clau: el que es pot mesurar, ho mesura un script<a class="headerlink" href="#la-idea-clau-el-que-es-pot-mesurar-ho-mesura-un-script" title="Permanent link">&para;</a></h3>
-<p>A les primeres proves, el model <strong>llegia</strong> bé els valors però fallava en tot el que és <strong>comparar o mesurar</strong>: aparellava colors pel nom, veia contradiccions que no existien, estimava mides a ull i confonia vores fines. A més, cada execució fallava en una cosa diferent.</p>
-<p>La solució que ha funcionat és repartir la feina:</p>
+<p>Un model de llenguatge <strong>llegeix</strong> bé els valors, però no és fiable quan ha de <strong>comparar o mesurar</strong>: pot aparellar colors pel nom, veure contradiccions que no existeixen, estimar mides a ull o confondre una vora fina amb un farciment. I no s'equivoca sempre igual, cosa que fa impossible corregir-ho amb més instruccions.</p>
+<p>Per això la feina es reparteix:</p>
 <table>
 <thead>
 <tr>
@@ -2397,7 +2397,7 @@
 <tr>
 <td>Colors</td>
 <td>Copia la taula, els tokens i els avisos de <code>brand_cards.py</code>; no recalcula ni compara</td>
-<td>El model comparant colors fallava cada vegada d'una manera diferent</td>
+<td>La comparació la fa l'script, que dona sempre el mateix resultat</td>
 </tr>
 <tr>
 <td><code>@theme</code></td>
@@ -2412,12 +2412,12 @@
 <tr>
 <td>Fonts</td>
 <td>Família i pesos <strong>tal com estan escrits</strong>, errates incloses; sense pesos → "no especificat"</td>
-<td>El model tendia a "corregir" errates i a afegir un Regular per defecte</td>
+<td>Corregir una errata o afegir un Regular per defecte és canviar el que diu el client sense que ho sàpiga</td>
 </tr>
 <tr>
 <td>Rols i escala</td>
 <td>Només si el PDF els escriu; si no, "no consta"</td>
-<td>En una prova, el model va inventar rols (títol, cos) que el PDF no deia</td>
+<td>Si el PDF no diu quina font és per a títols, afirmar-ho seria inventar</td>
 </tr>
 <tr>
 <td>Discrepàncies</td>
@@ -2427,10 +2427,9 @@
 </tbody>
 </table>
 <p><strong>Què presenta.</strong> El <code>@theme</code> en línia, fonts i pesos, l'escala o "no consta", els avisos de color copiats i les discrepàncies de tipografia. <strong>Para.</strong></p>
-<p><strong>Resultat de les proves.</strong> Amb aquest flux, 3 de 3 execucions han donat els colors idèntics i correctes: els tokens, els colors sense token a part i els avisos copiats literalment. A la tipografia, 1 de 3 va corregir una errata sense avisar.</p>
 <h4 id="script-brand_cardspy">Script <code>brand_cards.py</code><a class="headerlink" href="#script-brand_cardspy" title="Permanent link">&para;</a></h4>
 <p>Llegeix les <strong>targetes de color</strong> del manual (rectangles de color amb el nom i els valors a dins) i les compara de manera determinista.</p>
-<p><strong>Per què agrupa per targeta i no llegeix el text en ordre.</strong> En un manual real, una targeta alta tenia el nom a dalt i els valors 470 px més avall. Llegit en ordre, els valors quedaven sense nom i el model n'endevinava el propietari. L'script assigna cada línia de text al rectangle que la conté.</p>
+<p><strong>Per què agrupa per targeta i no llegeix el text en ordre.</strong> Quan una targeta és alta, el nom queda a dalt i els valors molt més avall. Llegit en ordre, els valors poden quedar sense nom i el model n'hauria d'endevinar el propietari. L'script assigna cada línia de text al rectangle que la conté.</p>
 <table>
 <thead>
 <tr>
@@ -2453,7 +2452,7 @@
 </tr>
 <tr>
 <td>Regla de creuament</td>
-<td>Sempre pel HEX, mai pel nom: el manual de prova feia servir el mateix nom per a colors diferents en pàgines diferents</td>
+<td>Sempre pel HEX, mai pel nom: un manual pot fer servir el mateix nom per a colors diferents en pàgines diferents</td>
 </tr>
 <tr>
 <td>Sense targetes</td>
@@ -2492,7 +2491,7 @@
 <hr />
 <h3 id="part-2-components-ui">Part 2 — Components UI<a class="headerlink" href="#part-2-components-ui" title="Permanent link">&para;</a></h3>
 <p><strong>Què fa.</strong> Descriu cada component (botons, formularis, targetes, etiquetes, pestanyes) de manera que BUILD el pugui reproduir <strong>fidel a l'original</strong>: forma, farciment, vora, text i mida.</p>
-<p><strong>Per què necessita scripts.</strong> El PDF de components és una imatge. En una prova sense mesures, el model va encertar els colors grans i els radis, però va fer els botons de 48 px quan fan 42, les etiquetes de 32 quan fan 42, i va confondre una vora grisa amb un farciment. Construït així, el resultat es veuria diferent del disseny.</p>
+<p><strong>Per què necessita scripts.</strong> El PDF de components és una imatge. Mirant-la, un model pot encertar colors grans i radis, però no mesura: una diferència de pocs píxels en l'alçada d'un botó o una vora de mig píxel es perden a ull. Construït així, el resultat es veuria diferent del disseny.</p>
 <p><strong>Com funciona.</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>SDD-VD/scripts/render_pdf.py<span class="w"> </span>SDD-VD/sdd-local/brand/ui.pdf<span class="w"> </span>SDD-VD/sdd-local/brand/ui-pages<span class="w"> </span>--tokens<span class="w"> </span><span class="nv">nom</span><span class="o">=</span><span class="c1">#HEX ...</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>SDD-VD/scripts/ui_metrics.py<span class="w"> </span>SDD-VD/sdd-local/brand/ui.pdf<span class="w"> </span>--tokens<span class="w"> </span><span class="nv">nom</span><span class="o">=</span><span class="c1">#HEX ...</span>
@@ -2515,7 +2514,7 @@
 <tr>
 <td>Forma, farciment, vora i mida</td>
 <td>Les <strong>copia</strong> de la línia de <code>ui_metrics.py</code> amb el mateix ID; si hi ha dues classes (<code>h-10/h-11</code>), les dues</td>
-<td>A ull, el model s'equivocava de manera sistemàtica</td>
+<td>Són mesures, no s'estimen a ull</td>
 </tr>
 <tr>
 <td>Text</td>
@@ -2525,7 +2524,7 @@
 <tr>
 <td>Hex</td>
 <td>Només els de <code>ui_metrics.py</code>, mai els de les etiquetes de la imatge</td>
-<td>En una prova, el model va llegir malament una etiqueta petita i va inventar una discrepància</td>
+<td>Les etiquetes de la imatge són petites i es poden llegir malament; la sortida de text no</td>
 </tr>
 <tr>
 <td>Notes escrites</td>
@@ -2535,7 +2534,7 @@
 <tr>
 <td>Nota vs mesura</td>
 <td>Si no coincideixen, es llisten tots dos</td>
-<td>El manual de prova es contradiu: una nota diu 30 px de radi i el dibuix en fa 23</td>
+<td>Un manual es pot contradir (una nota diu un radi i el dibuix en fa un altre); decideix Pau</td>
 </tr>
 <tr>
 <td>Estats</td>
@@ -2545,18 +2544,12 @@
 <tr>
 <td>Textos</td>
 <td>Els textos d'exemple dels components no cal transcriure'ls; s'ignoren només els aliens a la marca</td>
-<td>El model va aturar-se una vegada perquè la regla antiga era ambigua</td>
+<td>El nom de la marca és el del client, no el de VoraData: no és motiu per ignorar res</td>
 </tr>
 </tbody>
 </table>
 <p>No es retallen ni es desen altres imatges: només les que genera <code>render_pdf.py</code>.</p>
 <p><strong>Què presenta.</strong> Una fitxa per component amb el seu ID, els avisos de color sense token, les discrepàncies i els estats no especificats. <strong>Para.</strong></p>
-<p><strong>Resultat de les proves.</strong> 3 de 3 execucions han copiat els <strong>23 components</strong> amb forma, farciment, vora i mida idèntics a les mesures, i totes han llistat les discrepàncies entre notes i dibuix. Hi ha errors de <strong>lectura d'imatge</strong> que canvien a cada execució:</p>
-<ul>
-<li>el color o el pes del text d'alguns components;</li>
-<li>errors de transcripció en textos petits;</li>
-<li>traduir el focus "morat viu" al seu token: ho ha fet en 2 de 3 execucions.</li>
-</ul>
 <h4 id="script-ui_metricspy">Script <code>ui_metrics.py</code><a class="headerlink" href="#script-ui_metricspy" title="Permanent link">&para;</a></h4>
 <p>Mesura cada component de les pàgines renderitzades i en dona una línia de text:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>C4 · x 315 y 344 · 194×43 (w-48/w-49 · h-11) · farciment cap · vora 1.5 purple-700 (border/border-2) · radi full (rounded-full)
@@ -2601,25 +2594,20 @@
 <td>Codis</td>
 <td>0 correcte · 1 <code>ERROR_METRIQUES</code> · 2 <code>SENSE_COMPONENTS</code></td>
 </tr>
-<tr>
-<td>Temps</td>
-<td>Uns 17 s per a dues pàgines</td>
-</tr>
 </tbody>
 </table>
-<p><strong>Limitació coneguda.</strong> Si la imatge mateixa és ambigua, la mesura també ho és. En el manual de prova, les vores dels camps tenen un gris diferent a cada costat, i el script dona un gris sense token amb <code>border</code>. Això és correcte per construir, però no dona un hex exacte.</p>
+<p><strong>Limitació.</strong> Si la imatge mateixa és ambigua (per exemple, una vora amb un gris diferent a cada costat), la mesura també ho és: l'script dona el gris sense token i la classe (<code>border</code>), però no un hex exacte.</p>
 <h4 id="script-render_pdfpy">Script <code>render_pdf.py</code><a class="headerlink" href="#script-render_pdfpy" title="Permanent link">&para;</a></h4>
 <p>Renderitza cada pàgina a <code>pN.png</code> (144 dpi). Amb <code>--tokens</code>, escriu damunt de cada regió de color el seu token i, si forma part d'un component, l'ID de <code>ui_metrics.py</code> (<code>C3 purple-700</code>). Les etiquetes poden tapar una part del text: si una nota no es llegeix bé, l'agent pregunta. Codis: 0 correcte · 1 <code>ERROR_RENDER</code>.</p>
 <p><code>color_regions.py</code> és el mòdul de base que detecta regions de color i les assigna al token més proper (cap canal RGB a més de 6 de diferència). També es pot executar sol per depurar.</p>
 <h4 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h4>
-<p>Els scripts <code>brand_cards.py</code> i <code>ui_metrics.py</code> tenen tests (<code>unittest</code>) amb PDF sintètics, sense dades de client. Cada error trobat amb el PDF real té un test que el reprodueix.</p>
+<p>Els scripts <code>brand_cards.py</code> i <code>ui_metrics.py</code> tenen tests (<code>unittest</code>) amb PDF sintètics, sense dades de client.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>SDD-VD/scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>unittest
 </code></pre></div>
 <hr />
 <h3 id="part-3-seccions-i-actius">Part 3 — Seccions i actius<a class="headerlink" href="#part-3-seccions-i-actius" title="Permanent link">&para;</a></h3>
 <p><strong>Què fa.</strong> L'inventari del que cal construir i del que ja tenim: numera les seccions de les imatges, en descriu l'estructura i, per a cada imatge, logo, font i text necessari, indica si <strong>hi és</strong> o <strong>falta</strong>.</p>
 <p><strong>Per què.</strong> Detectar abans de BUILD què falta evita parar a mig bloc.</p>
-<p><strong>Estat.</strong> Definida, però encara no s'ha provat.</p>
 <hr />
 <h3 id="criteris-de-verificacio-dintake">Criteris de verificació d'INTAKE<a class="headerlink" href="#criteris-de-verificacio-dintake" title="Permanent link">&para;</a></h3>
 <table>
@@ -2671,9 +2659,7 @@
 <div class="admonition note">
 <p class="admonition-title">Pendent</p>
 <ul>
-<li>Provar la Part 3.</li>
-<li>Millorar la lectura del text dels components (color i pes).</li>
-<li>Provar el flux amb un manual de marca diferent: els scripts s'han validat amb un sol format de manual.</li>
+<li>Els scripts llegeixen manuals amb targetes de color i components dibuixats; un format diferent pot necessitar ampliar-los.</li>
 <li>Definir què es desa exactament a <code>intake-result.md</code>.</li>
 </ul>
 </div>

@@ -2136,11 +2136,11 @@
 </blockquote>
 <div class="admonition warning">
 <p class="admonition-title">En validació</p>
-<p>Aquesta pàgina documenta la <strong>proposta</strong> (<code>SDD-VD/AGENTS.proposta.md</code>) secció per secció, amb el que s'ha comprovat amb el model local (Qwen3.8 27B al DGX Spark). Les seccions 7, 8 i 9 encara no estan tancades.</p>
+<p>Aquesta pàgina documenta la <strong>proposta</strong> (<code>SDD-VD/AGENTS.proposta.md</code>) secció per secció. Les seccions 7, 8 i 9 encara no estan tancades.</p>
 </div>
 <h2 id="per-que-un-router">Per què un router<a class="headerlink" href="#per-que-un-router" title="Permanent link">&para;</a></h2>
 <p>L'<code>AGENTS.md</code> antic és un sol fitxer llarg: identitat, stack, normes de codi, hooks, automatitzacions, lliurament, LOPD i mapa del repositori. L'eina el carrega <strong>a l'inici de cada sessió</strong>, tant si la tasca el necessita com si no.</p>
-<p>Ho hem vist a les proves: el model sabia que treballava per a VoraData sense que ningú li ho digués al prompt, perquè OpenCode li injecta l'<code>AGENTS.md</code> de l'arrel. Tot el que hi posem, el model ho llegeix sempre.</p>
+<p>OpenCode injecta l'<code>AGENTS.md</code> de l'arrel al model a cada sessió: tot el que hi posem, el model ho llegeix sempre.</p>
 <table>
 <thead>
 <tr>
@@ -2263,8 +2263,8 @@
 </ul>
 <p><strong>Per què inline:</strong> una regla es queda aquí si oblidar-la costa car i no es pot desfer fàcilment (un push, una dada de client al repo públic). Si fos només un enllaç, el model podria no anar-lo a buscar.</p>
 <div class="admonition note">
-<p class="admonition-title">Què hem après a les proves</p>
-<p>Escriure una regla no garanteix que el model la compleixi. A les primeres proves d'INTAKE, Qwen va llegir el PDF amb eines que el flux prohibia i va desar imatges que no se li havien demanat. Va deixar de fer-ho quan la regla va passar a ser <strong>concreta</strong> (quines eines no pot fer servir, quins fitxers no pot escriure). Una regla genèrica ("no ho llegeixis amb cap altra eina") no va ser prou.</p>
+<p class="admonition-title">Regles concretes</p>
+<p>Escriure una regla no garanteix que el model la compleixi. Una regla genèrica ("no ho llegeixis amb cap altra eina") deixa marge; una de concreta (quines eines no pot fer servir, quins fitxers no pot escriure) no.</p>
 </div>
 <h2 id="4-idiomes">4. Idiomes<a class="headerlink" href="#4-idiomes" title="Permanent link">&para;</a></h2>
 <p><strong>Contingut:</strong> documentació i comentaris en català · codi en anglès · commits en anglès · xat en castellà o català.</p>
@@ -2307,7 +2307,7 @@
 <tr>
 <th>Camp</th>
 <th>A la proposta</th>
-<th>Com ha de quedar (segons les proves)</th>
+<th>Com ha de quedar</th>
 </tr>
 </thead>
 <tbody>
@@ -2333,48 +2333,43 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Què hem aconseguit a INTAKE i per què:</strong></p>
+<p><strong>Com treballa INTAKE i per què:</strong></p>
 <table>
 <thead>
 <tr>
 <th>Part</th>
-<th>Problema detectat</th>
-<th>Solució</th>
-<th>Resultat amb Qwen</th>
+<th>Risc</th>
+<th>Com es resol</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1 · Colors</td>
-<td>El model llegia bé els valors però els <strong>comparava</strong> malament: aparellava colors pel nom, inventava discrepàncies i cada execució fallava en una cosa diferent</td>
-<td>Script <code>brand_cards.py</code>: agrupa el text per targeta de color, calcula totes les discrepàncies i el model només les copia</td>
-<td>3 de 3 execucions idèntiques i correctes</td>
+<td>Un model compara malament: aparella colors pel nom o veu contradiccions que no hi són</td>
+<td>Script <code>brand_cards.py</code>: agrupa el text per targeta de color i calcula les discrepàncies; el model només les copia</td>
 </tr>
 <tr>
 <td>1 · Tipografia</td>
-<td>Inventava rols (títol, cos) i pesos que el PDF no deia</td>
-<td>Regles concretes: pesos tal com estan escrits, "no consta" si no hi ha rols ni escala</td>
-<td>3 de 3 sense inventar; 1 de 3 va corregir una errata en silenci</td>
+<td>Inventar rols (títol, cos) o pesos que el PDF no diu</td>
+<td>Pesos tal com estan escrits; "no consta" si no hi ha rols ni escala</td>
 </tr>
 <tr>
 <td>2 · Components</td>
-<td>L'ull del model no mesura: botons, camps i etiquetes amb mides errònies, vores fines mal llegides</td>
-<td>Script <code>ui_metrics.py</code>: mesura cada component (mida, farciment, vora, radi) i dona la classe de Tailwind; el model la copia</td>
-<td>23 de 23 components amb l'estil fidel</td>
+<td>L'ull no mesura: mides i vores fines s'estimen malament</td>
+<td>Script <code>ui_metrics.py</code>: mesura cada component i dona la classe de Tailwind; el model la copia</td>
 </tr>
 <tr>
 <td>2 · Notes vs dibuix</td>
-<td>El manual es contradiu (una nota diu 30px i el dibuix fa 23)</td>
-<td>Regla: llistar els dos valors; decideix Pau</td>
-<td>El model ho llista i no tria</td>
+<td>El manual es pot contradir</td>
+<td>Es llisten els dos valors; decideix Pau</td>
 </tr>
 </tbody>
 </table>
+<p>Detall complet a <a href="../../fases/#intake-landing">Fases → INTAKE</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">El patró que ha funcionat</p>
-<p>El que es pot <strong>mesurar</strong> (colors, mides, vores) ho fa un script, amb tests; el model només copia i presenta. El que és <strong>judici</strong> (què vol dir una nota, com es presenta a Pau) ho fa el model. Cada vegada que hem deixat una comparació a mans del model, ha fallat de manera diferent a cada execució.</p>
+<p>El que es pot <strong>mesurar</strong> (colors, mides, vores) ho fa un script, amb tests; el model només copia i presenta. El que és <strong>judici</strong> (què vol dir una nota, com es presenta a Pau) ho fa el model.</p>
 </div>
-<p><strong>Encara falla (lectura d'imatge):</strong> textos petits transcrits amb errors i una nota amb un color pel nom ("morat viu") que el model no tradueix al token. La Part 3 (seccions i actius) no s'ha provat.</p>
 <h3 id="fase-2-build">Fase 2 · BUILD<a class="headerlink" href="#fase-2-build" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2402,7 +2397,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Per què:</strong> construir per blocs amb aturades evita arribar al final amb una pàgina sencera que no s'assembla al disseny. Encara no s'ha provat amb el flux nou.</p>
+<p><strong>Per què:</strong> construir per blocs amb aturades evita arribar al final amb una pàgina sencera que no s'assembla al disseny.</p>
 <h3 id="fase-3-deliver">Fase 3 · DELIVER<a class="headerlink" href="#fase-3-deliver" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2438,10 +2433,10 @@
 <h2 id="7-protocol-hitl">7. Protocol HITL<a class="headerlink" href="#7-protocol-hitl" title="Permanent link">&para;</a></h2>
 <p><strong>Contingut (esbós):</strong> aturada després de cada bloc major (hero, body, footer); cap crida a eina fins a la confirmació humana; format de la frase de parada i del log per definir.</p>
 <p><strong>Per què inline:</strong> és la regla que més es trenca en construcció. Si el model no para, l'humà perd el control del que s'està fent.</p>
-<p><strong>Què sabem:</strong> a INTAKE, les aturades han funcionat en totes les execucions vàlides. En benchmarks anteriors de BUILD, el model es va saltar aturades entre blocs. Per això cal definir un format de parada concret.</p>
+<p>Per això cal definir un format de parada concret, que el model no pugui interpretar.</p>
 <h2 id="8-memoria-i-persistencia">8. Memòria i persistència<a class="headerlink" href="#8-memoria-i-persistencia" title="Permanent link">&para;</a></h2>
 <p><strong>Contingut (esbós):</strong> mode hybrid (Engram entre sessions + OpenSpec en fitxers de git). A l'inici: llegir aquest fitxer, identificar el tipus de projecte, confirmar l'abast.</p>
-<p><strong>Què hem après:</strong> durant les proves la memòria <strong>contamina</strong>. En una prova, el model va consultar Engram pel seu compte i la prova es va haver de descartar. Les proves fiables s'han fet amb Engram, context7 i codegraph desactivats.</p>
+<p><strong>Per què importa:</strong> la memòria entre sessions pot portar context d'altres projectes. Quan es valida el flux, s'executa amb la memòria desactivada.</p>
 <h2 id="9-fora-daquest-fitxer">9. Fora d'aquest fitxer<a class="headerlink" href="#9-fora-daquest-fitxer" title="Permanent link">&para;</a></h2>
 <p><strong>Contingut:</strong> el que ha de sortir d'<code>AGENTS.md</code> i viure als fitxers de detall.</p>
 <table>
