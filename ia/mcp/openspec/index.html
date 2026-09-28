@@ -1694,6 +1694,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#decisions-fora-de-sdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisions fora de SDD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recuperacio-de-sessio" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1838,6 +1849,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#decisions-fora-de-sdd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisions fora de SDD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recuperacio-de-sessio" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1912,9 +1934,11 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│       ├── tasks.md            ← llista de tasques d'implementació
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│       ├── apply-progress.md   ← progrés durant l'apply
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│       └── verify-report.md    ← validació contra spec
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>└── archive/                    ← canvis tancats i verificats
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    └── landing-clientx/
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        └── archive-report.md
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>├── archive/                    ← canvis tancats i verificats
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   └── landing-clientx/
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│       └── archive-report.md
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>└── decisions/                  ← decisions importants fora de SDD
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    └── &lt;stack&gt;/NNN-&lt;slug&gt;.md   ← arquitectura, html, js, css, symfony
 </code></pre></div>
 <hr />
 <h2 id="cicle-de-vida-dun-canvi">Cicle de vida d'un canvi<a class="headerlink" href="#cicle-de-vida-dun-canvi" title="Permanent link">&para;</a></h2>
@@ -1943,10 +1967,17 @@
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    /sdd-archive → canvi arxivat a openspec/archive/
 </code></pre></div>
 <hr />
+<h2 id="decisions-fora-de-sdd">Decisions fora de SDD<a class="headerlink" href="#decisions-fora-de-sdd" title="Permanent link">&para;</a></h2>
+<p>Cada vegada que l'agent desa a Engram una observació de tipus <code>decision</code> o <code>architecture</code>, crea també el fitxer de la decisió:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>scripts/new-decision.sh<span class="w"> </span>&lt;stack&gt;<span class="w"> </span><span class="s2">"&lt;títol&gt;"</span>
+</code></pre></div>
+<p>i l'omple amb el context, la decisió i el per què. Si no sap a quin stack va, pregunta.</p>
+<p><strong>Per què una regla tan concreta:</strong> la versió anterior deia només que l'agent escrivia les decisions "proactivament", i no ho feia: les decisions quedaven només a Engram, que l'equip no veu. Lligar-la a una acció que l'agent ja fa sempre (desar a Engram) la converteix en un pas fix.</p>
+<hr />
 <h2 id="recuperacio-de-sessio">Recuperació de sessió<a class="headerlink" href="#recuperacio-de-sessio" title="Permanent link">&para;</a></h2>
 <p>Si reprens un canvi en una nova sessió:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mem_context → historial recent
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mem_search "sdd/landing-clientx/tasks" → recuperar tasques
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mem_context → historial recent
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mem_search "sdd/landing-clientx/tasks" → recuperar tasques
 </code></pre></div>
 <p>Si Engram no està disponible, llegeix directament els fitxers <code>openspec/changes/landing-clientx/</code>.</p>
 <hr />

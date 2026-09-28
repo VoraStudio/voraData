@@ -945,13 +945,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#part-3-seccions-i-actius" class="md-nav__link">
+  <a href="#part-3-esquelet-de-seccions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 3 — Seccions i actius
+        Part 3 — Esquelet de seccions
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Esquelet de seccions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-split_sectionspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script split_sections.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2209,13 +2226,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#part-3-seccions-i-actius" class="md-nav__link">
+  <a href="#part-3-esquelet-de-seccions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 3 — Seccions i actius
+        Part 3 — Esquelet de seccions
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Esquelet de seccions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-split_sectionspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script split_sections.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2348,8 +2382,8 @@
 </table>
 <pre class="mermaid"><code>graph LR
     P1[Part 1: marca i tokens] --&gt;|Pau confirma| P2[Part 2: components UI]
-    P2 --&gt;|Pau confirma| P3[Part 3: seccions i actius]
-    P3 --&gt;|Pau confirma| R[intake-result.md]</code></pre>
+    P2 --&gt;|Pau confirma| P3[Part 3: esquelet de seccions]
+    P3 --&gt;|Pau revisa l'HTML| R[intake-result.md]</code></pre>
 <h3 id="entrades">Entrades<a class="headerlink" href="#entrades" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2371,9 +2405,9 @@
 <td>Com a <strong>imatge</strong> (no té capa de text)</td>
 </tr>
 <tr>
-<td>Imatges de cada secció</td>
-<td>El disseny de la landing</td>
-<td>Com a imatge</td>
+<td><code>design.pdf</code></td>
+<td>La landing sencera en una sola pàgina llarga</td>
+<td>Tallada en seccions per un script: imatge + text</td>
 </tr>
 </tbody>
 </table>
@@ -2601,13 +2635,107 @@
 <p>Renderitza cada pàgina a <code>pN.png</code> (144 dpi). Amb <code>--tokens</code>, escriu damunt de cada regió de color el seu token i, si forma part d'un component, l'ID de <code>ui_metrics.py</code> (<code>C3 purple-700</code>). Les etiquetes poden tapar una part del text: si una nota no es llegeix bé, l'agent pregunta. Codis: 0 correcte · 1 <code>ERROR_RENDER</code>.</p>
 <p><code>color_regions.py</code> és el mòdul de base que detecta regions de color i les assigna al token més proper (cap canal RGB a més de 6 de diferència). També es pot executar sol per depurar.</p>
 <h4 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h4>
-<p>Els scripts <code>brand_cards.py</code> i <code>ui_metrics.py</code> tenen tests (<code>unittest</code>) amb PDF sintètics, sense dades de client.</p>
+<p>Els scripts <code>brand_cards.py</code>, <code>ui_metrics.py</code> i <code>split_sections.py</code> tenen tests (<code>unittest</code>) amb PDF sintètics, sense dades de client.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>SDD-VD/scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>unittest
 </code></pre></div>
 <hr />
-<h3 id="part-3-seccions-i-actius">Part 3 — Seccions i actius<a class="headerlink" href="#part-3-seccions-i-actius" title="Permanent link">&para;</a></h3>
-<p><strong>Què fa.</strong> L'inventari del que cal construir i del que ja tenim: numera les seccions de les imatges, en descriu l'estructura i, per a cada imatge, logo, font i text necessari, indica si <strong>hi és</strong> o <strong>falta</strong>.</p>
-<p><strong>Per què.</strong> Detectar abans de BUILD què falta evita parar a mig bloc.</p>
+<h3 id="part-3-esquelet-de-seccions">Part 3 — Esquelet de seccions<a class="headerlink" href="#part-3-esquelet-de-seccions" title="Permanent link">&para;</a></h3>
+<p><strong>Què fa.</strong> Talla el disseny en seccions i construeix un <strong>esquelet HTML</strong>: una <code>&lt;section&gt;</code> per secció, amb els textos reals, els colors i components confirmats a les Parts 1 i 2 i un placeholder a cada imatge. BUILD parteix d'aquest esquelet.</p>
+<p><strong>Per què.</strong> Amb l'esquelet, Pau veu al navegador si l'estructura és la del disseny (ordre, columnes, quins elements hi ha) abans de posar-hi detall. Un error d'estructura detectat aquí no obliga a desfer blocs acabats.</p>
+<p><strong>Com funciona.</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>SDD-VD/scripts/split_sections.py<span class="w"> </span>SDD-VD/sdd-local/brand/design.pdf<span class="w"> </span>SDD-VD/sdd-local/sections<span class="w"> </span>--tokens<span class="w"> </span><span class="nv">nom</span><span class="o">=</span><span class="c1">#HEX ...</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Pas</th>
+<th>Què fa</th>
+<th>Per què</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tallar</td>
+<td>L'<strong>script</strong> crea <code>S1.png</code>, <code>S2.png</code>... i en treu les dades de cada secció</td>
+<td>On comença i acaba una secció es calcula, no s'endevina</td>
+</tr>
+<tr>
+<td>Llegir</td>
+<td>El model mira les seccions <strong>una a una</strong> i en fa una fitxa: nom, fons, disposició i elements en ordre</td>
+<td>Amb totes alhora barreja elements entre seccions</td>
+</tr>
+<tr>
+<td>Construir</td>
+<td><code>SDD-VD/sdd-local/skeleton/index.html</code>, una <code>&lt;section id="sN"&gt;</code> per fitxa amb <code>min-h-dvh</code></td>
+<td><code>min-h-dvh</code> i no <code>h-screen</code>: si el contingut no hi cap (mòbil), creix en lloc de desbordar; <code>dvh</code> descompta la barra del navegador a iOS</td>
+</tr>
+<tr>
+<td>Textos</td>
+<td>Literals de la sortida de l'script, errates incloses; mida, la classe que dona l'script</td>
+<td>El text és del client</td>
+</tr>
+<tr>
+<td>Colors</td>
+<td>Només tokens del <code>@theme</code>; un color <code>SENSE_TOKEN</code> fa servir el token més proper i s'avisa</td>
+<td>Cap hex nou entra a l'HTML sense que Pau ho sàpiga</td>
+</tr>
+<tr>
+<td>Imatges</td>
+<td><code>&lt;div class="bg-[#d9d9d9] aspect-[w/h]"&gt;</code> amb la proporció de l'script</td>
+<td>Són els <strong>únics</strong> valors arbitraris permesos: el placeholder ha d'ocupar el mateix espai que la imatge</td>
+</tr>
+<tr>
+<td>Botons i camps</td>
+<td>Les classes del component de la Part 2 que s'hi assembla, o "estimat"</td>
+<td>L'estil ja està confirmat; no es torna a interpretar</td>
+</tr>
+<tr>
+<td>Mobile-first</td>
+<td>Base d'una columna; la disposició del disseny va amb <code>md:</code></td>
+<td>Norma del preset</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Què presenta.</strong> Les fitxes, els avisos (colors sense token i el token usat, components estimats, fonts que no són al <code>@theme</code>) i la ruta de l'HTML. <strong>Para: Pau revisa l'esquelet al navegador.</strong> Aquesta part no té parada intermèdia: la comprovació és sobre l'HTML.</p>
+<h4 id="script-split_sectionspy">Script <code>split_sections.py</code><a class="headerlink" href="#script-split_sectionspy" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecte</th>
+<th>Detall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Com troba les seccions</td>
+<td>Cada fons és un rectangle de l'amplada de la pàgina; encadenats han de cobrir la pàgina de dalt a baix sense forats. Les bandes decoratives que trepitgen dues seccions s'ignoren</td>
+</tr>
+<tr>
+<td>Per secció</td>
+<td>Mida, fons (token), imatges amb posició i proporció (<code>aspect-[w/h]</code>, "de fons" si la cobreix), textos amb font, classe de mida i color</td>
+</tr>
+<tr>
+<td>Color del text</td>
+<td><strong>Mesurat als píxels</strong>, no llegit del PDF: el programa de disseny pot exportar un títol com a imatge amb una capa de text invisible d'un altre color</td>
+</tr>
+<tr>
+<td>Text sobre una foto</td>
+<td>"sobre imatge": el fons no és uniforme i la mesura no seria fiable; el model el llegeix de la imatge</td>
+</tr>
+<tr>
+<td>Imatges que són text</td>
+<td>Si una imatge queda tapada per línies de text, és un títol exportat com a imatge i no es llista com a placeholder</td>
+</tr>
+<tr>
+<td>Al final</td>
+<td>Llista de colors del disseny que no són cap token, amb on surten</td>
+</tr>
+<tr>
+<td>Codis</td>
+<td>0 correcte · 1 <code>ERROR_LECTURA</code> · 2 <code>SENSE_SECCIONS</code> (l'agent para)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="criteris-de-verificacio-dintake">Criteris de verificació d'INTAKE<a class="headerlink" href="#criteris-de-verificacio-dintake" title="Permanent link">&para;</a></h3>
 <table>
@@ -2636,7 +2764,7 @@
 </tr>
 <tr>
 <td>Notació</td>
-<td>Cap píxel en text ni valor arbitrari (<code>text-[22px]</code>, <code>rounded-[30px]</code>)</td>
+<td>Cap píxel en text ni valor arbitrari (<code>text-[22px]</code>, <code>rounded-[30px]</code>); només els placeholders d'imatge (<code>bg-[#d9d9d9] aspect-[w/h]</code>)</td>
 </tr>
 <tr>
 <td>Estats absents</td>
@@ -2647,12 +2775,16 @@
 <td>Pau confirma cada part abans de la següent</td>
 </tr>
 <tr>
+<td>Esquelet</td>
+<td>Una <code>&lt;section&gt;</code> per secció, en ordre; només tokens del <code>@theme</code>; textos literals; cap <code>&lt;script&gt;</code> ni <code>&lt;style&gt;</code> propis</td>
+</tr>
+<tr>
 <td>Resultat</td>
-<td><code>intake-result.md</code>, curt i estructurat; BUILD el llegeix</td>
+<td><code>intake-result.md</code>, curt i estructurat, i l'esquelet; BUILD parteix de tots dos</td>
 </tr>
 <tr>
 <td>Ordre</td>
-<td>Cap <code>index.html</code> abans de les tres confirmacions</td>
+<td>L'esquelet viu a <code>sdd-local/skeleton/</code>; cap <code>index.html</code> definitiu abans de les tres confirmacions</td>
 </tr>
 </tbody>
 </table>
