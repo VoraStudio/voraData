@@ -27,9 +27,11 @@ openspec/
 │       ├── tasks.md            ← llista de tasques d'implementació
 │       ├── apply-progress.md   ← progrés durant l'apply
 │       └── verify-report.md    ← validació contra spec
-└── archive/                    ← canvis tancats i verificats
-    └── landing-clientx/
-        └── archive-report.md
+├── archive/                    ← canvis tancats i verificats
+│   └── landing-clientx/
+│       └── archive-report.md
+└── decisions/                  ← decisions importants fora de SDD
+    └── <stack>/NNN-<slug>.md   ← arquitectura, html, js, css, symfony
 ```
 
 ---
@@ -66,6 +68,20 @@ Pau continua apply → codi + verify-report.md
         ↓
     /sdd-archive → canvi arxivat a openspec/archive/
 ```
+
+---
+
+## Decisions fora de SDD
+
+Cada vegada que l'agent desa a Engram una observació de tipus `decision` o `architecture`, crea també el fitxer de la decisió:
+
+```bash
+bash scripts/new-decision.sh <stack> "<títol>"
+```
+
+i l'omple amb el context, la decisió i el per què. Si no sap a quin stack va, pregunta.
+
+**Per què una regla tan concreta:** la versió anterior deia només que l'agent escrivia les decisions "proactivament", i no ho feia: les decisions quedaven només a Engram, que l'equip no veu. Lligar-la a una acció que l'agent ja fa sempre (desar a Engram) la converteix en un pas fix.
 
 ---
 

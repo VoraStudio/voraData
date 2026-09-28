@@ -67,6 +67,8 @@ L'agent executa i proposa; no decideix. Si Pau s'equivoca, li ho diu amb evidèn
 
 Mode **hybrid**: Engram (memòria entre sessions) i OpenSpec (fitxers a git). Detall a [Engram](../../ia/mcp/engram.md) i [OpenSpec](../../ia/mcp/openspec.md).
 
+Cada decisió important que es desa a Engram (`decision` o `architecture`) es desa també a `openspec/decisions/<stack>/` amb `scripts/new-decision.sh`. Una decisió que només és a Engram no la veu l'equip. Detall a [OpenSpec → Decisions fora de SDD](../../ia/mcp/openspec.md#decisions-fora-de-sdd).
+
 ## Decisions obertes
 
 | # | Pregunta |

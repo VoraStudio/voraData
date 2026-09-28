@@ -157,7 +157,7 @@ Per això cal definir un format de parada concret, que el model no pugui interpr
 
 ## 8. Memòria i persistència
 
-**Contingut (esbós):** mode hybrid (Engram entre sessions + OpenSpec en fitxers de git). A l'inici: llegir aquest fitxer, identificar el tipus de projecte, confirmar l'abast.
+**Contingut (esbós):** mode hybrid (Engram entre sessions + OpenSpec en fitxers de git). A l'inici: llegir aquest fitxer, identificar el tipus de projecte, confirmar l'abast. Cada decisió desada a Engram com a `decision` o `architecture` es desa també a `openspec/decisions/<stack>/` amb `scripts/new-decision.sh`.
 
 **Per què importa:** la memòria entre sessions pot portar context d'altres projectes. Quan es valida el flux, s'executa amb la memòria desactivada.
 

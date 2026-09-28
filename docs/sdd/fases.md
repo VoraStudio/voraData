@@ -80,8 +80,8 @@ Per això la feina es reparteix:
 ```mermaid
 graph LR
     P1[Part 1: marca i tokens] -->|Pau confirma| P2[Part 2: components UI]
-    P2 -->|Pau confirma| P3[Part 3: seccions i actius]
-    P3 -->|Pau confirma| R[intake-result.md]
+    P2 -->|Pau confirma| P3[Part 3: esquelet de seccions]
+    P3 -->|Pau revisa l'HTML| R[intake-result.md]
 ```
 
 ### Entrades
@@ -90,7 +90,7 @@ graph LR
 |---|---|---|
 | `brand.pdf` | Colors, fonts i escala tipogràfica | Com a **text** (el PDF té capa de text) |
 | `ui.pdf` | Components: botons, formularis, etiquetes, estats | Com a **imatge** (no té capa de text) |
-| Imatges de cada secció | El disseny de la landing | Com a imatge |
+| `design.pdf` | La landing sencera en una sola pàgina llarga | Tallada en seccions per un script: imatge + text |
 
 Si falta una entrada, l'agent la demana i para. Totes viuen a `SDD-VD/sdd-local/`, que és fora de git: són dades de client. Requisits: `pip install pypdf pymupdf`.
 
@@ -204,7 +204,7 @@ Renderitza cada pàgina a `pN.png` (144 dpi). Amb `--tokens`, escriu damunt de c
 
 #### Tests
 
-Els scripts `brand_cards.py` i `ui_metrics.py` tenen tests (`unittest`) amb PDF sintètics, sense dades de client.
+Els scripts `brand_cards.py`, `ui_metrics.py` i `split_sections.py` tenen tests (`unittest`) amb PDF sintètics, sense dades de client.
 
 ```bash
 cd SDD-VD/scripts && python -m unittest
@@ -212,11 +212,42 @@ cd SDD-VD/scripts && python -m unittest
 
 ---
 
-### Part 3 — Seccions i actius
+### Part 3 — Esquelet de seccions
 
-**Què fa.** L'inventari del que cal construir i del que ja tenim: numera les seccions de les imatges, en descriu l'estructura i, per a cada imatge, logo, font i text necessari, indica si **hi és** o **falta**.
+**Què fa.** Talla el disseny en seccions i construeix un **esquelet HTML**: una `<section>` per secció, amb els textos reals, els colors i components confirmats a les Parts 1 i 2 i un placeholder a cada imatge. BUILD parteix d'aquest esquelet.
 
-**Per què.** Detectar abans de BUILD què falta evita parar a mig bloc.
+**Per què.** Amb l'esquelet, Pau veu al navegador si l'estructura és la del disseny (ordre, columnes, quins elements hi ha) abans de posar-hi detall. Un error d'estructura detectat aquí no obliga a desfer blocs acabats.
+
+**Com funciona.**
+
+```bash
+python SDD-VD/scripts/split_sections.py SDD-VD/sdd-local/brand/design.pdf SDD-VD/sdd-local/sections --tokens nom=#HEX ...
+```
+
+| Pas | Què fa | Per què |
+|---|---|---|
+| Tallar | L'**script** crea `S1.png`, `S2.png`... i en treu les dades de cada secció | On comença i acaba una secció es calcula, no s'endevina |
+| Llegir | El model mira les seccions **una a una** i en fa una fitxa: nom, fons, disposició i elements en ordre | Amb totes alhora barreja elements entre seccions |
+| Construir | `SDD-VD/sdd-local/skeleton/index.html`, una `<section id="sN">` per fitxa amb `min-h-dvh` | `min-h-dvh` i no `h-screen`: si el contingut no hi cap (mòbil), creix en lloc de desbordar; `dvh` descompta la barra del navegador a iOS |
+| Textos | Literals de la sortida de l'script, errates incloses; mida, la classe que dona l'script | El text és del client |
+| Colors | Només tokens del `@theme`; un color `SENSE_TOKEN` fa servir el token més proper i s'avisa | Cap hex nou entra a l'HTML sense que Pau ho sàpiga |
+| Imatges | `<div class="bg-[#d9d9d9] aspect-[w/h]">` amb la proporció de l'script | Són els **únics** valors arbitraris permesos: el placeholder ha d'ocupar el mateix espai que la imatge |
+| Botons i camps | Les classes del component de la Part 2 que s'hi assembla, o "estimat" | L'estil ja està confirmat; no es torna a interpretar |
+| Mobile-first | Base d'una columna; la disposició del disseny va amb `md:` | Norma del preset |
+
+**Què presenta.** Les fitxes, els avisos (colors sense token i el token usat, components estimats, fonts que no són al `@theme`) i la ruta de l'HTML. **Para: Pau revisa l'esquelet al navegador.** Aquesta part no té parada intermèdia: la comprovació és sobre l'HTML.
+
+#### Script `split_sections.py`
+
+| Aspecte | Detall |
+|---|---|
+| Com troba les seccions | Cada fons és un rectangle de l'amplada de la pàgina; encadenats han de cobrir la pàgina de dalt a baix sense forats. Les bandes decoratives que trepitgen dues seccions s'ignoren |
+| Per secció | Mida, fons (token), imatges amb posició i proporció (`aspect-[w/h]`, "de fons" si la cobreix), textos amb font, classe de mida i color |
+| Color del text | **Mesurat als píxels**, no llegit del PDF: el programa de disseny pot exportar un títol com a imatge amb una capa de text invisible d'un altre color |
+| Text sobre una foto | "sobre imatge": el fons no és uniforme i la mesura no seria fiable; el model el llegeix de la imatge |
+| Imatges que són text | Si una imatge queda tapada per línies de text, és un títol exportat com a imatge i no es llista com a placeholder |
+| Al final | Llista de colors del disseny que no són cap token, amb on surten |
+| Codis | 0 correcte · 1 `ERROR_LECTURA` · 2 `SENSE_SECCIONS` (l'agent para) |
 
 ---
 
@@ -228,11 +259,12 @@ cd SDD-VD/scripts && python -m unittest
 | Eines | Només les ordres del flux; cap lectura alternativa del PDF ni fitxers propis |
 | Valors | Venen dels scripts o del PDF; cap color, font o mida estimats a ull |
 | Discrepàncies | Llistades totes, cap resolta en silenci |
-| Notació | Cap píxel en text ni valor arbitrari (`text-[22px]`, `rounded-[30px]`) |
+| Notació | Cap píxel en text ni valor arbitrari (`text-[22px]`, `rounded-[30px]`); només els placeholders d'imatge (`bg-[#d9d9d9] aspect-[w/h]`) |
 | Estats absents | "no especificat", no inventats |
 | Aprovació | Pau confirma cada part abans de la següent |
-| Resultat | `intake-result.md`, curt i estructurat; BUILD el llegeix |
-| Ordre | Cap `index.html` abans de les tres confirmacions |
+| Esquelet | Una `<section>` per secció, en ordre; només tokens del `@theme`; textos literals; cap `<script>` ni `<style>` propis |
+| Resultat | `intake-result.md`, curt i estructurat, i l'esquelet; BUILD parteix de tots dos |
+| Ordre | L'esquelet viu a `sdd-local/skeleton/`; cap `index.html` definitiu abans de les tres confirmacions |
 
 !!! note "Pendent"
     - Els scripts llegeixen manuals amb targetes de color i components dibuixats; un format diferent pot necessitar ampliar-los.
